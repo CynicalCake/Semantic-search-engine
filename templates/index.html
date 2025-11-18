@@ -1,0 +1,155 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="search-section">
+    <div class="container">
+        <h1 class="search-title">PELÍCULAS</h1>
+        <p class="search-subtitle">Buscador semántico de películas</p>
+        
+        <!-- Formulario de búsqueda principal -->
+        <div class="search-form">
+            <form id="searchForm">
+                <div class="row g-3">
+                    <div class="col-md-8">
+                        <input 
+                            type="text" 
+                            class="form-control" 
+                            id="searchTerm"
+                            placeholder="Buscar películas por título..."
+                            required
+                            autocomplete="off"
+                        >
+                    </div>
+                    <div class="col-md-2">
+                        <select class="form-select" id="language">
+                            <option value="es">Español</option>
+                            <option value="en">English</option>
+                            <option value="fr">Français</option>
+                            <option value="de">Deutsch</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <button type="submit" class="btn btn-primary w-100">
+                            Buscar
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Sección de resultados -->
+<div class="container my-4">
+    <!-- Loading spinner -->
+    <div id="loadingSpinner" class="text-center d-none py-4">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Buscando...</span>
+        </div>
+        <p class="mt-2 text-muted">Consultando bases de datos...</p>
+    </div>
+    
+    <!-- Resultados -->
+    <div id="resultsSection" class="d-none">
+        <!-- Pestañas -->
+        <div class="row mb-3">
+            <div class="col-12">
+                <ul class="nav nav-pills results-tabs justify-content-center" id="resultsTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="all-tab" data-bs-toggle="pill" data-bs-target="#all-pane" type="button" role="tab">
+                            Todos (<span id="allCount">0</span>)
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="local-tab" data-bs-toggle="pill" data-bs-target="#local-pane" type="button" role="tab">
+                            Local (<span id="localCount">0</span>)
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="external-tab" data-bs-toggle="pill" data-bs-target="#external-pane" type="button" role="tab">
+                            DBpedia (<span id="externalCount">0</span>)
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Contenido de las pestañas -->
+        <div class="tab-content" id="resultsTabContent">
+            <div class="tab-pane fade show active" id="all-pane" role="tabpanel">
+                <div id="allResults" class="results-grid"></div>
+            </div>
+            <div class="tab-pane fade" id="local-pane" role="tabpanel">
+                <div id="localResults" class="results-grid"></div>
+            </div>
+            <div class="tab-pane fade" id="external-pane" role="tabpanel">
+                <div id="externalResults" class="results-grid"></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Estado sin resultados -->
+    <div id="noResults" class="text-center py-5 d-none">
+        <h4 class="text-muted">No se encontraron resultados</h4>
+        <p class="text-muted">Intenta con otros términos de búsqueda.</p>
+    </div>
+    
+    <!-- Estado de error -->
+    <div id="errorState" class="text-center py-5 d-none">
+        <h4 class="text-danger">Error en la búsqueda</h4>
+        <p class="text-muted" id="errorMessage">Ha ocurrido un error inesperado.</p>
+    </div>
+</div>
+
+<!-- Estadísticas -->
+<div class="container mb-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="stats-section">
+                <div class="row text-center">
+                    <div class="col-3">
+                        <small class="text-muted d-block">Películas Locales</small>
+                        <strong id="totalMovies">-</strong>
+                    </div>
+                    <div class="col-3">
+                        <small class="text-muted d-block">Directores</small>
+                        <strong id="totalDirectors">-</strong>
+                    </div>
+                    <div class="col-3">
+                        <small class="text-muted d-block">Triples RDF</small>
+                        <strong id="totalTriples">-</strong>
+                    </div>
+                    <div class="col-3">
+                        <small class="text-muted d-block">DBpedia</small>
+                        <span id="dbpediaStatus">
+                            <i class="fas fa-circle text-success"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+// Cargar estadísticas al iniciar
+document.addEventListener('DOMContentLoaded', function() {
+    loadStats();
+});
+
+async function loadStats() {
+    try {
+        const response = await fetch('/api/stats');
+        const stats = await response.json();
+        
+        document.getElementById('totalMovies').textContent = stats.total_peliculas || 0;
+        document.getElementById('totalDirectors').textContent = stats.total_directores || 0;
+        document.getElementById('totalTriples').textContent = stats.total_triples || 0;
+    } catch (error) {
+        console.error('Error cargando estadísticas:', error);
+    }
+}
+</script>
+{% endblock %}

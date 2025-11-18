@@ -1,0 +1,249 @@
+{% extends "base.html" %}
+
+{% block title %}Acerca de - Buscador Semántico{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <div class="text-center mb-5">
+                <h1 class="display-4 fw-bold text-dark mb-3">
+                    <i class="fas fa-info-circle text-warning me-3"></i>
+                    Acerca del Proyecto
+                </h1>
+                <p class="lead text-muted">
+                    Conoce más sobre nuestro buscador semántico de películas y las tecnologías que lo hacen posible.
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row mb-5">
+        <div class="col-lg-8 mx-auto">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-5">
+                    <h2 class="h3 fw-bold mb-4">¿Qué es CinemaSearch?</h2>
+                    <p class="text-muted mb-4">
+                        CinemaSearch es un buscador semántico avanzado que combina el poder de las ontologías locales 
+                        con la riqueza de datos de DBpedia para proporcionarte información completa y estructurada 
+                        sobre películas y directores.
+                    </p>
+                    
+                    <h3 class="h4 fw-semibold mb-3">Características principales:</h3>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-start">
+                                <i class="fas fa-database text-warning me-3 mt-1"></i>
+                                <div>
+                                    <h5 class="fw-semibold mb-1">Ontología Local</h5>
+                                    <small class="text-muted">Datos estructurados y validados localmente</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-start">
+                                <i class="fas fa-globe text-warning me-3 mt-1"></i>
+                                <div>
+                                    <h5 class="fw-semibold mb-1">Integración DBpedia</h5>
+                                    <small class="text-muted">Acceso a millones de datos enlazados</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-start">
+                                <i class="fas fa-language text-warning me-3 mt-1"></i>
+                                <div>
+                                    <h5 class="fw-semibold mb-1">Multiidioma</h5>
+                                    <small class="text-muted">Búsquedas en español, inglés, francés y alemán</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-start">
+                                <i class="fas fa-search text-warning me-3 mt-1"></i>
+                                <div>
+                                    <h5 class="fw-semibold mb-1">Búsqueda Inteligente</h5>
+                                    <small class="text-muted">Algoritmos semánticos avanzados</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Estadísticas -->
+    <div class="row mb-5">
+        <div class="col-lg-8 mx-auto">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-5">
+                    <h2 class="h3 fw-bold mb-4">Estadísticas de la Ontología</h2>
+                    
+                    {% if stats %}
+                    <div class="row text-center">
+                        <div class="col-md-4 mb-4">
+                            <div class="stat-box">
+                                <div class="stat-icon">
+                                    <i class="fas fa-film text-primary"></i>
+                                </div>
+                                <h3 class="fw-bold text-primary">{{ stats.total_peliculas }}</h3>
+                                <p class="text-muted mb-0">Películas en la ontología</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="stat-box">
+                                <div class="stat-icon">
+                                    <i class="fas fa-user-tie text-success"></i>
+                                </div>
+                                <h3 class="fw-bold text-success">{{ stats.total_directores }}</h3>
+                                <p class="text-muted mb-0">Directores registrados</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="stat-box">
+                                <div class="stat-icon">
+                                    <i class="fas fa-project-diagram text-warning"></i>
+                                </div>
+                                <h3 class="fw-bold text-warning">{{ stats.total_triples }}</h3>
+                                <p class="text-muted mb-0">Triples RDF totales</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mt-4">
+                        <div class="badge bg-light text-dark border">
+                            <i class="fas fa-file-code me-1"></i>
+                            Archivo: {{ stats.archivo_ontologia }}
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Tecnologías -->
+    <div class="row mb-5">
+        <div class="col-lg-8 mx-auto">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-5">
+                    <h2 class="h3 fw-bold mb-4">Tecnologías Utilizadas</h2>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="tech-item">
+                                <div class="d-flex align-items-center mb-2">
+                                    <i class="fab fa-python text-primary me-3 fa-2x"></i>
+                                    <div>
+                                        <h5 class="fw-semibold mb-0">Flask</h5>
+                                        <small class="text-muted">Framework web Python</small>
+                                    </div>
+                                </div>
+                                <p class="text-muted small mb-0">
+                                    Microframework para desarrollo web rápido y flexible.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-4">
+                            <div class="tech-item">
+                                <div class="d-flex align-items-center mb-2">
+                                    <i class="fas fa-project-diagram text-success me-3 fa-2x"></i>
+                                    <div>
+                                        <h5 class="fw-semibold mb-0">RDFLib</h5>
+                                        <small class="text-muted">Biblioteca RDF para Python</small>
+                                    </div>
+                                </div>
+                                <p class="text-muted small mb-0">
+                                    Procesamiento y consulta de datos RDF y ontologías OWL.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-4">
+                            <div class="tech-item">
+                                <div class="d-flex align-items-center mb-2">
+                                    <i class="fas fa-search text-warning me-3 fa-2x"></i>
+                                    <div>
+                                        <h5 class="fw-semibold mb-0">SPARQL</h5>
+                                        <small class="text-muted">Lenguaje de consulta RDF</small>
+                                    </div>
+                                </div>
+                                <p class="text-muted small mb-0">
+                                    Consultas semánticas potentes y expresivas.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-4">
+                            <div class="tech-item">
+                                <div class="d-flex align-items-center mb-2">
+                                    <i class="fas fa-globe text-info me-3 fa-2x"></i>
+                                    <div>
+                                        <h5 class="fw-semibold mb-0">DBpedia</h5>
+                                        <small class="text-muted">Base de datos enlazados</small>
+                                    </div>
+                                </div>
+                                <p class="text-muted small mb-0">
+                                    Extracción de datos estructurados de Wikipedia.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-4">
+                            <div class="tech-item">
+                                <div class="d-flex align-items-center mb-2">
+                                    <i class="fab fa-bootstrap text-primary me-3 fa-2x"></i>
+                                    <div>
+                                        <h5 class="fw-semibold mb-0">Bootstrap 5</h5>
+                                        <small class="text-muted">Framework CSS</small>
+                                    </div>
+                                </div>
+                                <p class="text-muted small mb-0">
+                                    Diseño responsivo y componentes modernos.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-4">
+                            <div class="tech-item">
+                                <div class="d-flex align-items-center mb-2">
+                                    <i class="fab fa-js-square text-warning me-3 fa-2x"></i>
+                                    <div>
+                                        <h5 class="fw-semibold mb-0">JavaScript ES6+</h5>
+                                        <small class="text-muted">Interactividad frontend</small>
+                                    </div>
+                                </div>
+                                <p class="text-muted small mb-0">
+                                    Experiencia de usuario dinámica y responsiva.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Equipo -->
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-5 text-center">
+                    <h2 class="h3 fw-bold mb-4">Desarrollo Académico</h2>
+                    <p class="text-muted">
+                        Este proyecto ha sido desarrollado como parte del curso de Web Semánticas, 
+                        aplicando principios de ingeniería del conocimiento y tecnologías de la web semántica.
+                    </p>
+                    <div class="mt-4">
+                        <span class="badge bg-primary me-2">Web Semánticas</span>
+                        <span class="badge bg-success me-2">Ontologías</span>
+                        <span class="badge bg-warning">Datos Enlazados</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

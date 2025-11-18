@@ -1,0 +1,3292 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas">
+    <Prefix name="" IRI="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas/"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Import>file:/C:/Users/esteb/Documents/Cosas%20U/Web%20Semánticas/Ontologías/instancias_Roberto_Gamboa%20(1).ttl</Import>
+    <Declaration>
+        <Class IRI="#Actor"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#BandaSonora"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Categoria"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Compositor"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Cortometraje"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Director"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Distribuidor"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Estudio"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Evento"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Festival"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Franquicia"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Genero"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Largometraje"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Obra"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Organizacion"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OtrosPremios"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Pelicula"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PeliculaAnimada"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Persona"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Personaje"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Poster"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Premios"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PremiosCannes"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PremiosOscar"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Productor"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Productora"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#RecursosMultimedia"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Trailer"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#actuaEn"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#apareceEn"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#basadaEn"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#contienePelicula"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#dirigidaPor"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#esDirectorDe"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#esDistribuidaPor"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#esFinanciadaPor"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#esInterpretadoPor"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#esProducidaPor"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#esProductorDe"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#estaAfiliadoA"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#estaNominadoA"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#ganadorCategoria"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#ganadorDe"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#interpretaA"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#participaEn"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#perteneceA"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#perteneceAFranquicia"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#perteneceAPremios"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#tieneActor"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#tieneCategoria"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#tieneGenero"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#trabajaEn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#autorObra"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#calificacionPelicula"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#descripcionFranquicia"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#duracion"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#duracionPelicula"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#edadPersona"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#fechaEstreno"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#fechaEvento"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#fechaLanzamiento"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#formato"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#ganadorCategoria"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#generoPersona"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#idiomaPelicula"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#lugarEvento"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#nacionalidadPersona"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#nombreCategoria"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#nombreEvento"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#nombreFranquicia"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#nombreGenero"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#nombreObra"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#nombreOrganizacion"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#nombrePelicula"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#nombrePersona"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#nombrePersonaje"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#paisPelicula"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#presupuestoPelicula"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#rolPersonaje"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#sinopsisPelicula"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#tipoFranquicia"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#tipoObra"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Adam_Sandler"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Annapurna_Pictures"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Anne_Hathaway"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Anthony_Hopkins"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Avengers_Endgame"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Avengers_Infinity_War"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#BBC_Films"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Bilbo_Bolson"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Blue_Sky_Studios"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Buscando_a_Dory"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Carrie"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Carrie_1976"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Carrie_Obra"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Carrie_White"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Cars_3"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Chloe_Grace_Moretz"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Christopher_Nolan"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Ciencia_Ficcion"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Cleopatra"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Click"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Clint_Eastwood"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Coco"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Columbia_Pictures"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Cujo"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Cujo_Obra"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#DC_Studios"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#David_Lean"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#DreamWorks"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#El_Irlandes"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#El_Resplandor"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#El_Resplandor_Obra"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#El_silencio_de_los_corderos"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Elijah_Wood"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Elliot_Page"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Epico_Historico"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Epico_historico"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Fantasia"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Ford_v_Ferrari"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Frankenstein_2025"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Gone_with_the_Wind"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Gran_Torino"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Guardianes_de_la_Galaxia"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Guillermo_Del_Toro"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#HOBBIT"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#HOBBIT_La_batalla_de_los_cinco_ejercitos"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#HOBBIT_La_desolacion_De_Smaug"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#HOBBIT_Obra"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#HOBBIT_Un_viaje_inesperado"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#HP"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#HP_Y_La_camara_secreta"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#HP_Y_La_piedra_Filosofal"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Hannibal_Lecter"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Hans_Zimmer"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Harry_Potter_Obra"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Horror"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Horror_Psicologico"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Horror_psicologico"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#IT"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#IT_Capitulo_dos"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#IT_Obra"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Inception"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Interstellar"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Jennifer_Kent"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Jojo_Rabbit"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Joker"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Joseph_Mankiewicz"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Julia_Ducournau"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#LOTR"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#LOTR_El_retorno_del_rey"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#LOTR_La_comunidad_del_anillo"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#LOTR_Las_dos_torres"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#LOTR_Obra"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#La_forma_del_agua"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Lawrence_of_Arabia"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Leonardo_DiCaprio"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Little_Women"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Longfellow_Deeds"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Marriage_Story"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Marvel_Comics"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Matt_Damon"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Matthew_McConaughey"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Michael_Newman"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Million_Dollar_Baby"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Misterio"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Mr_Deeds"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Mujercitas"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Musical"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Nightmare_Alley"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Once_Upon_a_Time_in_Hollywood"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Oppenheimer"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Oscar2015"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Oscar2024"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Oscar_MejorPelicula_2014"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#PO_Mejor_Pelicula_2020"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Paramount_Pictures"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Parasite"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Peter_Jackson"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Pinocchio"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Pixar_Animation_Studios"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#PremiosOscar2020"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Quentin_Tarantino"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Rose_Glass"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Russo_Brothers"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Saint_Maud"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Sissy_Spacek"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Sonny_Koufax"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Sony_Pictures_Entertainment"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Studio_Babelsberg"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Superman_2025"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#The_Nightingale"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Tim_Burton"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Titane"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Trailer_Wicked_2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Un_gran_dinosaurio"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Un_papa_genial"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Walt_Disney_Pictures"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Warner_Bros"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#William_Wyler"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#wicked_2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#1917"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#20th_Century_Studios"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Ubisoft_Film_&amp;_Television"/>
+    </Declaration>
+    <Declaration>
+        <Datatype abbreviatedIRI="xsd:date"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="#Actor"/>
+        <Class IRI="#Persona"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BandaSonora"/>
+        <Class IRI="#RecursosMultimedia"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Compositor"/>
+        <Class IRI="#Persona"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Cortometraje"/>
+        <Class IRI="#Pelicula"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Director"/>
+        <Class IRI="#Persona"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Distribuidor"/>
+        <Class IRI="#Organizacion"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Estudio"/>
+        <Class IRI="#Organizacion"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Festival"/>
+        <Class IRI="#Evento"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Largometraje"/>
+        <Class IRI="#Pelicula"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OtrosPremios"/>
+        <Class IRI="#Premios"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PeliculaAnimada"/>
+        <Class IRI="#Pelicula"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Poster"/>
+        <Class IRI="#RecursosMultimedia"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Premios"/>
+        <Class IRI="#Evento"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PremiosCannes"/>
+        <Class IRI="#Premios"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PremiosOscar"/>
+        <Class IRI="#Premios"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Productor"/>
+        <Class IRI="#Persona"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Productora"/>
+        <Class IRI="#Organizacion"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Trailer"/>
+        <Class IRI="#RecursosMultimedia"/>
+    </SubClassOf>
+    <ClassAssertion>
+        <Class IRI="#Actor"/>
+        <NamedIndividual IRI="#Adam_Sandler"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Productora"/>
+        <NamedIndividual IRI="#Annapurna_Pictures"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Director"/>
+        <NamedIndividual IRI="#Anne_Hathaway"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Actor"/>
+        <NamedIndividual IRI="#Anthony_Hopkins"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Pelicula"/>
+        <NamedIndividual IRI="#Avengers_Endgame"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Pelicula"/>
+        <NamedIndividual IRI="#Avengers_Infinity_War"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Estudio"/>
+        <NamedIndividual IRI="#BBC_Films"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Personaje"/>
+        <NamedIndividual IRI="#Bilbo_Bolson"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Estudio"/>
+        <NamedIndividual IRI="#Blue_Sky_Studios"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PeliculaAnimada"/>
+        <NamedIndividual IRI="#Buscando_a_Dory"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Largometraje"/>
+        <NamedIndividual IRI="#Carrie"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Largometraje"/>
+        <NamedIndividual IRI="#Carrie_1976"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Obra"/>
+        <NamedIndividual IRI="#Carrie_Obra"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Personaje"/>
+        <NamedIndividual IRI="#Carrie_White"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PeliculaAnimada"/>
+        <NamedIndividual IRI="#Cars_3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Actor"/>
+        <NamedIndividual IRI="#Chloe_Grace_Moretz"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Director"/>
+        <NamedIndividual IRI="#Christopher_Nolan"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Genero"/>
+        <NamedIndividual IRI="#Ciencia_Ficcion"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Largometraje"/>
+        <NamedIndividual IRI="#Click"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Persona"/>
+        <NamedIndividual IRI="#Clint_Eastwood"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PeliculaAnimada"/>
+        <NamedIndividual IRI="#Coco"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Estudio"/>
+        <NamedIndividual IRI="#Columbia_Pictures"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Largometraje"/>
+        <NamedIndividual IRI="#Cujo"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Obra"/>
+        <NamedIndividual IRI="#Cujo_Obra"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Estudio"/>
+        <NamedIndividual IRI="#DC_Studios"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Persona"/>
+        <NamedIndividual IRI="#David_Lean"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Estudio"/>
+        <NamedIndividual IRI="#DreamWorks"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Largometraje"/>
+        <NamedIndividual IRI="#El_Irlandes"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Largometraje"/>
+        <NamedIndividual IRI="#El_Resplandor"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Obra"/>
+        <NamedIndividual IRI="#El_Resplandor_Obra"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Largometraje"/>
+        <NamedIndividual IRI="#El_silencio_de_los_corderos"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Actor"/>
+        <NamedIndividual IRI="#Elijah_Wood"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Actor"/>
+        <NamedIndividual IRI="#Elliot_Page"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Genero"/>
+        <NamedIndividual IRI="#Epico_Historico"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Genero"/>
+        <NamedIndividual IRI="#Epico_historico"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Genero"/>
+        <NamedIndividual IRI="#Fantasia"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Largometraje"/>
+        <NamedIndividual IRI="#Ford_v_Ferrari"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Largometraje"/>
+        <NamedIndividual IRI="#Frankenstein_2025"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Pelicula"/>
+        <NamedIndividual IRI="#Guardianes_de_la_Galaxia"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Director"/>
+        <NamedIndividual IRI="#Guillermo_Del_Toro"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Franquicia"/>
+        <NamedIndividual IRI="#HOBBIT"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Largometraje"/>
+        <NamedIndividual IRI="#HOBBIT_La_batalla_de_los_cinco_ejercitos"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Largometraje"/>
+        <NamedIndividual IRI="#HOBBIT_La_desolacion_De_Smaug"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Obra"/>
+        <NamedIndividual IRI="#HOBBIT_Obra"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Largometraje"/>
+        <NamedIndividual IRI="#HOBBIT_Un_viaje_inesperado"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Franquicia"/>
+        <NamedIndividual IRI="#HP"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Largometraje"/>
+        <NamedIndividual IRI="#HP_Y_La_camara_secreta"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Largometraje"/>
+        <NamedIndividual IRI="#HP_Y_La_piedra_Filosofal"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Personaje"/>
+        <NamedIndividual IRI="#Hannibal_Lecter"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Compositor"/>
+        <NamedIndividual IRI="#Hans_Zimmer"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Obra"/>
+        <NamedIndividual IRI="#Harry_Potter_Obra"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Genero"/>
+        <NamedIndividual IRI="#Horror"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Genero"/>
+        <NamedIndividual IRI="#Horror_psicologico"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Largometraje"/>
+        <NamedIndividual IRI="#IT"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Largometraje"/>
+        <NamedIndividual IRI="#IT_Capitulo_dos"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Obra"/>
+        <NamedIndividual IRI="#IT_Obra"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Pelicula"/>
+        <NamedIndividual IRI="#Inception"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Pelicula"/>
+        <NamedIndividual IRI="#Interstellar"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Persona"/>
+        <NamedIndividual IRI="#Jennifer_Kent"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Largometraje"/>
+        <NamedIndividual IRI="#Jojo_Rabbit"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Largometraje"/>
+        <NamedIndividual IRI="#Joker"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Persona"/>
+        <NamedIndividual IRI="#Joseph_Mankiewicz"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Persona"/>
+        <NamedIndividual IRI="#Julia_Ducournau"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Franquicia"/>
+        <NamedIndividual IRI="#LOTR"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Largometraje"/>
+        <NamedIndividual IRI="#LOTR_El_retorno_del_rey"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Largometraje"/>
+        <NamedIndividual IRI="#LOTR_La_comunidad_del_anillo"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Largometraje"/>
+        <NamedIndividual IRI="#LOTR_Las_dos_torres"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Obra"/>
+        <NamedIndividual IRI="#LOTR_Obra"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Largometraje"/>
+        <NamedIndividual IRI="#La_forma_del_agua"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Actor"/>
+        <NamedIndividual IRI="#Leonardo_DiCaprio"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Largometraje"/>
+        <NamedIndividual IRI="#Little_Women"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Personaje"/>
+        <NamedIndividual IRI="#Longfellow_Deeds"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Largometraje"/>
+        <NamedIndividual IRI="#Marriage_Story"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Franquicia"/>
+        <NamedIndividual IRI="#Marvel_Comics"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Actor"/>
+        <NamedIndividual IRI="#Matt_Damon"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Actor"/>
+        <NamedIndividual IRI="#Matthew_McConaughey"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Personaje"/>
+        <NamedIndividual IRI="#Michael_Newman"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Genero"/>
+        <NamedIndividual IRI="#Misterio"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Largometraje"/>
+        <NamedIndividual IRI="#Mr_Deeds"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Obra"/>
+        <NamedIndividual IRI="#Mujercitas"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Genero"/>
+        <NamedIndividual IRI="#Musical"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Largometraje"/>
+        <NamedIndividual IRI="#Nightmare_Alley"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Largometraje"/>
+        <NamedIndividual IRI="#Once_Upon_a_Time_in_Hollywood"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Pelicula"/>
+        <NamedIndividual IRI="#Oppenheimer"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PremiosOscar"/>
+        <NamedIndividual IRI="#Oscar2015"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PremiosOscar"/>
+        <NamedIndividual IRI="#Oscar2024"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Categoria"/>
+        <NamedIndividual IRI="#PO_Mejor_Pelicula_2020"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Estudio"/>
+        <NamedIndividual IRI="#Paramount_Pictures"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Largometraje"/>
+        <NamedIndividual IRI="#Parasite"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Director"/>
+        <NamedIndividual IRI="#Peter_Jackson"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Largometraje"/>
+        <NamedIndividual IRI="#Pinocchio"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Estudio"/>
+        <NamedIndividual IRI="#Pixar_Animation_Studios"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PremiosOscar"/>
+        <NamedIndividual IRI="#PremiosOscar2020"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Director"/>
+        <NamedIndividual IRI="#Quentin_Tarantino"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Persona"/>
+        <NamedIndividual IRI="#Rose_Glass"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Director"/>
+        <NamedIndividual IRI="#Russo_Brothers"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Persona"/>
+        <NamedIndividual IRI="#Russo_Brothers"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Actor"/>
+        <NamedIndividual IRI="#Sissy_Spacek"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Personaje"/>
+        <NamedIndividual IRI="#Sonny_Koufax"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Estudio"/>
+        <NamedIndividual IRI="#Sony_Pictures_Entertainment"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Estudio"/>
+        <NamedIndividual IRI="#Studio_Babelsberg"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Largometraje"/>
+        <NamedIndividual IRI="#Superman_2025"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Director"/>
+        <NamedIndividual IRI="#Tim_Burton"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Trailer"/>
+        <NamedIndividual IRI="#Trailer_Wicked_2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#PeliculaAnimada"/>
+        <NamedIndividual IRI="#Un_gran_dinosaurio"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Largometraje"/>
+        <NamedIndividual IRI="#Un_papa_genial"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Estudio"/>
+        <NamedIndividual IRI="#Walt_Disney_Pictures"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Estudio"/>
+        <NamedIndividual IRI="#Warner_Bros"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Productora"/>
+        <NamedIndividual IRI="#Warner_Bros"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Persona"/>
+        <NamedIndividual IRI="#William_Wyler"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Largometraje"/>
+        <NamedIndividual IRI="#wicked_2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Largometraje"/>
+        <NamedIndividual IRI="#1917"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Estudio"/>
+        <NamedIndividual IRI="#20th_Century_Studios"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Estudio"/>
+        <NamedIndividual IRI="#Ubisoft_Film_&amp;_Television"/>
+    </ClassAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#actuaEn"/>
+        <NamedIndividual IRI="#Adam_Sandler"/>
+        <NamedIndividual IRI="#Click"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#actuaEn"/>
+        <NamedIndividual IRI="#Adam_Sandler"/>
+        <NamedIndividual IRI="#Mr_Deeds"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#actuaEn"/>
+        <NamedIndividual IRI="#Adam_Sandler"/>
+        <NamedIndividual IRI="#Un_papa_genial"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#ganadorDe"/>
+        <NamedIndividual IRI="#Annapurna_Pictures"/>
+        <NamedIndividual IRI="#Oscar_MejorPelicula_2014"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#actuaEn"/>
+        <NamedIndividual IRI="#Anne_Hathaway"/>
+        <NamedIndividual IRI="#Interstellar"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#interpretaA"/>
+        <NamedIndividual IRI="#Anthony_Hopkins"/>
+        <NamedIndividual IRI="#Hannibal_Lecter"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#basadaEn"/>
+        <NamedIndividual IRI="#Avengers_Endgame"/>
+        <NamedIndividual IRI="#Marvel_Comics"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#dirigidaPor"/>
+        <NamedIndividual IRI="#Avengers_Endgame"/>
+        <NamedIndividual IRI="#Russo_Brothers"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#apareceEn"/>
+        <NamedIndividual IRI="#Bilbo_Bolson"/>
+        <NamedIndividual IRI="#HOBBIT_La_batalla_de_los_cinco_ejercitos"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#apareceEn"/>
+        <NamedIndividual IRI="#Bilbo_Bolson"/>
+        <NamedIndividual IRI="#HOBBIT_La_desolacion_De_Smaug"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#apareceEn"/>
+        <NamedIndividual IRI="#Bilbo_Bolson"/>
+        <NamedIndividual IRI="#HOBBIT_Un_viaje_inesperado"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#apareceEn"/>
+        <NamedIndividual IRI="#Bilbo_Bolson"/>
+        <NamedIndividual IRI="#LOTR_El_retorno_del_rey"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#apareceEn"/>
+        <NamedIndividual IRI="#Bilbo_Bolson"/>
+        <NamedIndividual IRI="#LOTR_La_comunidad_del_anillo"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#esProducidaPor"/>
+        <NamedIndividual IRI="#Buscando_a_Dory"/>
+        <NamedIndividual IRI="#Pixar_Animation_Studios"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#basadaEn"/>
+        <NamedIndividual IRI="#Carrie"/>
+        <NamedIndividual IRI="#Carrie_Obra"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#tieneGenero"/>
+        <NamedIndividual IRI="#Carrie"/>
+        <NamedIndividual IRI="#Horror"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#basadaEn"/>
+        <NamedIndividual IRI="#Carrie_1976"/>
+        <NamedIndividual IRI="#Carrie_Obra"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#tieneGenero"/>
+        <NamedIndividual IRI="#Carrie_1976"/>
+        <NamedIndividual IRI="#Horror"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#tieneGenero"/>
+        <NamedIndividual IRI="#Carrie_1976"/>
+        <NamedIndividual IRI="#Misterio"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#apareceEn"/>
+        <NamedIndividual IRI="#Carrie_White"/>
+        <NamedIndividual IRI="#Carrie"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#apareceEn"/>
+        <NamedIndividual IRI="#Carrie_White"/>
+        <NamedIndividual IRI="#Carrie_1976"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#esProducidaPor"/>
+        <NamedIndividual IRI="#Cars_3"/>
+        <NamedIndividual IRI="#Pixar_Animation_Studios"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#interpretaA"/>
+        <NamedIndividual IRI="#Chloe_Grace_Moretz"/>
+        <NamedIndividual IRI="#Carrie_White"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#esDirectorDe"/>
+        <NamedIndividual IRI="#Christopher_Nolan"/>
+        <NamedIndividual IRI="#Inception"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#esDirectorDe"/>
+        <NamedIndividual IRI="#Christopher_Nolan"/>
+        <NamedIndividual IRI="#Interstellar"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#esDirectorDe"/>
+        <NamedIndividual IRI="#Christopher_Nolan"/>
+        <NamedIndividual IRI="#Oppenheimer"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#dirigidaPor"/>
+        <NamedIndividual IRI="#Cleopatra"/>
+        <NamedIndividual IRI="#Joseph_Mankiewicz"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#tieneGenero"/>
+        <NamedIndividual IRI="#Cleopatra"/>
+        <NamedIndividual IRI="#Epico_Historico"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#actuaEn"/>
+        <NamedIndividual IRI="#Clint_Eastwood"/>
+        <NamedIndividual IRI="#Million_Dollar_Baby"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#esDirectorDe"/>
+        <NamedIndividual IRI="#Clint_Eastwood"/>
+        <NamedIndividual IRI="#Million_Dollar_Baby"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#esProducidaPor"/>
+        <NamedIndividual IRI="#Coco"/>
+        <NamedIndividual IRI="#Pixar_Animation_Studios"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#basadaEn"/>
+        <NamedIndividual IRI="#Cujo"/>
+        <NamedIndividual IRI="#Cujo_Obra"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#tieneGenero"/>
+        <NamedIndividual IRI="#Cujo"/>
+        <NamedIndividual IRI="#Horror"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#estaNominadoA"/>
+        <NamedIndividual IRI="#El_Irlandes"/>
+        <NamedIndividual IRI="#PO_Mejor_Pelicula_2020"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#basadaEn"/>
+        <NamedIndividual IRI="#El_Resplandor"/>
+        <NamedIndividual IRI="#El_Resplandor_Obra"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#tieneGenero"/>
+        <NamedIndividual IRI="#El_Resplandor"/>
+        <NamedIndividual IRI="#Horror"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#tieneGenero"/>
+        <NamedIndividual IRI="#El_Resplandor"/>
+        <NamedIndividual IRI="#Misterio"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#tieneGenero"/>
+        <NamedIndividual IRI="#El_silencio_de_los_corderos"/>
+        <NamedIndividual IRI="#Horror"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#actuaEn"/>
+        <NamedIndividual IRI="#Elliot_Page"/>
+        <NamedIndividual IRI="#Inception"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#estaNominadoA"/>
+        <NamedIndividual IRI="#Ford_v_Ferrari"/>
+        <NamedIndividual IRI="#PO_Mejor_Pelicula_2020"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#tieneGenero"/>
+        <NamedIndividual IRI="#Frankenstein_2025"/>
+        <NamedIndividual IRI="#Horror"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#dirigidaPor"/>
+        <NamedIndividual IRI="#Gone_with_the_Wind"/>
+        <NamedIndividual IRI="#David_Lean"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#tieneGenero"/>
+        <NamedIndividual IRI="#Gone_with_the_Wind"/>
+        <NamedIndividual IRI="#Epico_Historico"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#tieneGenero"/>
+        <NamedIndividual IRI="#Guardianes_de_la_Galaxia"/>
+        <NamedIndividual IRI="#Ciencia_Ficcion"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#esDirectorDe"/>
+        <NamedIndividual IRI="#Guillermo_Del_Toro"/>
+        <NamedIndividual IRI="#Frankenstein_2025"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#esDirectorDe"/>
+        <NamedIndividual IRI="#Guillermo_Del_Toro"/>
+        <NamedIndividual IRI="#La_forma_del_agua"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#esDirectorDe"/>
+        <NamedIndividual IRI="#Guillermo_Del_Toro"/>
+        <NamedIndividual IRI="#Nightmare_Alley"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#esDirectorDe"/>
+        <NamedIndividual IRI="#Guillermo_Del_Toro"/>
+        <NamedIndividual IRI="#Pinocchio"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#basadaEn"/>
+        <NamedIndividual IRI="#HOBBIT"/>
+        <NamedIndividual IRI="#HOBBIT_Obra"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#perteneceAFranquicia"/>
+        <NamedIndividual IRI="#HOBBIT_La_batalla_de_los_cinco_ejercitos"/>
+        <NamedIndividual IRI="#HOBBIT"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#perteneceAFranquicia"/>
+        <NamedIndividual IRI="#HOBBIT_La_desolacion_De_Smaug"/>
+        <NamedIndividual IRI="#HOBBIT"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#perteneceAFranquicia"/>
+        <NamedIndividual IRI="#HOBBIT_Un_viaje_inesperado"/>
+        <NamedIndividual IRI="#HOBBIT"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#basadaEn"/>
+        <NamedIndividual IRI="#HP"/>
+        <NamedIndividual IRI="#Harry_Potter_Obra"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#perteneceAFranquicia"/>
+        <NamedIndividual IRI="#HP_Y_La_piedra_Filosofal"/>
+        <NamedIndividual IRI="#HP"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#apareceEn"/>
+        <NamedIndividual IRI="#Hannibal_Lecter"/>
+        <NamedIndividual IRI="#El_silencio_de_los_corderos"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#basadaEn"/>
+        <NamedIndividual IRI="#IT"/>
+        <NamedIndividual IRI="#IT_Obra"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#tieneGenero"/>
+        <NamedIndividual IRI="#IT"/>
+        <NamedIndividual IRI="#Horror"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#tieneGenero"/>
+        <NamedIndividual IRI="#IT"/>
+        <NamedIndividual IRI="#Misterio"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#basadaEn"/>
+        <NamedIndividual IRI="#IT_Capitulo_dos"/>
+        <NamedIndividual IRI="#IT_Obra"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#tieneGenero"/>
+        <NamedIndividual IRI="#IT_Capitulo_dos"/>
+        <NamedIndividual IRI="#Horror"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#tieneGenero"/>
+        <NamedIndividual IRI="#Inception"/>
+        <NamedIndividual IRI="#Ciencia_Ficcion"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#estaNominadoA"/>
+        <NamedIndividual IRI="#Interstellar"/>
+        <NamedIndividual IRI="#Oscar2015"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#tieneGenero"/>
+        <NamedIndividual IRI="#Interstellar"/>
+        <NamedIndividual IRI="#Ciencia_Ficcion"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#estaNominadoA"/>
+        <NamedIndividual IRI="#Jojo_Rabbit"/>
+        <NamedIndividual IRI="#PO_Mejor_Pelicula_2020"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#estaNominadoA"/>
+        <NamedIndividual IRI="#Joker"/>
+        <NamedIndividual IRI="#PO_Mejor_Pelicula_2020"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#basadaEn"/>
+        <NamedIndividual IRI="#LOTR"/>
+        <NamedIndividual IRI="#LOTR_Obra"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#perteneceAFranquicia"/>
+        <NamedIndividual IRI="#LOTR_El_retorno_del_rey"/>
+        <NamedIndividual IRI="#LOTR"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#perteneceAFranquicia"/>
+        <NamedIndividual IRI="#LOTR_La_comunidad_del_anillo"/>
+        <NamedIndividual IRI="#LOTR"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#perteneceAFranquicia"/>
+        <NamedIndividual IRI="#LOTR_Las_dos_torres"/>
+        <NamedIndividual IRI="#LOTR"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#dirigidaPor"/>
+        <NamedIndividual IRI="#Lawrence_of_Arabia"/>
+        <NamedIndividual IRI="#William_Wyler"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#tieneGenero"/>
+        <NamedIndividual IRI="#Lawrence_of_Arabia"/>
+        <NamedIndividual IRI="#Epico_Historico"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#actuaEn"/>
+        <NamedIndividual IRI="#Leonardo_DiCaprio"/>
+        <NamedIndividual IRI="#Inception"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#basadaEn"/>
+        <NamedIndividual IRI="#Little_Women"/>
+        <NamedIndividual IRI="#Mujercitas"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#estaNominadoA"/>
+        <NamedIndividual IRI="#Little_Women"/>
+        <NamedIndividual IRI="#PO_Mejor_Pelicula_2020"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#apareceEn"/>
+        <NamedIndividual IRI="#Longfellow_Deeds"/>
+        <NamedIndividual IRI="#Mr_Deeds"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#esInterpretadoPor"/>
+        <NamedIndividual IRI="#Longfellow_Deeds"/>
+        <NamedIndividual IRI="#Adam_Sandler"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#estaNominadoA"/>
+        <NamedIndividual IRI="#Marriage_Story"/>
+        <NamedIndividual IRI="#PO_Mejor_Pelicula_2020"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#actuaEn"/>
+        <NamedIndividual IRI="#Matt_Damon"/>
+        <NamedIndividual IRI="#Interstellar"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#actuaEn"/>
+        <NamedIndividual IRI="#Matt_Damon"/>
+        <NamedIndividual IRI="#Oppenheimer"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#apareceEn"/>
+        <NamedIndividual IRI="#Michael_Newman"/>
+        <NamedIndividual IRI="#Click"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#esInterpretadoPor"/>
+        <NamedIndividual IRI="#Michael_Newman"/>
+        <NamedIndividual IRI="#Adam_Sandler"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#estaNominadoA"/>
+        <NamedIndividual IRI="#Once_Upon_a_Time_in_Hollywood"/>
+        <NamedIndividual IRI="#PO_Mejor_Pelicula_2020"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#perteneceAPremios"/>
+        <NamedIndividual IRI="#PO_Mejor_Pelicula_2020"/>
+        <NamedIndividual IRI="#PremiosOscar2020"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#estaNominadoA"/>
+        <NamedIndividual IRI="#Parasite"/>
+        <NamedIndividual IRI="#PO_Mejor_Pelicula_2020"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#esDirectorDe"/>
+        <NamedIndividual IRI="#Peter_Jackson"/>
+        <NamedIndividual IRI="#LOTR_La_comunidad_del_anillo"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#esProducidaPor"/>
+        <NamedIndividual IRI="#Pixar_Animation_Studios"/>
+        <NamedIndividual IRI="#Pixar_Animation_Studios"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#tieneCategoria"/>
+        <NamedIndividual IRI="#PremiosOscar2020"/>
+        <NamedIndividual IRI="#PO_Mejor_Pelicula_2020"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#dirigidaPor"/>
+        <NamedIndividual IRI="#Saint_Maud"/>
+        <NamedIndividual IRI="#Jennifer_Kent"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#tieneGenero"/>
+        <NamedIndividual IRI="#Saint_Maud"/>
+        <NamedIndividual IRI="#Horror_Psicologico"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#interpretaA"/>
+        <NamedIndividual IRI="#Sissy_Spacek"/>
+        <NamedIndividual IRI="#Carrie_White"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#apareceEn"/>
+        <NamedIndividual IRI="#Sonny_Koufax"/>
+        <NamedIndividual IRI="#Un_papa_genial"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#esInterpretadoPor"/>
+        <NamedIndividual IRI="#Sonny_Koufax"/>
+        <NamedIndividual IRI="#Adam_Sandler"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#esDistribuidaPor"/>
+        <NamedIndividual IRI="#Superman_2025"/>
+        <NamedIndividual IRI="#Warner_Bros"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#esProducidaPor"/>
+        <NamedIndividual IRI="#Superman_2025"/>
+        <NamedIndividual IRI="#DC_Studios"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#dirigidaPor"/>
+        <NamedIndividual IRI="#The_Nightingale"/>
+        <NamedIndividual IRI="#Rose_Glass"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#tieneGenero"/>
+        <NamedIndividual IRI="#The_Nightingale"/>
+        <NamedIndividual IRI="#Horror_Psicologico"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#dirigidaPor"/>
+        <NamedIndividual IRI="#Titane"/>
+        <NamedIndividual IRI="#Julia_Ducournau"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#tieneGenero"/>
+        <NamedIndividual IRI="#Titane"/>
+        <NamedIndividual IRI="#Horror_Psicologico"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#perteneceA"/>
+        <NamedIndividual IRI="#Trailer_Wicked_2"/>
+        <NamedIndividual IRI="#wicked_2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#esProducidaPor"/>
+        <NamedIndividual IRI="#Un_gran_dinosaurio"/>
+        <NamedIndividual IRI="#Pixar_Animation_Studios"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#tieneGenero"/>
+        <NamedIndividual IRI="#wicked_2"/>
+        <NamedIndividual IRI="#Fantasia"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#tieneGenero"/>
+        <NamedIndividual IRI="#wicked_2"/>
+        <NamedIndividual IRI="#Musical"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#estaNominadoA"/>
+        <NamedIndividual IRI="#1917"/>
+        <NamedIndividual IRI="#PO_Mejor_Pelicula_2020"/>
+    </ObjectPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#generoPersona"/>
+        <NamedIndividual IRI="#Adam_Sandler"/>
+        <Literal>Masculino</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePersona"/>
+        <NamedIndividual IRI="#Adam_Sandler"/>
+        <Literal>Adam Richard Sandler</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#sinopsisPelicula"/>
+        <NamedIndividual IRI="#Annapurna_Pictures"/>
+        <Literal>Annapurna Pictures</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#tipoFranquicia"/>
+        <NamedIndividual IRI="#Annapurna_Pictures"/>
+        <Literal>Productora Independiente</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePersona"/>
+        <NamedIndividual IRI="#Anthony_Hopkins"/>
+        <Literal>Anthony Hopkins</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#calificacionPelicula"/>
+        <NamedIndividual IRI="#Avengers_Endgame"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">8.4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#duracionPelicula"/>
+        <NamedIndividual IRI="#Avengers_Endgame"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">108</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePelicula"/>
+        <NamedIndividual IRI="#Avengers_Endgame"/>
+        <Literal>Avengers: Endgame</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#calificacionPelicula"/>
+        <NamedIndividual IRI="#Avengers_Infinity_War"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">8.4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#duracionPelicula"/>
+        <NamedIndividual IRI="#Avengers_Infinity_War"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">108</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#fechaEstreno"/>
+        <NamedIndividual IRI="#Avengers_Infinity_War"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#date">2018-04-23</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePelicula"/>
+        <NamedIndividual IRI="#Avengers_Infinity_War"/>
+        <Literal>Avengers: Infinity War</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombreOrganizacion"/>
+        <NamedIndividual IRI="#BBC_Films"/>
+        <Literal>BBC Films</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePersonaje"/>
+        <NamedIndividual IRI="#Bilbo_Bolson"/>
+        <Literal>Bilbo Bolson</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombreOrganizacion"/>
+        <NamedIndividual IRI="#Blue_Sky_Studios"/>
+        <Literal>Blue Sky Studios</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#calificacionPelicula"/>
+        <NamedIndividual IRI="#Buscando_a_Dory"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">7.2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#fechaEstreno"/>
+        <NamedIndividual IRI="#Buscando_a_Dory"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#date">2016-06-15</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePelicula"/>
+        <NamedIndividual IRI="#Buscando_a_Dory"/>
+        <Literal>Buscando a Dory</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#calificacionPelicula"/>
+        <NamedIndividual IRI="#Carrie"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">5.8</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePelicula"/>
+        <NamedIndividual IRI="#Carrie"/>
+        <Literal>Carrie</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#calificacionPelicula"/>
+        <NamedIndividual IRI="#Carrie_1976"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">7.6</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePelicula"/>
+        <NamedIndividual IRI="#Carrie_1976"/>
+        <Literal>Carrie (1976)</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#autorObra"/>
+        <NamedIndividual IRI="#Carrie_Obra"/>
+        <Literal>Stephen King</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombreObra"/>
+        <NamedIndividual IRI="#Carrie_Obra"/>
+        <Literal>Carrie</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#tipoObra"/>
+        <NamedIndividual IRI="#Carrie_Obra"/>
+        <Literal>Libro</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePersonaje"/>
+        <NamedIndividual IRI="#Carrie_White"/>
+        <Literal>Carrie White</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#calificacionPelicula"/>
+        <NamedIndividual IRI="#Cars_3"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">6.7</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#fechaEstreno"/>
+        <NamedIndividual IRI="#Cars_3"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#date">2017-05-23</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePelicula"/>
+        <NamedIndividual IRI="#Cars_3"/>
+        <Literal>Cars 3</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#generoPersona"/>
+        <NamedIndividual IRI="#Chloe_Grace_Moretz"/>
+        <Literal>Femenino</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePersona"/>
+        <NamedIndividual IRI="#Chloe_Grace_Moretz"/>
+        <Literal>Chloë Grace Moretz</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#duracionPelicula"/>
+        <NamedIndividual IRI="#Cleopatra"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">122</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePelicula"/>
+        <NamedIndividual IRI="#Cleopatra"/>
+        <Literal>Cleopatra</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePelicula"/>
+        <NamedIndividual IRI="#Click"/>
+        <Literal>Click</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#edadPersona"/>
+        <NamedIndividual IRI="#Clint_Eastwood"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">97</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#generoPersona"/>
+        <NamedIndividual IRI="#Clint_Eastwood"/>
+        <Literal>generoPersona</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nacionalidadPersona"/>
+        <NamedIndividual IRI="#Clint_Eastwood"/>
+        <Literal>generoPersona</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePersona"/>
+        <NamedIndividual IRI="#Clint_Eastwood"/>
+        <Literal>Clint Eastwood</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#calificacionPelicula"/>
+        <NamedIndividual IRI="#Coco"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">8.4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#fechaEstreno"/>
+        <NamedIndividual IRI="#Coco"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#date">2017-10-20</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePelicula"/>
+        <NamedIndividual IRI="#Coco"/>
+        <Literal>Coco</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombreOrganizacion"/>
+        <NamedIndividual IRI="#Columbia_Pictures"/>
+        <Literal>Columbia Pictures</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#calificacionPelicula"/>
+        <NamedIndividual IRI="#Cujo"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">6.1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePelicula"/>
+        <NamedIndividual IRI="#Cujo"/>
+        <Literal>Cujo</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#autorObra"/>
+        <NamedIndividual IRI="#Cujo_Obra"/>
+        <Literal>Stephen King</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombreObra"/>
+        <NamedIndividual IRI="#Cujo_Obra"/>
+        <Literal>Cujo</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#tipoObra"/>
+        <NamedIndividual IRI="#Cujo_Obra"/>
+        <Literal>Libro</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombreOrganizacion"/>
+        <NamedIndividual IRI="#DC_Studios"/>
+        <Literal>DC Studios</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#generoPersona"/>
+        <NamedIndividual IRI="#David_Lean"/>
+        <Literal>Masculino</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePersona"/>
+        <NamedIndividual IRI="#David_Lean"/>
+        <Literal>David Lean</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombreOrganizacion"/>
+        <NamedIndividual IRI="#DreamWorks"/>
+        <Literal>DreamWorks</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#calificacionPelicula"/>
+        <NamedIndividual IRI="#El_Irlandes"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">7.8</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#fechaEstreno"/>
+        <NamedIndividual IRI="#El_Irlandes"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#date">2019-11-01</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#idiomaPelicula"/>
+        <NamedIndividual IRI="#El_Irlandes"/>
+        <Literal>Inglés</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePelicula"/>
+        <NamedIndividual IRI="#El_Irlandes"/>
+        <Literal>El irlandés</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#paisPelicula"/>
+        <NamedIndividual IRI="#El_Irlandes"/>
+        <Literal>Estados Unidos</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#calificacionPelicula"/>
+        <NamedIndividual IRI="#El_Resplandor"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">8.4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePelicula"/>
+        <NamedIndividual IRI="#El_Resplandor"/>
+        <Literal>El Resplandor</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#autorObra"/>
+        <NamedIndividual IRI="#El_Resplandor_Obra"/>
+        <Literal>Stephen King</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombreObra"/>
+        <NamedIndividual IRI="#El_Resplandor_Obra"/>
+        <Literal>El Resplandor</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#tipoObra"/>
+        <NamedIndividual IRI="#El_Resplandor_Obra"/>
+        <Literal>Libro</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#calificacionPelicula"/>
+        <NamedIndividual IRI="#El_silencio_de_los_corderos"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">8.6</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePelicula"/>
+        <NamedIndividual IRI="#El_silencio_de_los_corderos"/>
+        <Literal>El silencio de los corderos</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombreGenero"/>
+        <NamedIndividual IRI="#Epico_Historico"/>
+        <Literal>Épico Histórico</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#calificacionPelicula"/>
+        <NamedIndividual IRI="#Ford_v_Ferrari"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">8.1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#fechaEstreno"/>
+        <NamedIndividual IRI="#Ford_v_Ferrari"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#date">2019-08-30</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#idiomaPelicula"/>
+        <NamedIndividual IRI="#Ford_v_Ferrari"/>
+        <Literal>Inglés</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePelicula"/>
+        <NamedIndividual IRI="#Ford_v_Ferrari"/>
+        <Literal>Ford v Ferrari</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#paisPelicula"/>
+        <NamedIndividual IRI="#Ford_v_Ferrari"/>
+        <Literal>Estados Unidos</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#calificacionPelicula"/>
+        <NamedIndividual IRI="#Frankenstein_2025"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">7.3</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#fechaEstreno"/>
+        <NamedIndividual IRI="#Frankenstein_2025"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#date">2025-08-30</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePelicula"/>
+        <NamedIndividual IRI="#Frankenstein_2025"/>
+        <Literal>Frankenstein</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#duracionPelicula"/>
+        <NamedIndividual IRI="#Gone_with_the_Wind"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">123</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePelicula"/>
+        <NamedIndividual IRI="#Gone_with_the_Wind"/>
+        <Literal>Gone with the Wind</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#calificacionPelicula"/>
+        <NamedIndividual IRI="#Guardianes_de_la_Galaxia"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">8</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#fechaLanzamiento"/>
+        <NamedIndividual IRI="#Guardianes_de_la_Galaxia"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">2014</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePelicula"/>
+        <NamedIndividual IRI="#Guardianes_de_la_Galaxia"/>
+        <Literal>Guardianes de la Galaxia</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePersona"/>
+        <NamedIndividual IRI="#Guillermo_Del_Toro"/>
+        <Literal>Guillermo del Toro</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombreFranquicia"/>
+        <NamedIndividual IRI="#HOBBIT"/>
+        <Literal>El Hobbit</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#calificacionPelicula"/>
+        <NamedIndividual IRI="#HOBBIT_La_batalla_de_los_cinco_ejercitos"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">7.4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePelicula"/>
+        <NamedIndividual IRI="#HOBBIT_La_batalla_de_los_cinco_ejercitos"/>
+        <Literal>El Hobbit : La batalla de los Cinco Ejercitos</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#calificacionPelicula"/>
+        <NamedIndividual IRI="#HOBBIT_La_desolacion_De_Smaug"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">7.8</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePelicula"/>
+        <NamedIndividual IRI="#HOBBIT_La_desolacion_De_Smaug"/>
+        <Literal>El Hobbit : la desolación de Smaug</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#autorObra"/>
+        <NamedIndividual IRI="#HOBBIT_Obra"/>
+        <Literal>J.R.R. Tolkien</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombreObra"/>
+        <NamedIndividual IRI="#HOBBIT_Obra"/>
+        <Literal>El Hobbit</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#tipoObra"/>
+        <NamedIndividual IRI="#HOBBIT_Obra"/>
+        <Literal>Libro</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#calificacionPelicula"/>
+        <NamedIndividual IRI="#HOBBIT_Un_viaje_inesperado"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">7.8</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePelicula"/>
+        <NamedIndividual IRI="#HOBBIT_Un_viaje_inesperado"/>
+        <Literal>El Hobbit : un viaje inesperado</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombreFranquicia"/>
+        <NamedIndividual IRI="#HP"/>
+        <Literal>Saga Harry Potter</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#tipoFranquicia"/>
+        <NamedIndividual IRI="#HP"/>
+        <Literal>Saga</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#calificacionPelicula"/>
+        <NamedIndividual IRI="#HP_Y_La_camara_secreta"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">7.5</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#duracionPelicula"/>
+        <NamedIndividual IRI="#HP_Y_La_camara_secreta"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">161</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePelicula"/>
+        <NamedIndividual IRI="#HP_Y_La_camara_secreta"/>
+        <Literal>Harry Potter y la camara secreta</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#calificacionPelicula"/>
+        <NamedIndividual IRI="#HP_Y_La_piedra_Filosofal"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">7.7</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#duracionPelicula"/>
+        <NamedIndividual IRI="#HP_Y_La_piedra_Filosofal"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">152</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePelicula"/>
+        <NamedIndividual IRI="#HP_Y_La_piedra_Filosofal"/>
+        <Literal>Harry Potter y la Piedra Filosofal</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePersonaje"/>
+        <NamedIndividual IRI="#Hannibal_Lecter"/>
+        <Literal>Hannibal_Lecter</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#rolPersonaje"/>
+        <NamedIndividual IRI="#Hannibal_Lecter"/>
+        <Literal>Villano</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#autorObra"/>
+        <NamedIndividual IRI="#Harry_Potter_Obra"/>
+        <Literal>J.K. Rowling</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombreObra"/>
+        <NamedIndividual IRI="#Harry_Potter_Obra"/>
+        <Literal>Harry Potter</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#tipoObra"/>
+        <NamedIndividual IRI="#Harry_Potter_Obra"/>
+        <Literal>Libro</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombreGenero"/>
+        <NamedIndividual IRI="#Horror"/>
+        <Literal>Horror</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#calificacionPelicula"/>
+        <NamedIndividual IRI="#IT"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">7.3</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePelicula"/>
+        <NamedIndividual IRI="#IT"/>
+        <Literal>IT</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#calificacionPelicula"/>
+        <NamedIndividual IRI="#IT_Capitulo_dos"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">6.5</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePelicula"/>
+        <NamedIndividual IRI="#IT_Capitulo_dos"/>
+        <Literal>IT: Capitulo Dos</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#autorObra"/>
+        <NamedIndividual IRI="#IT_Obra"/>
+        <Literal>Stephen King</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombreObra"/>
+        <NamedIndividual IRI="#IT_Obra"/>
+        <Literal>IT</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#tipoObra"/>
+        <NamedIndividual IRI="#IT_Obra"/>
+        <Literal>Libro</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#calificacionPelicula"/>
+        <NamedIndividual IRI="#Inception"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">8.8</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#duracionPelicula"/>
+        <NamedIndividual IRI="#Inception"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">148</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#fechaLanzamiento"/>
+        <NamedIndividual IRI="#Inception"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">2010</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePelicula"/>
+        <NamedIndividual IRI="#Inception"/>
+        <Literal>Inception</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#calificacionPelicula"/>
+        <NamedIndividual IRI="#Interstellar"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">8.7</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#duracionPelicula"/>
+        <NamedIndividual IRI="#Interstellar"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">169</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#fechaLanzamiento"/>
+        <NamedIndividual IRI="#Interstellar"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">2014</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePelicula"/>
+        <NamedIndividual IRI="#Interstellar"/>
+        <Literal>Interstellar</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#generoPersona"/>
+        <NamedIndividual IRI="#Jennifer_Kent"/>
+        <Literal>Femenino</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePersona"/>
+        <NamedIndividual IRI="#Jennifer_Kent"/>
+        <Literal>Julia Ducournau</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#calificacionPelicula"/>
+        <NamedIndividual IRI="#Jojo_Rabbit"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">7.9</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#fechaEstreno"/>
+        <NamedIndividual IRI="#Jojo_Rabbit"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#date">2019-09-08</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#idiomaPelicula"/>
+        <NamedIndividual IRI="#Jojo_Rabbit"/>
+        <Literal>Inglés</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePelicula"/>
+        <NamedIndividual IRI="#Jojo_Rabbit"/>
+        <Literal>Jojo Rabbit</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#paisPelicula"/>
+        <NamedIndividual IRI="#Jojo_Rabbit"/>
+        <Literal>Estados Unidos</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#calificacionPelicula"/>
+        <NamedIndividual IRI="#Joker"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">8.3</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#fechaEstreno"/>
+        <NamedIndividual IRI="#Joker"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#date">2019-08-31</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#idiomaPelicula"/>
+        <NamedIndividual IRI="#Joker"/>
+        <Literal>Inglés</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePelicula"/>
+        <NamedIndividual IRI="#Joker"/>
+        <Literal>Joker</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#paisPelicula"/>
+        <NamedIndividual IRI="#Joker"/>
+        <Literal>Estados Unidos</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#generoPersona"/>
+        <NamedIndividual IRI="#Joseph_Mankiewicz"/>
+        <Literal>Masculino</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePersona"/>
+        <NamedIndividual IRI="#Joseph_Mankiewicz"/>
+        <Literal>Joseph L. Mankiewicz</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#generoPersona"/>
+        <NamedIndividual IRI="#Julia_Ducournau"/>
+        <Literal>Femenino</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePersona"/>
+        <NamedIndividual IRI="#Julia_Ducournau"/>
+        <Literal>Julia Ducournau</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombreFranquicia"/>
+        <NamedIndividual IRI="#LOTR"/>
+        <Literal>El señor de los anillos</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#tipoFranquicia"/>
+        <NamedIndividual IRI="#LOTR"/>
+        <Literal>Trilogía</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#calificacionPelicula"/>
+        <NamedIndividual IRI="#LOTR_El_retorno_del_rey"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">9</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePelicula"/>
+        <NamedIndividual IRI="#LOTR_El_retorno_del_rey"/>
+        <Literal>El señor de los anillos : El retorno del Rey</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#calificacionPelicula"/>
+        <NamedIndividual IRI="#LOTR_La_comunidad_del_anillo"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">8.9</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#fechaEstreno"/>
+        <NamedIndividual IRI="#LOTR_La_comunidad_del_anillo"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#date">2001-12-19</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePelicula"/>
+        <NamedIndividual IRI="#LOTR_La_comunidad_del_anillo"/>
+        <Literal>El Señor de los Anillos : la Comunidad del Anillo</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#calificacionPelicula"/>
+        <NamedIndividual IRI="#LOTR_Las_dos_torres"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">8.8</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePelicula"/>
+        <NamedIndividual IRI="#LOTR_Las_dos_torres"/>
+        <Literal>El señor de los anillos : Las dos Torres</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#autorObra"/>
+        <NamedIndividual IRI="#LOTR_Obra"/>
+        <Literal>J.R.R. Tolkien</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombreObra"/>
+        <NamedIndividual IRI="#LOTR_Obra"/>
+        <Literal>El señor de los anillos</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#tipoObra"/>
+        <NamedIndividual IRI="#LOTR_Obra"/>
+        <Literal>Libro</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#fechaEstreno"/>
+        <NamedIndividual IRI="#La_forma_del_agua"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#date">2017-08-31</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePelicula"/>
+        <NamedIndividual IRI="#La_forma_del_agua"/>
+        <Literal>La forma del agua</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#duracionPelicula"/>
+        <NamedIndividual IRI="#Lawrence_of_Arabia"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">90</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePelicula"/>
+        <NamedIndividual IRI="#Lawrence_of_Arabia"/>
+        <Literal>Lawrence of Arabia</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#calificacionPelicula"/>
+        <NamedIndividual IRI="#Little_Women"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">7</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#fechaEstreno"/>
+        <NamedIndividual IRI="#Little_Women"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#date">2019-12-07</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#idiomaPelicula"/>
+        <NamedIndividual IRI="#Little_Women"/>
+        <Literal>Inglés</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePelicula"/>
+        <NamedIndividual IRI="#Little_Women"/>
+        <Literal>Little Women</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#paisPelicula"/>
+        <NamedIndividual IRI="#Little_Women"/>
+        <Literal>Estados Unidos</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePersonaje"/>
+        <NamedIndividual IRI="#Longfellow_Deeds"/>
+        <Literal>Longfellow Deeds</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#calificacionPelicula"/>
+        <NamedIndividual IRI="#Marriage_Story"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">7.2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#fechaEstreno"/>
+        <NamedIndividual IRI="#Marriage_Story"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#date">2019-08-29</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#idiomaPelicula"/>
+        <NamedIndividual IRI="#Marriage_Story"/>
+        <Literal>Inglés</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePelicula"/>
+        <NamedIndividual IRI="#Marriage_Story"/>
+        <Literal>Marriage_Story</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#paisPelicula"/>
+        <NamedIndividual IRI="#Marriage_Story"/>
+        <Literal>Estados Unidos</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombreFranquicia"/>
+        <NamedIndividual IRI="#Marvel_Comics"/>
+        <Literal>Marvel Comics</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#tipoFranquicia"/>
+        <NamedIndividual IRI="#Marvel_Comics"/>
+        <Literal>Cómic</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePersonaje"/>
+        <NamedIndividual IRI="#Michael_Newman"/>
+        <Literal>Michael Newman</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#rolPersonaje"/>
+        <NamedIndividual IRI="#Michael_Newman"/>
+        <Literal>Protagonista</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePelicula"/>
+        <NamedIndividual IRI="#Mr_Deeds"/>
+        <Literal>Mr. Deeds</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#autorObra"/>
+        <NamedIndividual IRI="#Mujercitas"/>
+        <Literal>Louisa May Alcott</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombreObra"/>
+        <NamedIndividual IRI="#Mujercitas"/>
+        <Literal>Mujercitas</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#tipoObra"/>
+        <NamedIndividual IRI="#Mujercitas"/>
+        <Literal>Libro</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#fechaEstreno"/>
+        <NamedIndividual IRI="#Nightmare_Alley"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#date">2021-12-01</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePelicula"/>
+        <NamedIndividual IRI="#Nightmare_Alley"/>
+        <Literal>Nightmare Alley</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#calificacionPelicula"/>
+        <NamedIndividual IRI="#Once_Upon_a_Time_in_Hollywood"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">7.6</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#fechaEstreno"/>
+        <NamedIndividual IRI="#Once_Upon_a_Time_in_Hollywood"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#date">2019-05-21</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#idiomaPelicula"/>
+        <NamedIndividual IRI="#Once_Upon_a_Time_in_Hollywood"/>
+        <Literal>Inglés</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePelicula"/>
+        <NamedIndividual IRI="#Once_Upon_a_Time_in_Hollywood"/>
+        <Literal>Once Upon a Time in Hollywood</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#paisPelicula"/>
+        <NamedIndividual IRI="#Once_Upon_a_Time_in_Hollywood"/>
+        <Literal>Estados Unidos</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#calificacionPelicula"/>
+        <NamedIndividual IRI="#Oppenheimer"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">8.3</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#duracionPelicula"/>
+        <NamedIndividual IRI="#Oppenheimer"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">180</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#fechaEstreno"/>
+        <NamedIndividual IRI="#Oppenheimer"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#date">2023-07-21</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePelicula"/>
+        <NamedIndividual IRI="#Oppenheimer"/>
+        <Literal>Oppenheimer</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombreCategoria"/>
+        <NamedIndividual IRI="#PO_Mejor_Pelicula_2020"/>
+        <Literal>Mejor Pelicula 2020</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombreOrganizacion"/>
+        <NamedIndividual IRI="#Paramount_Pictures"/>
+        <Literal>Paramount Pictures</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#calificacionPelicula"/>
+        <NamedIndividual IRI="#Parasite"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">8.5</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#fechaEstreno"/>
+        <NamedIndividual IRI="#Parasite"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#date">2019-05-21</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#idiomaPelicula"/>
+        <NamedIndividual IRI="#Parasite"/>
+        <Literal>Coreano</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePelicula"/>
+        <NamedIndividual IRI="#Parasite"/>
+        <Literal>Parasite</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#paisPelicula"/>
+        <NamedIndividual IRI="#Parasite"/>
+        <Literal>Corea del Sur</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#generoPersona"/>
+        <NamedIndividual IRI="#Peter_Jackson"/>
+        <Literal>Masculino</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePersona"/>
+        <NamedIndividual IRI="#Peter_Jackson"/>
+        <Literal>Peter Robert Jackson</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#fechaEstreno"/>
+        <NamedIndividual IRI="#Pinocchio"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#date">2022-10-05</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePelicula"/>
+        <NamedIndividual IRI="#Pinocchio"/>
+        <Literal>Guillermo del Toro&apos;s Pinocchio</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombreOrganizacion"/>
+        <NamedIndividual IRI="#Pixar_Animation_Studios"/>
+        <Literal>Pixar Animation Studios</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombreEvento"/>
+        <NamedIndividual IRI="#PremiosOscar2020"/>
+        <Literal>Premios Oscar 2020</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#generoPersona"/>
+        <NamedIndividual IRI="#Rose_Glass"/>
+        <Literal>Femenino</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePersona"/>
+        <NamedIndividual IRI="#Rose_Glass"/>
+        <Literal>Rose Glas</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#generoPersona"/>
+        <NamedIndividual IRI="#Russo_Brothers"/>
+        <Literal>Masculino</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePersona"/>
+        <NamedIndividual IRI="#Russo_Brothers"/>
+        <Literal>Anthony y Joe Russo</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#duracionPelicula"/>
+        <NamedIndividual IRI="#Saint_Maud"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">85</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePelicula"/>
+        <NamedIndividual IRI="#Saint_Maud"/>
+        <Literal>Saint Maud</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePersona"/>
+        <NamedIndividual IRI="#Sissy_Spacek"/>
+        <Literal>Sissy Spacek</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePersonaje"/>
+        <NamedIndividual IRI="#Sonny_Koufax"/>
+        <Literal>Sonny Koufax</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#rolPersonaje"/>
+        <NamedIndividual IRI="#Sonny_Koufax"/>
+        <Literal>Protagonista</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombreOrganizacion"/>
+        <NamedIndividual IRI="#Sony_Pictures_Entertainment"/>
+        <Literal>Sony Pictures Entertainment</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombreOrganizacion"/>
+        <NamedIndividual IRI="#Studio_Babelsberg"/>
+        <Literal>Studio Babelsberg</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePelicula"/>
+        <NamedIndividual IRI="#Superman_2025"/>
+        <Literal>Superman</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#duracionPelicula"/>
+        <NamedIndividual IRI="#The_Nightingale"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">108</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePelicula"/>
+        <NamedIndividual IRI="#The_Nightingale"/>
+        <Literal>The Nightingale</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#duracionPelicula"/>
+        <NamedIndividual IRI="#Titane"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">108</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePelicula"/>
+        <NamedIndividual IRI="#Titane"/>
+        <Literal>nombrePelicula</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#fechaLanzamiento"/>
+        <NamedIndividual IRI="#Trailer_Wicked_2"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#date">2025-06-04</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#calificacionPelicula"/>
+        <NamedIndividual IRI="#Un_gran_dinosaurio"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">6.7</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#fechaEstreno"/>
+        <NamedIndividual IRI="#Un_gran_dinosaurio"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#date">2015-11-25</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePelicula"/>
+        <NamedIndividual IRI="#Un_gran_dinosaurio"/>
+        <Literal>Un gran Dinosaurio</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePelicula"/>
+        <NamedIndividual IRI="#Un_papa_genial"/>
+        <Literal>Un papá genial</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombreOrganizacion"/>
+        <NamedIndividual IRI="#Warner_Bros"/>
+        <Literal>Warner Bros</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#generoPersona"/>
+        <NamedIndividual IRI="#William_Wyler"/>
+        <Literal>Masculino</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePersona"/>
+        <NamedIndividual IRI="#William_Wyler"/>
+        <Literal>William Wyler</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#fechaEstreno"/>
+        <NamedIndividual IRI="#wicked_2"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#date">2025-11-21</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePelicula"/>
+        <NamedIndividual IRI="#wicked_2"/>
+        <Literal>Wicked 2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#calificacionPelicula"/>
+        <NamedIndividual IRI="#1917"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">8.2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#fechaEstreno"/>
+        <NamedIndividual IRI="#1917"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#date">2019-12-04</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#idiomaPelicula"/>
+        <NamedIndividual IRI="#1917"/>
+        <Literal>Inglés</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombrePelicula"/>
+        <NamedIndividual IRI="#1917"/>
+        <Literal>1917</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#paisPelicula"/>
+        <NamedIndividual IRI="#1917"/>
+        <Literal>Reino Unido</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombreOrganizacion"/>
+        <NamedIndividual IRI="#20th_Century_Studios"/>
+        <Literal>20th Century Studios</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#nombreOrganizacion"/>
+        <NamedIndividual IRI="#Ubisoft_Film_&amp;_Television"/>
+        <Literal>Ubisoft Film &amp; Television</Literal>
+    </DataPropertyAssertion>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#actuaEn"/>
+        <ObjectProperty IRI="#trabajaEn"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#esDirectorDe"/>
+        <ObjectProperty IRI="#trabajaEn"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#esDistribuidaPor"/>
+        <ObjectProperty IRI="#estaAfiliadoA"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#esFinanciadaPor"/>
+        <ObjectProperty IRI="#estaAfiliadoA"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#esProducidaPor"/>
+        <ObjectProperty IRI="#estaAfiliadoA"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#esProductorDe"/>
+        <ObjectProperty IRI="#trabajaEn"/>
+    </SubObjectPropertyOf>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#actuaEn"/>
+        <ObjectProperty IRI="#tieneActor"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#contienePelicula"/>
+        <ObjectProperty IRI="#perteneceAFranquicia"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#dirigidaPor"/>
+        <ObjectProperty IRI="#esDirectorDe"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#esInterpretadoPor"/>
+        <ObjectProperty IRI="#interpretaA"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#perteneceAPremios"/>
+        <ObjectProperty IRI="#tieneCategoria"/>
+    </InverseObjectProperties>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#actuaEn"/>
+        <Class IRI="#Actor"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#apareceEn"/>
+        <Class IRI="#Personaje"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#basadaEn"/>
+        <Class IRI="#Pelicula"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#contienePelicula"/>
+        <Class IRI="#Franquicia"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#dirigidaPor"/>
+        <Class IRI="#Pelicula"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#esDirectorDe"/>
+        <Class IRI="#Director"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#esDistribuidaPor"/>
+        <Class IRI="#Pelicula"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#esFinanciadaPor"/>
+        <Class IRI="#Pelicula"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#esInterpretadoPor"/>
+        <Class IRI="#Personaje"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#esProducidaPor"/>
+        <Class IRI="#Pelicula"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#esProductorDe"/>
+        <Class IRI="#Productor"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#estaAfiliadoA"/>
+        <Class IRI="#Pelicula"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#estaNominadoA"/>
+        <Class IRI="#Pelicula"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#ganadorCategoria"/>
+        <Class IRI="#Pelicula"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#ganadorDe"/>
+        <Class IRI="#Categoria"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#ganadorDe"/>
+        <Class IRI="#Pelicula"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#interpretaA"/>
+        <Class IRI="#Actor"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#participaEn"/>
+        <Class IRI="#Pelicula"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#perteneceA"/>
+        <Class IRI="#RecursosMultimedia"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#perteneceAFranquicia"/>
+        <Class IRI="#Pelicula"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#perteneceAPremios"/>
+        <Class IRI="#Categoria"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#tieneActor"/>
+        <Class IRI="#Pelicula"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#tieneCategoria"/>
+        <Class IRI="#Premios"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#tieneGenero"/>
+        <Class IRI="#Pelicula"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#trabajaEn"/>
+        <Class IRI="#Persona"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#actuaEn"/>
+        <Class IRI="#Pelicula"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#apareceEn"/>
+        <Class IRI="#Pelicula"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#basadaEn"/>
+        <Class IRI="#Obra"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#contienePelicula"/>
+        <Class IRI="#Pelicula"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#dirigidaPor"/>
+        <Class IRI="#Director"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#esDirectorDe"/>
+        <Class IRI="#Pelicula"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#esDistribuidaPor"/>
+        <Class IRI="#Distribuidor"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#esFinanciadaPor"/>
+        <Class IRI="#Estudio"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#esFinanciadaPor"/>
+        <Class IRI="#Productora"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#esInterpretadoPor"/>
+        <Class IRI="#Actor"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#esProducidaPor"/>
+        <Class IRI="#Estudio"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#esProducidaPor"/>
+        <Class IRI="#Productora"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#esProductorDe"/>
+        <Class IRI="#Pelicula"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#estaAfiliadoA"/>
+        <Class IRI="#Organizacion"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#estaNominadoA"/>
+        <Class IRI="#Categoria"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#ganadorCategoria"/>
+        <Class IRI="#Categoria"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#ganadorDe"/>
+        <Class IRI="#Premios"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#interpretaA"/>
+        <Class IRI="#Personaje"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#participaEn"/>
+        <Class IRI="#Evento"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#perteneceA"/>
+        <Class IRI="#Pelicula"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#perteneceAFranquicia"/>
+        <Class IRI="#Franquicia"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#perteneceAPremios"/>
+        <Class IRI="#Premios"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#tieneActor"/>
+        <Class IRI="#Actor"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#tieneCategoria"/>
+        <Class IRI="#Categoria"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#tieneGenero"/>
+        <Class IRI="#Genero"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#trabajaEn"/>
+        <Class IRI="#Pelicula"/>
+    </ObjectPropertyRange>
+    <DataPropertyDomain>
+        <DataProperty IRI="#autorObra"/>
+        <Class IRI="#Obra"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#calificacionPelicula"/>
+        <Class IRI="#Pelicula"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#descripcionFranquicia"/>
+        <Class IRI="#Franquicia"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#duracion"/>
+        <Class IRI="#RecursosMultimedia"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#duracionPelicula"/>
+        <Class IRI="#Pelicula"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#edadPersona"/>
+        <Class IRI="#Persona"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#fechaEstreno"/>
+        <Class IRI="#Pelicula"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#fechaEvento"/>
+        <Class IRI="#Evento"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#fechaLanzamiento"/>
+        <Class IRI="#RecursosMultimedia"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#formato"/>
+        <Class IRI="#RecursosMultimedia"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#ganadorCategoria"/>
+        <Class IRI="#Categoria"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#generoPersona"/>
+        <Class IRI="#Persona"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#idiomaPelicula"/>
+        <Class IRI="#Pelicula"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#lugarEvento"/>
+        <Class IRI="#Evento"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#nacionalidadPersona"/>
+        <Class IRI="#Persona"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#nombreCategoria"/>
+        <Class IRI="#Categoria"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#nombreEvento"/>
+        <Class IRI="#Evento"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#nombreFranquicia"/>
+        <Class IRI="#Franquicia"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#nombreGenero"/>
+        <Class IRI="#Genero"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#nombreObra"/>
+        <Class IRI="#Obra"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#nombreOrganizacion"/>
+        <Class IRI="#Organizacion"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#nombrePelicula"/>
+        <Class IRI="#Pelicula"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#nombrePersona"/>
+        <Class IRI="#Persona"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#nombrePersonaje"/>
+        <Class IRI="#Personaje"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#paisPelicula"/>
+        <Class IRI="#Pelicula"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#presupuestoPelicula"/>
+        <Class IRI="#Pelicula"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#rolPersonaje"/>
+        <Class IRI="#Personaje"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#sinopsisPelicula"/>
+        <Class IRI="#Pelicula"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#tipoFranquicia"/>
+        <Class IRI="#Franquicia"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#tipoObra"/>
+        <Class IRI="#Obra"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="#autorObra"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#calificacionPelicula"/>
+        <Datatype abbreviatedIRI="xsd:decimal"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#descripcionFranquicia"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#duracion"/>
+        <Datatype abbreviatedIRI="xsd:integer"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#duracionPelicula"/>
+        <Datatype abbreviatedIRI="xsd:integer"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#edadPersona"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#fechaEstreno"/>
+        <Datatype abbreviatedIRI="xsd:date"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#fechaEvento"/>
+        <Datatype abbreviatedIRI="xsd:date"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#fechaLanzamiento"/>
+        <Datatype abbreviatedIRI="xsd:date"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#formato"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#ganadorCategoria"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#generoPersona"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#idiomaPelicula"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#lugarEvento"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#nacionalidadPersona"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#nombreCategoria"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#nombreEvento"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#nombreFranquicia"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#nombreGenero"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#nombreObra"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#nombreOrganizacion"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#nombrePelicula"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#nombrePersona"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#nombrePersonaje"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#paisPelicula"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#presupuestoPelicula"/>
+        <Datatype abbreviatedIRI="xsd:float"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#rolPersonaje"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#sinopsisPelicula"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#tipoFranquicia"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#tipoObra"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
+
