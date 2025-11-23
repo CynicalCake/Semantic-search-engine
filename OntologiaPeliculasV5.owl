@@ -1,0 +1,2075 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas/"
+     xml:base="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:OntologiaPeliculas="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas">
+        <owl:imports rdf:resource="file:/C:/Users/esteb/Documents/Cosas%20U/Web%20Semánticas/Ontologías/instancias_Roberto_Gamboa%20(1).ttl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#date -->
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#date"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#actuaEn -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#actuaEn">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#trabajaEn"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#tieneActor"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Actor"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Pelicula"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#apareceEn -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#apareceEn">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Personaje"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Pelicula"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#basadaEn -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#basadaEn">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Pelicula"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Obra"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#contienePelicula -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#contienePelicula">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#perteneceAFranquicia"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Franquicia"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Pelicula"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#dirigidaPor -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#dirigidaPor">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#esDirectorDe"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Pelicula"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Director"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#esDirectorDe -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#esDirectorDe">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#trabajaEn"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Director"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Pelicula"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#esDistribuidaPor -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#esDistribuidaPor">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#estaAfiliadoA"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Pelicula"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Distribuidor"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#esFinanciadaPor -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#esFinanciadaPor">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#estaAfiliadoA"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Pelicula"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Estudio"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Productora"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#esInterpretadoPor -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#esInterpretadoPor">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#interpretaA"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Personaje"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Actor"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#esProducidaPor -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#esProducidaPor">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#estaAfiliadoA"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Pelicula"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Estudio"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Productora"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#esProductorDe -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#esProductorDe">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#trabajaEn"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Productor"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Pelicula"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#estaAfiliadoA -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#estaAfiliadoA">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Pelicula"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Organizacion"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#estaNominadoA -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#estaNominadoA">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Pelicula"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Categoria"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#ganadorCategoria -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#ganadorCategoria">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Pelicula"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Categoria"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#ganadorDe -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#ganadorDe">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Categoria"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Pelicula"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Premios"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#interpretaA -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#interpretaA">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Actor"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Personaje"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#participaEn -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#participaEn">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Pelicula"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Evento"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#perteneceA -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#perteneceA">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#RecursosMultimedia"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Pelicula"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#perteneceAFranquicia -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#perteneceAFranquicia">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Pelicula"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Franquicia"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#perteneceAPremios -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#perteneceAPremios">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#tieneCategoria"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Categoria"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Premios"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#tieneActor -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#tieneActor">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Pelicula"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Actor"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#tieneCategoria -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#tieneCategoria">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Premios"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Categoria"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#tieneGenero -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#tieneGenero">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Pelicula"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Genero"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#trabajaEn -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#trabajaEn">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Persona"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Pelicula"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#autorObra -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#autorObra">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Obra"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#calificacionPelicula -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#calificacionPelicula">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Pelicula"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#descripcionFranquicia -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#descripcionFranquicia">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Franquicia"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#duracion -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#duracion">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#RecursosMultimedia"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#duracionPelicula -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#duracionPelicula">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Pelicula"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#edadPersona -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#edadPersona">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Persona"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#fechaEstreno -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#fechaEstreno">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Pelicula"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#fechaEvento -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#fechaEvento">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Evento"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#fechaLanzamiento -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#fechaLanzamiento">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#RecursosMultimedia"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#formato -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#formato">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#RecursosMultimedia"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#ganadorCategoria -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#ganadorCategoria">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Categoria"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#generoPersona -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#generoPersona">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Persona"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#idiomaPelicula -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#idiomaPelicula">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Pelicula"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#lugarEvento -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#lugarEvento">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Evento"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#nacionalidadPersona -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#nacionalidadPersona">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Persona"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#nombreCategoria -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#nombreCategoria">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Categoria"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#nombreEvento -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#nombreEvento">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Evento"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#nombreFranquicia -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#nombreFranquicia">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Franquicia"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#nombreGenero -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#nombreGenero">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Genero"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#nombreObra -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#nombreObra">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Obra"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#nombreOrganizacion -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#nombreOrganizacion">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Organizacion"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#nombrePelicula -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#nombrePelicula">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Pelicula"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#nombrePersona -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#nombrePersona">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Persona"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#nombrePersonaje -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#nombrePersonaje">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Personaje"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#paisPelicula -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#paisPelicula">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Pelicula"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#presupuestoPelicula -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#presupuestoPelicula">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Pelicula"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#rolPersonaje -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#rolPersonaje">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Personaje"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#sinopsisPelicula -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#sinopsisPelicula">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Pelicula"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#tipoFranquicia -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#tipoFranquicia">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Franquicia"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#tipoObra -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#tipoObra">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Obra"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Actor -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Actor">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Persona"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#BandaSonora -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#BandaSonora">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#RecursosMultimedia"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Categoria -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Categoria"/>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Compositor -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Compositor">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Persona"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Cortometraje -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Cortometraje">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Pelicula"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Director -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Director">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Persona"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Distribuidor -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Distribuidor">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Organizacion"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Estudio -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Estudio">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Organizacion"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Evento -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Evento"/>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Festival -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Festival">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Evento"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Franquicia -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Franquicia"/>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Genero -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Genero"/>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Largometraje -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Largometraje">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Pelicula"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Obra -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Obra"/>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Organizacion -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Organizacion"/>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#OtrosPremios -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#OtrosPremios">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Premios"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Pelicula -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Pelicula"/>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#PeliculaAnimada -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#PeliculaAnimada">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Pelicula"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Persona -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Persona"/>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Personaje -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Personaje"/>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Poster -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Poster">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#RecursosMultimedia"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Premios -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Premios">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Evento"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#PremiosCannes -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#PremiosCannes">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Premios"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#PremiosOscar -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#PremiosOscar">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Premios"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Productor -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Productor">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Persona"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Productora -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Productora">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Organizacion"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#RecursosMultimedia -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#RecursosMultimedia"/>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Trailer -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Trailer">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#RecursosMultimedia"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Adam_Sandler -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Adam_Sandler">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Actor"/>
+        <OntologiaPeliculas:actuaEn rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Click"/>
+        <OntologiaPeliculas:actuaEn rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Mr_Deeds"/>
+        <OntologiaPeliculas:actuaEn rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Un_papa_genial"/>
+        <OntologiaPeliculas:generoPersona>Masculino</OntologiaPeliculas:generoPersona>
+        <OntologiaPeliculas:nombrePersona>Adam Richard Sandler</OntologiaPeliculas:nombrePersona>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Annapurna_Pictures -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Annapurna_Pictures">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Productora"/>
+        <OntologiaPeliculas:ganadorDe rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Oscar_MejorPelicula_2014"/>
+        <OntologiaPeliculas:sinopsisPelicula>Annapurna Pictures</OntologiaPeliculas:sinopsisPelicula>
+        <OntologiaPeliculas:tipoFranquicia>Productora Independiente</OntologiaPeliculas:tipoFranquicia>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Anne_Hathaway -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Anne_Hathaway">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Director"/>
+        <OntologiaPeliculas:actuaEn rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Interstellar"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Anthony_Hopkins -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Anthony_Hopkins">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Actor"/>
+        <OntologiaPeliculas:interpretaA rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Hannibal_Lecter"/>
+        <OntologiaPeliculas:nombrePersona>Anthony Hopkins</OntologiaPeliculas:nombrePersona>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Avengers_Endgame -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Avengers_Endgame">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Pelicula"/>
+        <OntologiaPeliculas:basadaEn rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Marvel_Comics"/>
+        <OntologiaPeliculas:dirigidaPor rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Russo_Brothers"/>
+        <OntologiaPeliculas:calificacionPelicula rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.4</OntologiaPeliculas:calificacionPelicula>
+        <OntologiaPeliculas:duracionPelicula rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">108</OntologiaPeliculas:duracionPelicula>
+        <OntologiaPeliculas:nombrePelicula>Avengers: Endgame</OntologiaPeliculas:nombrePelicula>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Avengers_Infinity_War -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Avengers_Infinity_War">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Pelicula"/>
+        <OntologiaPeliculas:calificacionPelicula rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.4</OntologiaPeliculas:calificacionPelicula>
+        <OntologiaPeliculas:duracionPelicula rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">108</OntologiaPeliculas:duracionPelicula>
+        <OntologiaPeliculas:fechaEstreno rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-04-23</OntologiaPeliculas:fechaEstreno>
+        <OntologiaPeliculas:nombrePelicula>Avengers: Infinity War</OntologiaPeliculas:nombrePelicula>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#BBC_Films -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#BBC_Films">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Estudio"/>
+        <OntologiaPeliculas:nombreOrganizacion>BBC Films</OntologiaPeliculas:nombreOrganizacion>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Bilbo_Bolson -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Bilbo_Bolson">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Personaje"/>
+        <OntologiaPeliculas:apareceEn rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#HOBBIT_La_batalla_de_los_cinco_ejercitos"/>
+        <OntologiaPeliculas:apareceEn rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#HOBBIT_La_desolacion_De_Smaug"/>
+        <OntologiaPeliculas:apareceEn rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#HOBBIT_Un_viaje_inesperado"/>
+        <OntologiaPeliculas:apareceEn rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#LOTR_El_retorno_del_rey"/>
+        <OntologiaPeliculas:apareceEn rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#LOTR_La_comunidad_del_anillo"/>
+        <OntologiaPeliculas:nombrePersonaje>Bilbo Bolson</OntologiaPeliculas:nombrePersonaje>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Blue_Sky_Studios -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Blue_Sky_Studios">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Estudio"/>
+        <OntologiaPeliculas:nombreOrganizacion>Blue Sky Studios</OntologiaPeliculas:nombreOrganizacion>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Buscando_a_Dory -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Buscando_a_Dory">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#PeliculaAnimada"/>
+        <OntologiaPeliculas:esProducidaPor rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Pixar_Animation_Studios"/>
+        <OntologiaPeliculas:calificacionPelicula rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.2</OntologiaPeliculas:calificacionPelicula>
+        <OntologiaPeliculas:fechaEstreno rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2016-06-15</OntologiaPeliculas:fechaEstreno>
+        <OntologiaPeliculas:nombrePelicula>Buscando a Dory</OntologiaPeliculas:nombrePelicula>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Carrie -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Carrie">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Largometraje"/>
+        <OntologiaPeliculas:basadaEn rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Carrie_Obra"/>
+        <OntologiaPeliculas:tieneGenero rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Horror"/>
+        <OntologiaPeliculas:calificacionPelicula rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">5.8</OntologiaPeliculas:calificacionPelicula>
+        <OntologiaPeliculas:nombrePelicula>Carrie</OntologiaPeliculas:nombrePelicula>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Carrie_1976 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Carrie_1976">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Largometraje"/>
+        <OntologiaPeliculas:basadaEn rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Carrie_Obra"/>
+        <OntologiaPeliculas:tieneGenero rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Horror"/>
+        <OntologiaPeliculas:tieneGenero rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Misterio"/>
+        <OntologiaPeliculas:calificacionPelicula rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.6</OntologiaPeliculas:calificacionPelicula>
+        <OntologiaPeliculas:nombrePelicula>Carrie (1976)</OntologiaPeliculas:nombrePelicula>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Carrie_Obra -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Carrie_Obra">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Obra"/>
+        <OntologiaPeliculas:autorObra>Stephen King</OntologiaPeliculas:autorObra>
+        <OntologiaPeliculas:nombreObra>Carrie</OntologiaPeliculas:nombreObra>
+        <OntologiaPeliculas:tipoObra>Libro</OntologiaPeliculas:tipoObra>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Carrie_White -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Carrie_White">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Personaje"/>
+        <OntologiaPeliculas:apareceEn rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Carrie"/>
+        <OntologiaPeliculas:apareceEn rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Carrie_1976"/>
+        <OntologiaPeliculas:nombrePersonaje>Carrie White</OntologiaPeliculas:nombrePersonaje>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Cars_3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Cars_3">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#PeliculaAnimada"/>
+        <OntologiaPeliculas:esProducidaPor rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Pixar_Animation_Studios"/>
+        <OntologiaPeliculas:calificacionPelicula rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">6.7</OntologiaPeliculas:calificacionPelicula>
+        <OntologiaPeliculas:fechaEstreno rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2017-05-23</OntologiaPeliculas:fechaEstreno>
+        <OntologiaPeliculas:nombrePelicula>Cars 3</OntologiaPeliculas:nombrePelicula>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Chloe_Grace_Moretz -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Chloe_Grace_Moretz">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Actor"/>
+        <OntologiaPeliculas:interpretaA rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Carrie_White"/>
+        <OntologiaPeliculas:generoPersona>Femenino</OntologiaPeliculas:generoPersona>
+        <OntologiaPeliculas:nombrePersona>Chloë Grace Moretz</OntologiaPeliculas:nombrePersona>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Christopher_Nolan -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Christopher_Nolan">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Director"/>
+        <OntologiaPeliculas:esDirectorDe rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Inception"/>
+        <OntologiaPeliculas:esDirectorDe rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Interstellar"/>
+        <OntologiaPeliculas:esDirectorDe rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Oppenheimer"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Ciencia_Ficcion -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Ciencia_Ficcion">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Genero"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Cleopatra -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Cleopatra">
+        <OntologiaPeliculas:dirigidaPor rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Joseph_Mankiewicz"/>
+        <OntologiaPeliculas:tieneGenero rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Epico_Historico"/>
+        <OntologiaPeliculas:duracionPelicula rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">122</OntologiaPeliculas:duracionPelicula>
+        <OntologiaPeliculas:nombrePelicula>Cleopatra</OntologiaPeliculas:nombrePelicula>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Click -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Click">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Largometraje"/>
+        <OntologiaPeliculas:nombrePelicula>Click</OntologiaPeliculas:nombrePelicula>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Clint_Eastwood -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Clint_Eastwood">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Persona"/>
+        <OntologiaPeliculas:actuaEn rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Million_Dollar_Baby"/>
+        <OntologiaPeliculas:esDirectorDe rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Million_Dollar_Baby"/>
+        <OntologiaPeliculas:edadPersona rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">97</OntologiaPeliculas:edadPersona>
+        <OntologiaPeliculas:generoPersona>generoPersona</OntologiaPeliculas:generoPersona>
+        <OntologiaPeliculas:nacionalidadPersona>generoPersona</OntologiaPeliculas:nacionalidadPersona>
+        <OntologiaPeliculas:nombrePersona>Clint Eastwood</OntologiaPeliculas:nombrePersona>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Coco -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Coco">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#PeliculaAnimada"/>
+        <OntologiaPeliculas:esProducidaPor rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Pixar_Animation_Studios"/>
+        <OntologiaPeliculas:calificacionPelicula rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.4</OntologiaPeliculas:calificacionPelicula>
+        <OntologiaPeliculas:fechaEstreno rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2017-10-20</OntologiaPeliculas:fechaEstreno>
+        <OntologiaPeliculas:nombrePelicula>Coco</OntologiaPeliculas:nombrePelicula>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Columbia_Pictures -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Columbia_Pictures">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Estudio"/>
+        <OntologiaPeliculas:nombreOrganizacion>Columbia Pictures</OntologiaPeliculas:nombreOrganizacion>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Cujo -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Cujo">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Largometraje"/>
+        <OntologiaPeliculas:basadaEn rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Cujo_Obra"/>
+        <OntologiaPeliculas:tieneGenero rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Horror"/>
+        <OntologiaPeliculas:calificacionPelicula rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">6.1</OntologiaPeliculas:calificacionPelicula>
+        <OntologiaPeliculas:nombrePelicula>Cujo</OntologiaPeliculas:nombrePelicula>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Cujo_Obra -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Cujo_Obra">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Obra"/>
+        <OntologiaPeliculas:autorObra>Stephen King</OntologiaPeliculas:autorObra>
+        <OntologiaPeliculas:nombreObra>Cujo</OntologiaPeliculas:nombreObra>
+        <OntologiaPeliculas:tipoObra>Libro</OntologiaPeliculas:tipoObra>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#DC_Studios -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#DC_Studios">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Estudio"/>
+        <OntologiaPeliculas:nombreOrganizacion>DC Studios</OntologiaPeliculas:nombreOrganizacion>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#David_Lean -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#David_Lean">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Persona"/>
+        <OntologiaPeliculas:generoPersona>Masculino</OntologiaPeliculas:generoPersona>
+        <OntologiaPeliculas:nombrePersona>David Lean</OntologiaPeliculas:nombrePersona>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#DreamWorks -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#DreamWorks">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Estudio"/>
+        <OntologiaPeliculas:nombreOrganizacion>DreamWorks</OntologiaPeliculas:nombreOrganizacion>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#El_Irlandes -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#El_Irlandes">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Largometraje"/>
+        <OntologiaPeliculas:estaNominadoA rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#PO_Mejor_Pelicula_2020"/>
+        <OntologiaPeliculas:calificacionPelicula rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.8</OntologiaPeliculas:calificacionPelicula>
+        <OntologiaPeliculas:fechaEstreno rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-11-01</OntologiaPeliculas:fechaEstreno>
+        <OntologiaPeliculas:idiomaPelicula>Inglés</OntologiaPeliculas:idiomaPelicula>
+        <OntologiaPeliculas:nombrePelicula>El irlandés</OntologiaPeliculas:nombrePelicula>
+        <OntologiaPeliculas:paisPelicula>Estados Unidos</OntologiaPeliculas:paisPelicula>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#El_Resplandor -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#El_Resplandor">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Largometraje"/>
+        <OntologiaPeliculas:basadaEn rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#El_Resplandor_Obra"/>
+        <OntologiaPeliculas:tieneGenero rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Horror"/>
+        <OntologiaPeliculas:tieneGenero rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Misterio"/>
+        <OntologiaPeliculas:calificacionPelicula rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.4</OntologiaPeliculas:calificacionPelicula>
+        <OntologiaPeliculas:nombrePelicula>El Resplandor</OntologiaPeliculas:nombrePelicula>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#El_Resplandor_Obra -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#El_Resplandor_Obra">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Obra"/>
+        <OntologiaPeliculas:autorObra>Stephen King</OntologiaPeliculas:autorObra>
+        <OntologiaPeliculas:nombreObra>El Resplandor</OntologiaPeliculas:nombreObra>
+        <OntologiaPeliculas:tipoObra>Libro</OntologiaPeliculas:tipoObra>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#El_silencio_de_los_corderos -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#El_silencio_de_los_corderos">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Largometraje"/>
+        <OntologiaPeliculas:tieneGenero rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Horror"/>
+        <OntologiaPeliculas:calificacionPelicula rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.6</OntologiaPeliculas:calificacionPelicula>
+        <OntologiaPeliculas:nombrePelicula>El silencio de los corderos</OntologiaPeliculas:nombrePelicula>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Elijah_Wood -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Elijah_Wood">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Actor"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Elliot_Page -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Elliot_Page">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Actor"/>
+        <OntologiaPeliculas:actuaEn rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Inception"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Epico_Historico -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Epico_Historico">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Genero"/>
+        <OntologiaPeliculas:nombreGenero>Épico Histórico</OntologiaPeliculas:nombreGenero>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Epico_historico -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Epico_historico">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Genero"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Fantasia -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Fantasia">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Genero"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Ford_v_Ferrari -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Ford_v_Ferrari">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Largometraje"/>
+        <OntologiaPeliculas:estaNominadoA rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#PO_Mejor_Pelicula_2020"/>
+        <OntologiaPeliculas:calificacionPelicula rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.1</OntologiaPeliculas:calificacionPelicula>
+        <OntologiaPeliculas:fechaEstreno rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-08-30</OntologiaPeliculas:fechaEstreno>
+        <OntologiaPeliculas:idiomaPelicula>Inglés</OntologiaPeliculas:idiomaPelicula>
+        <OntologiaPeliculas:nombrePelicula>Ford v Ferrari</OntologiaPeliculas:nombrePelicula>
+        <OntologiaPeliculas:paisPelicula>Estados Unidos</OntologiaPeliculas:paisPelicula>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Frankenstein_2025 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Frankenstein_2025">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Largometraje"/>
+        <OntologiaPeliculas:tieneGenero rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Horror"/>
+        <OntologiaPeliculas:calificacionPelicula rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.3</OntologiaPeliculas:calificacionPelicula>
+        <OntologiaPeliculas:fechaEstreno rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-08-30</OntologiaPeliculas:fechaEstreno>
+        <OntologiaPeliculas:nombrePelicula>Frankenstein</OntologiaPeliculas:nombrePelicula>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Gone_with_the_Wind -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Gone_with_the_Wind">
+        <OntologiaPeliculas:dirigidaPor rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#David_Lean"/>
+        <OntologiaPeliculas:tieneGenero rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Epico_Historico"/>
+        <OntologiaPeliculas:duracionPelicula rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">123</OntologiaPeliculas:duracionPelicula>
+        <OntologiaPeliculas:nombrePelicula>Gone with the Wind</OntologiaPeliculas:nombrePelicula>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Gran_Torino -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Gran_Torino"/>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Guardianes_de_la_Galaxia -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Guardianes_de_la_Galaxia">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Pelicula"/>
+        <OntologiaPeliculas:tieneGenero rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Ciencia_Ficcion"/>
+        <OntologiaPeliculas:calificacionPelicula rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8</OntologiaPeliculas:calificacionPelicula>
+        <OntologiaPeliculas:fechaLanzamiento rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2014</OntologiaPeliculas:fechaLanzamiento>
+        <OntologiaPeliculas:nombrePelicula>Guardianes de la Galaxia</OntologiaPeliculas:nombrePelicula>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Guillermo_Del_Toro -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Guillermo_Del_Toro">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Director"/>
+        <OntologiaPeliculas:esDirectorDe rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Frankenstein_2025"/>
+        <OntologiaPeliculas:esDirectorDe rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#La_forma_del_agua"/>
+        <OntologiaPeliculas:esDirectorDe rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Nightmare_Alley"/>
+        <OntologiaPeliculas:esDirectorDe rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Pinocchio"/>
+        <OntologiaPeliculas:nombrePersona>Guillermo del Toro</OntologiaPeliculas:nombrePersona>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#HOBBIT -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#HOBBIT">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Franquicia"/>
+        <OntologiaPeliculas:basadaEn rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#HOBBIT_Obra"/>
+        <OntologiaPeliculas:nombreFranquicia>El Hobbit</OntologiaPeliculas:nombreFranquicia>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#HOBBIT_La_batalla_de_los_cinco_ejercitos -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#HOBBIT_La_batalla_de_los_cinco_ejercitos">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Largometraje"/>
+        <OntologiaPeliculas:perteneceAFranquicia rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#HOBBIT"/>
+        <OntologiaPeliculas:calificacionPelicula rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.4</OntologiaPeliculas:calificacionPelicula>
+        <OntologiaPeliculas:nombrePelicula>El Hobbit : La batalla de los Cinco Ejercitos</OntologiaPeliculas:nombrePelicula>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#HOBBIT_La_desolacion_De_Smaug -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#HOBBIT_La_desolacion_De_Smaug">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Largometraje"/>
+        <OntologiaPeliculas:perteneceAFranquicia rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#HOBBIT"/>
+        <OntologiaPeliculas:calificacionPelicula rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.8</OntologiaPeliculas:calificacionPelicula>
+        <OntologiaPeliculas:nombrePelicula>El Hobbit : la desolación de Smaug</OntologiaPeliculas:nombrePelicula>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#HOBBIT_Obra -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#HOBBIT_Obra">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Obra"/>
+        <OntologiaPeliculas:autorObra>J.R.R. Tolkien</OntologiaPeliculas:autorObra>
+        <OntologiaPeliculas:nombreObra>El Hobbit</OntologiaPeliculas:nombreObra>
+        <OntologiaPeliculas:tipoObra>Libro</OntologiaPeliculas:tipoObra>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#HOBBIT_Un_viaje_inesperado -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#HOBBIT_Un_viaje_inesperado">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Largometraje"/>
+        <OntologiaPeliculas:perteneceAFranquicia rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#HOBBIT"/>
+        <OntologiaPeliculas:calificacionPelicula rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.8</OntologiaPeliculas:calificacionPelicula>
+        <OntologiaPeliculas:nombrePelicula>El Hobbit : un viaje inesperado</OntologiaPeliculas:nombrePelicula>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#HP -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#HP">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Franquicia"/>
+        <OntologiaPeliculas:basadaEn rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Harry_Potter_Obra"/>
+        <OntologiaPeliculas:nombreFranquicia>Saga Harry Potter</OntologiaPeliculas:nombreFranquicia>
+        <OntologiaPeliculas:tipoFranquicia>Saga</OntologiaPeliculas:tipoFranquicia>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#HP_Y_La_camara_secreta -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#HP_Y_La_camara_secreta">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Largometraje"/>
+        <OntologiaPeliculas:calificacionPelicula rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.5</OntologiaPeliculas:calificacionPelicula>
+        <OntologiaPeliculas:duracionPelicula rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">161</OntologiaPeliculas:duracionPelicula>
+        <OntologiaPeliculas:nombrePelicula>Harry Potter y la camara secreta</OntologiaPeliculas:nombrePelicula>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#HP_Y_La_piedra_Filosofal -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#HP_Y_La_piedra_Filosofal">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Largometraje"/>
+        <OntologiaPeliculas:perteneceAFranquicia rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#HP"/>
+        <OntologiaPeliculas:calificacionPelicula rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.7</OntologiaPeliculas:calificacionPelicula>
+        <OntologiaPeliculas:duracionPelicula rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">152</OntologiaPeliculas:duracionPelicula>
+        <OntologiaPeliculas:nombrePelicula>Harry Potter y la Piedra Filosofal</OntologiaPeliculas:nombrePelicula>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Hannibal_Lecter -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Hannibal_Lecter">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Personaje"/>
+        <OntologiaPeliculas:apareceEn rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#El_silencio_de_los_corderos"/>
+        <OntologiaPeliculas:nombrePersonaje>Hannibal_Lecter</OntologiaPeliculas:nombrePersonaje>
+        <OntologiaPeliculas:rolPersonaje>Villano</OntologiaPeliculas:rolPersonaje>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Hans_Zimmer -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Hans_Zimmer">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Compositor"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Harry_Potter_Obra -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Harry_Potter_Obra">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Obra"/>
+        <OntologiaPeliculas:autorObra>J.K. Rowling</OntologiaPeliculas:autorObra>
+        <OntologiaPeliculas:nombreObra>Harry Potter</OntologiaPeliculas:nombreObra>
+        <OntologiaPeliculas:tipoObra>Libro</OntologiaPeliculas:tipoObra>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Horror -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Horror">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Genero"/>
+        <OntologiaPeliculas:nombreGenero>Horror</OntologiaPeliculas:nombreGenero>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Horror_Psicologico -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Horror_Psicologico"/>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Horror_psicologico -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Horror_psicologico">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Genero"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#IT -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#IT">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Largometraje"/>
+        <OntologiaPeliculas:basadaEn rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#IT_Obra"/>
+        <OntologiaPeliculas:tieneGenero rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Horror"/>
+        <OntologiaPeliculas:tieneGenero rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Misterio"/>
+        <OntologiaPeliculas:calificacionPelicula rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.3</OntologiaPeliculas:calificacionPelicula>
+        <OntologiaPeliculas:nombrePelicula>IT</OntologiaPeliculas:nombrePelicula>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#IT_Capitulo_dos -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#IT_Capitulo_dos">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Largometraje"/>
+        <OntologiaPeliculas:basadaEn rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#IT_Obra"/>
+        <OntologiaPeliculas:tieneGenero rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Horror"/>
+        <OntologiaPeliculas:calificacionPelicula rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">6.5</OntologiaPeliculas:calificacionPelicula>
+        <OntologiaPeliculas:nombrePelicula>IT: Capitulo Dos</OntologiaPeliculas:nombrePelicula>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#IT_Obra -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#IT_Obra">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Obra"/>
+        <OntologiaPeliculas:autorObra>Stephen King</OntologiaPeliculas:autorObra>
+        <OntologiaPeliculas:nombreObra>IT</OntologiaPeliculas:nombreObra>
+        <OntologiaPeliculas:tipoObra>Libro</OntologiaPeliculas:tipoObra>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Inception -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Inception">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Pelicula"/>
+        <OntologiaPeliculas:tieneGenero rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Ciencia_Ficcion"/>
+        <OntologiaPeliculas:calificacionPelicula rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.8</OntologiaPeliculas:calificacionPelicula>
+        <OntologiaPeliculas:duracionPelicula rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">148</OntologiaPeliculas:duracionPelicula>
+        <OntologiaPeliculas:fechaLanzamiento rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2010</OntologiaPeliculas:fechaLanzamiento>
+        <OntologiaPeliculas:nombrePelicula>Inception</OntologiaPeliculas:nombrePelicula>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Interstellar -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Interstellar">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Pelicula"/>
+        <OntologiaPeliculas:estaNominadoA rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Oscar2015"/>
+        <OntologiaPeliculas:tieneGenero rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Ciencia_Ficcion"/>
+        <OntologiaPeliculas:calificacionPelicula rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.7</OntologiaPeliculas:calificacionPelicula>
+        <OntologiaPeliculas:duracionPelicula rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">169</OntologiaPeliculas:duracionPelicula>
+        <OntologiaPeliculas:fechaLanzamiento rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2014</OntologiaPeliculas:fechaLanzamiento>
+        <OntologiaPeliculas:nombrePelicula>Interstellar</OntologiaPeliculas:nombrePelicula>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Jennifer_Kent -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Jennifer_Kent">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Persona"/>
+        <OntologiaPeliculas:generoPersona>Femenino</OntologiaPeliculas:generoPersona>
+        <OntologiaPeliculas:nombrePersona>Julia Ducournau</OntologiaPeliculas:nombrePersona>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Jojo_Rabbit -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Jojo_Rabbit">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Largometraje"/>
+        <OntologiaPeliculas:estaNominadoA rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#PO_Mejor_Pelicula_2020"/>
+        <OntologiaPeliculas:calificacionPelicula rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.9</OntologiaPeliculas:calificacionPelicula>
+        <OntologiaPeliculas:fechaEstreno rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-09-08</OntologiaPeliculas:fechaEstreno>
+        <OntologiaPeliculas:idiomaPelicula>Inglés</OntologiaPeliculas:idiomaPelicula>
+        <OntologiaPeliculas:nombrePelicula>Jojo Rabbit</OntologiaPeliculas:nombrePelicula>
+        <OntologiaPeliculas:paisPelicula>Estados Unidos</OntologiaPeliculas:paisPelicula>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Joker -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Joker">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Largometraje"/>
+        <OntologiaPeliculas:estaNominadoA rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#PO_Mejor_Pelicula_2020"/>
+        <OntologiaPeliculas:calificacionPelicula rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.3</OntologiaPeliculas:calificacionPelicula>
+        <OntologiaPeliculas:fechaEstreno rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-08-31</OntologiaPeliculas:fechaEstreno>
+        <OntologiaPeliculas:idiomaPelicula>Inglés</OntologiaPeliculas:idiomaPelicula>
+        <OntologiaPeliculas:nombrePelicula>Joker</OntologiaPeliculas:nombrePelicula>
+        <OntologiaPeliculas:paisPelicula>Estados Unidos</OntologiaPeliculas:paisPelicula>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Joseph_Mankiewicz -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Joseph_Mankiewicz">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Persona"/>
+        <OntologiaPeliculas:generoPersona>Masculino</OntologiaPeliculas:generoPersona>
+        <OntologiaPeliculas:nombrePersona>Joseph L. Mankiewicz</OntologiaPeliculas:nombrePersona>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Julia_Ducournau -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Julia_Ducournau">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Persona"/>
+        <OntologiaPeliculas:generoPersona>Femenino</OntologiaPeliculas:generoPersona>
+        <OntologiaPeliculas:nombrePersona>Julia Ducournau</OntologiaPeliculas:nombrePersona>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#LOTR -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#LOTR">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Franquicia"/>
+        <OntologiaPeliculas:basadaEn rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#LOTR_Obra"/>
+        <OntologiaPeliculas:nombreFranquicia>El señor de los anillos</OntologiaPeliculas:nombreFranquicia>
+        <OntologiaPeliculas:tipoFranquicia>Trilogía</OntologiaPeliculas:tipoFranquicia>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#LOTR_El_retorno_del_rey -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#LOTR_El_retorno_del_rey">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Largometraje"/>
+        <OntologiaPeliculas:perteneceAFranquicia rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#LOTR"/>
+        <OntologiaPeliculas:calificacionPelicula rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9</OntologiaPeliculas:calificacionPelicula>
+        <OntologiaPeliculas:nombrePelicula>El señor de los anillos : El retorno del Rey</OntologiaPeliculas:nombrePelicula>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#LOTR_La_comunidad_del_anillo -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#LOTR_La_comunidad_del_anillo">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Largometraje"/>
+        <OntologiaPeliculas:perteneceAFranquicia rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#LOTR"/>
+        <OntologiaPeliculas:calificacionPelicula rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.9</OntologiaPeliculas:calificacionPelicula>
+        <OntologiaPeliculas:fechaEstreno rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2001-12-19</OntologiaPeliculas:fechaEstreno>
+        <OntologiaPeliculas:nombrePelicula>El Señor de los Anillos : la Comunidad del Anillo</OntologiaPeliculas:nombrePelicula>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#LOTR_Las_dos_torres -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#LOTR_Las_dos_torres">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Largometraje"/>
+        <OntologiaPeliculas:perteneceAFranquicia rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#LOTR"/>
+        <OntologiaPeliculas:calificacionPelicula rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.8</OntologiaPeliculas:calificacionPelicula>
+        <OntologiaPeliculas:nombrePelicula>El señor de los anillos : Las dos Torres</OntologiaPeliculas:nombrePelicula>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#LOTR_Obra -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#LOTR_Obra">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Obra"/>
+        <OntologiaPeliculas:autorObra>J.R.R. Tolkien</OntologiaPeliculas:autorObra>
+        <OntologiaPeliculas:nombreObra>El señor de los anillos</OntologiaPeliculas:nombreObra>
+        <OntologiaPeliculas:tipoObra>Libro</OntologiaPeliculas:tipoObra>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#La_forma_del_agua -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#La_forma_del_agua">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Largometraje"/>
+        <OntologiaPeliculas:fechaEstreno rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2017-08-31</OntologiaPeliculas:fechaEstreno>
+        <OntologiaPeliculas:nombrePelicula>La forma del agua</OntologiaPeliculas:nombrePelicula>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Lawrence_of_Arabia -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Lawrence_of_Arabia">
+        <OntologiaPeliculas:dirigidaPor rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#William_Wyler"/>
+        <OntologiaPeliculas:tieneGenero rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Epico_Historico"/>
+        <OntologiaPeliculas:duracionPelicula rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">90</OntologiaPeliculas:duracionPelicula>
+        <OntologiaPeliculas:nombrePelicula>Lawrence of Arabia</OntologiaPeliculas:nombrePelicula>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Leonardo_DiCaprio -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Leonardo_DiCaprio">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Actor"/>
+        <OntologiaPeliculas:actuaEn rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Inception"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Little_Women -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Little_Women">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Largometraje"/>
+        <OntologiaPeliculas:basadaEn rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Mujercitas"/>
+        <OntologiaPeliculas:estaNominadoA rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#PO_Mejor_Pelicula_2020"/>
+        <OntologiaPeliculas:calificacionPelicula rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7</OntologiaPeliculas:calificacionPelicula>
+        <OntologiaPeliculas:fechaEstreno rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-12-07</OntologiaPeliculas:fechaEstreno>
+        <OntologiaPeliculas:idiomaPelicula>Inglés</OntologiaPeliculas:idiomaPelicula>
+        <OntologiaPeliculas:nombrePelicula>Little Women</OntologiaPeliculas:nombrePelicula>
+        <OntologiaPeliculas:paisPelicula>Estados Unidos</OntologiaPeliculas:paisPelicula>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Longfellow_Deeds -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Longfellow_Deeds">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Personaje"/>
+        <OntologiaPeliculas:apareceEn rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Mr_Deeds"/>
+        <OntologiaPeliculas:esInterpretadoPor rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Adam_Sandler"/>
+        <OntologiaPeliculas:nombrePersonaje>Longfellow Deeds</OntologiaPeliculas:nombrePersonaje>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Marriage_Story -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Marriage_Story">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Largometraje"/>
+        <OntologiaPeliculas:estaNominadoA rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#PO_Mejor_Pelicula_2020"/>
+        <OntologiaPeliculas:calificacionPelicula rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.2</OntologiaPeliculas:calificacionPelicula>
+        <OntologiaPeliculas:fechaEstreno rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-08-29</OntologiaPeliculas:fechaEstreno>
+        <OntologiaPeliculas:idiomaPelicula>Inglés</OntologiaPeliculas:idiomaPelicula>
+        <OntologiaPeliculas:nombrePelicula>Marriage_Story</OntologiaPeliculas:nombrePelicula>
+        <OntologiaPeliculas:paisPelicula>Estados Unidos</OntologiaPeliculas:paisPelicula>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Marvel_Comics -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Marvel_Comics">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Franquicia"/>
+        <OntologiaPeliculas:nombreFranquicia>Marvel Comics</OntologiaPeliculas:nombreFranquicia>
+        <OntologiaPeliculas:tipoFranquicia>Cómic</OntologiaPeliculas:tipoFranquicia>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Matt_Damon -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Matt_Damon">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Actor"/>
+        <OntologiaPeliculas:actuaEn rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Interstellar"/>
+        <OntologiaPeliculas:actuaEn rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Oppenheimer"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Matthew_McConaughey -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Matthew_McConaughey">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Actor"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Michael_Newman -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Michael_Newman">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Personaje"/>
+        <OntologiaPeliculas:apareceEn rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Click"/>
+        <OntologiaPeliculas:esInterpretadoPor rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Adam_Sandler"/>
+        <OntologiaPeliculas:nombrePersonaje>Michael Newman</OntologiaPeliculas:nombrePersonaje>
+        <OntologiaPeliculas:rolPersonaje>Protagonista</OntologiaPeliculas:rolPersonaje>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Million_Dollar_Baby -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Million_Dollar_Baby"/>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Misterio -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Misterio">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Genero"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Mr_Deeds -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Mr_Deeds">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Largometraje"/>
+        <OntologiaPeliculas:nombrePelicula>Mr. Deeds</OntologiaPeliculas:nombrePelicula>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Mujercitas -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Mujercitas">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Obra"/>
+        <OntologiaPeliculas:autorObra>Louisa May Alcott</OntologiaPeliculas:autorObra>
+        <OntologiaPeliculas:nombreObra>Mujercitas</OntologiaPeliculas:nombreObra>
+        <OntologiaPeliculas:tipoObra>Libro</OntologiaPeliculas:tipoObra>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Musical -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Musical">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Genero"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Nightmare_Alley -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Nightmare_Alley">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Largometraje"/>
+        <OntologiaPeliculas:fechaEstreno rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-12-01</OntologiaPeliculas:fechaEstreno>
+        <OntologiaPeliculas:nombrePelicula>Nightmare Alley</OntologiaPeliculas:nombrePelicula>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Once_Upon_a_Time_in_Hollywood -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Once_Upon_a_Time_in_Hollywood">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Largometraje"/>
+        <OntologiaPeliculas:estaNominadoA rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#PO_Mejor_Pelicula_2020"/>
+        <OntologiaPeliculas:calificacionPelicula rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.6</OntologiaPeliculas:calificacionPelicula>
+        <OntologiaPeliculas:fechaEstreno rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-05-21</OntologiaPeliculas:fechaEstreno>
+        <OntologiaPeliculas:idiomaPelicula>Inglés</OntologiaPeliculas:idiomaPelicula>
+        <OntologiaPeliculas:nombrePelicula>Once Upon a Time in Hollywood</OntologiaPeliculas:nombrePelicula>
+        <OntologiaPeliculas:paisPelicula>Estados Unidos</OntologiaPeliculas:paisPelicula>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Oppenheimer -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Oppenheimer">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Pelicula"/>
+        <OntologiaPeliculas:calificacionPelicula rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.3</OntologiaPeliculas:calificacionPelicula>
+        <OntologiaPeliculas:duracionPelicula rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">180</OntologiaPeliculas:duracionPelicula>
+        <OntologiaPeliculas:fechaEstreno rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2023-07-21</OntologiaPeliculas:fechaEstreno>
+        <OntologiaPeliculas:nombrePelicula>Oppenheimer</OntologiaPeliculas:nombrePelicula>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Oscar2015 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Oscar2015">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#PremiosOscar"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Oscar2024 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Oscar2024">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#PremiosOscar"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Oscar_MejorPelicula_2014 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Oscar_MejorPelicula_2014"/>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#PO_Mejor_Pelicula_2020 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#PO_Mejor_Pelicula_2020">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Categoria"/>
+        <OntologiaPeliculas:perteneceAPremios rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#PremiosOscar2020"/>
+        <OntologiaPeliculas:nombreCategoria>Mejor Pelicula 2020</OntologiaPeliculas:nombreCategoria>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Paramount_Pictures -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Paramount_Pictures">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Estudio"/>
+        <OntologiaPeliculas:nombreOrganizacion>Paramount Pictures</OntologiaPeliculas:nombreOrganizacion>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Parasite -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Parasite">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Largometraje"/>
+        <OntologiaPeliculas:estaNominadoA rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#PO_Mejor_Pelicula_2020"/>
+        <OntologiaPeliculas:calificacionPelicula rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.5</OntologiaPeliculas:calificacionPelicula>
+        <OntologiaPeliculas:fechaEstreno rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-05-21</OntologiaPeliculas:fechaEstreno>
+        <OntologiaPeliculas:idiomaPelicula>Coreano</OntologiaPeliculas:idiomaPelicula>
+        <OntologiaPeliculas:nombrePelicula>Parasite</OntologiaPeliculas:nombrePelicula>
+        <OntologiaPeliculas:paisPelicula>Corea del Sur</OntologiaPeliculas:paisPelicula>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Peter_Jackson -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Peter_Jackson">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Director"/>
+        <OntologiaPeliculas:esDirectorDe rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#LOTR_La_comunidad_del_anillo"/>
+        <OntologiaPeliculas:generoPersona>Masculino</OntologiaPeliculas:generoPersona>
+        <OntologiaPeliculas:nombrePersona>Peter Robert Jackson</OntologiaPeliculas:nombrePersona>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Pinocchio -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Pinocchio">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Largometraje"/>
+        <OntologiaPeliculas:fechaEstreno rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-10-05</OntologiaPeliculas:fechaEstreno>
+        <OntologiaPeliculas:nombrePelicula>Guillermo del Toro&apos;s Pinocchio</OntologiaPeliculas:nombrePelicula>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Pixar_Animation_Studios -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Pixar_Animation_Studios">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Estudio"/>
+        <OntologiaPeliculas:esProducidaPor rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Pixar_Animation_Studios"/>
+        <OntologiaPeliculas:nombreOrganizacion>Pixar Animation Studios</OntologiaPeliculas:nombreOrganizacion>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#PremiosOscar2020 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#PremiosOscar2020">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#PremiosOscar"/>
+        <OntologiaPeliculas:tieneCategoria rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#PO_Mejor_Pelicula_2020"/>
+        <OntologiaPeliculas:nombreEvento>Premios Oscar 2020</OntologiaPeliculas:nombreEvento>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Quentin_Tarantino -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Quentin_Tarantino">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Director"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Rose_Glass -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Rose_Glass">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Persona"/>
+        <OntologiaPeliculas:generoPersona>Femenino</OntologiaPeliculas:generoPersona>
+        <OntologiaPeliculas:nombrePersona>Rose Glas</OntologiaPeliculas:nombrePersona>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Russo_Brothers -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Russo_Brothers">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Director"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Persona"/>
+        <OntologiaPeliculas:generoPersona>Masculino</OntologiaPeliculas:generoPersona>
+        <OntologiaPeliculas:nombrePersona>Anthony y Joe Russo</OntologiaPeliculas:nombrePersona>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Saint_Maud -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Saint_Maud">
+        <OntologiaPeliculas:dirigidaPor rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Jennifer_Kent"/>
+        <OntologiaPeliculas:tieneGenero rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Horror_Psicologico"/>
+        <OntologiaPeliculas:duracionPelicula rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">85</OntologiaPeliculas:duracionPelicula>
+        <OntologiaPeliculas:nombrePelicula>Saint Maud</OntologiaPeliculas:nombrePelicula>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Sissy_Spacek -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Sissy_Spacek">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Actor"/>
+        <OntologiaPeliculas:interpretaA rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Carrie_White"/>
+        <OntologiaPeliculas:nombrePersona>Sissy Spacek</OntologiaPeliculas:nombrePersona>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Sonny_Koufax -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Sonny_Koufax">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Personaje"/>
+        <OntologiaPeliculas:apareceEn rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Un_papa_genial"/>
+        <OntologiaPeliculas:esInterpretadoPor rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Adam_Sandler"/>
+        <OntologiaPeliculas:nombrePersonaje>Sonny Koufax</OntologiaPeliculas:nombrePersonaje>
+        <OntologiaPeliculas:rolPersonaje>Protagonista</OntologiaPeliculas:rolPersonaje>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Sony_Pictures_Entertainment -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Sony_Pictures_Entertainment">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Estudio"/>
+        <OntologiaPeliculas:nombreOrganizacion>Sony Pictures Entertainment</OntologiaPeliculas:nombreOrganizacion>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Studio_Babelsberg -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Studio_Babelsberg">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Estudio"/>
+        <OntologiaPeliculas:nombreOrganizacion>Studio Babelsberg</OntologiaPeliculas:nombreOrganizacion>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Superman_2025 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Superman_2025">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Largometraje"/>
+        <OntologiaPeliculas:esDistribuidaPor rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Warner_Bros"/>
+        <OntologiaPeliculas:esProducidaPor rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#DC_Studios"/>
+        <OntologiaPeliculas:nombrePelicula>Superman</OntologiaPeliculas:nombrePelicula>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#The_Nightingale -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#The_Nightingale">
+        <OntologiaPeliculas:dirigidaPor rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Rose_Glass"/>
+        <OntologiaPeliculas:tieneGenero rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Horror_Psicologico"/>
+        <OntologiaPeliculas:duracionPelicula rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">108</OntologiaPeliculas:duracionPelicula>
+        <OntologiaPeliculas:nombrePelicula>The Nightingale</OntologiaPeliculas:nombrePelicula>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Tim_Burton -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Tim_Burton">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Director"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Titane -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Titane">
+        <OntologiaPeliculas:dirigidaPor rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Julia_Ducournau"/>
+        <OntologiaPeliculas:tieneGenero rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Horror_Psicologico"/>
+        <OntologiaPeliculas:duracionPelicula rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">108</OntologiaPeliculas:duracionPelicula>
+        <OntologiaPeliculas:nombrePelicula>nombrePelicula</OntologiaPeliculas:nombrePelicula>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Trailer_Wicked_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Trailer_Wicked_2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Trailer"/>
+        <OntologiaPeliculas:perteneceA rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#wicked_2"/>
+        <OntologiaPeliculas:fechaLanzamiento rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-06-04</OntologiaPeliculas:fechaLanzamiento>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Un_gran_dinosaurio -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Un_gran_dinosaurio">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#PeliculaAnimada"/>
+        <OntologiaPeliculas:esProducidaPor rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Pixar_Animation_Studios"/>
+        <OntologiaPeliculas:calificacionPelicula rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">6.7</OntologiaPeliculas:calificacionPelicula>
+        <OntologiaPeliculas:fechaEstreno rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-11-25</OntologiaPeliculas:fechaEstreno>
+        <OntologiaPeliculas:nombrePelicula>Un gran Dinosaurio</OntologiaPeliculas:nombrePelicula>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Un_papa_genial -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Un_papa_genial">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Largometraje"/>
+        <OntologiaPeliculas:nombrePelicula>Un papá genial</OntologiaPeliculas:nombrePelicula>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Walt_Disney_Pictures -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Walt_Disney_Pictures">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Estudio"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Warner_Bros -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Warner_Bros">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Estudio"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Productora"/>
+        <OntologiaPeliculas:nombreOrganizacion>Warner Bros</OntologiaPeliculas:nombreOrganizacion>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#William_Wyler -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#William_Wyler">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Persona"/>
+        <OntologiaPeliculas:generoPersona>Masculino</OntologiaPeliculas:generoPersona>
+        <OntologiaPeliculas:nombrePersona>William Wyler</OntologiaPeliculas:nombrePersona>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#wicked_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#wicked_2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Largometraje"/>
+        <OntologiaPeliculas:tieneGenero rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Fantasia"/>
+        <OntologiaPeliculas:tieneGenero rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Musical"/>
+        <OntologiaPeliculas:fechaEstreno rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-11-21</OntologiaPeliculas:fechaEstreno>
+        <OntologiaPeliculas:nombrePelicula>Wicked 2</OntologiaPeliculas:nombrePelicula>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#1917 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#1917">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Largometraje"/>
+        <OntologiaPeliculas:estaNominadoA rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#PO_Mejor_Pelicula_2020"/>
+        <OntologiaPeliculas:calificacionPelicula rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.2</OntologiaPeliculas:calificacionPelicula>
+        <OntologiaPeliculas:fechaEstreno rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-12-04</OntologiaPeliculas:fechaEstreno>
+        <OntologiaPeliculas:idiomaPelicula>Inglés</OntologiaPeliculas:idiomaPelicula>
+        <OntologiaPeliculas:nombrePelicula>1917</OntologiaPeliculas:nombrePelicula>
+        <OntologiaPeliculas:paisPelicula>Reino Unido</OntologiaPeliculas:paisPelicula>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#20th_Century_Studios -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#20th_Century_Studios">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Estudio"/>
+        <OntologiaPeliculas:nombreOrganizacion>20th Century Studios</OntologiaPeliculas:nombreOrganizacion>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Ubisoft_Film_&amp;_Television -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Ubisoft_Film_&amp;_Television">
+        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Estudio"/>
+        <OntologiaPeliculas:nombreOrganizacion>Ubisoft Film &amp; Television</OntologiaPeliculas:nombreOrganizacion>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
+

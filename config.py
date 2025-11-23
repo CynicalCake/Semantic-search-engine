@@ -3,7 +3,7 @@ import os
 class Config:
     """Configuración base de la aplicación"""
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'dev-secret-key-change-in-production'
-    ONTOLOGY_FILE = 'OntologiaPeliculasV5.owx'
+    ONTOLOGY_FILE = 'OntologiaPeliculasV5.owl'
     DBPEDIA_ENDPOINT = 'http://dbpedia.org/sparql'
     DEBUG = True
     HOST = '127.0.0.1'
