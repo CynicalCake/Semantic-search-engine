@@ -1,0 +1,716 @@
+{% extends "base.html" %}
+
+{% block title %}Debug - Diagnóstico de Ontología{% endblock %}
+
+{% block head %}
+<style>
+    .debug-container {
+        max-width: 1200px;
+        margin: 2rem auto;
+        padding: 0 1rem;
+    }
+    
+    .debug-title {
+        color: var(--primary-color);
+        font-size: 2.2rem;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+    
+    .debug-section {
+        background: var(--card-bg);
+        border: 2px solid var(--border-color);
+        border-radius: var(--border-radius);
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        box-shadow: var(--shadow-medium);
+    }
+    
+    .debug-section h3 {
+        color: var(--accent-color);
+        border-bottom: 2px solid var(--border-color);
+        padding-bottom: 0.5rem;
+        margin-bottom: 1rem;
+        font-size: 1.3rem;
+    }
+    
+    .status-indicator {
+        display: inline-block;
+        padding: 0.3rem 0.8rem;
+        border-radius: 20px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        margin-left: 0.5rem;
+    }
+    
+    .status-success {
+        background-color: #d1fae5;
+        color: #065f46;
+        border: 1px solid #a7f3d0;
+    }
+    
+    .status-error {
+        background-color: #fee2e2;
+        color: #991b1b;
+        border: 1px solid #fca5a5;
+    }
+    
+    .status-warning {
+        background-color: #fef3c7;
+        color: #92400e;
+        border: 1px solid #fde68a;
+    }
+    
+    .loading-attempts {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+    
+    .attempt-card {
+        background: #f8f9fa;
+        border: 1px solid var(--border-color);
+        border-radius: var(--border-radius);
+        padding: 1rem;
+        transition: all 0.2s ease;
+    }
+    
+    .attempt-card:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-medium);
+    }
+    
+    .attempt-success {
+        border-left: 4px solid #22c55e;
+    }
+    
+    .attempt-error {
+        border-left: 4px solid #ef4444;
+    }
+    
+    .code-block {
+        background: #f1f5f9;
+        border: 1px solid #e2e8f0;
+        border-radius: var(--border-radius);
+        padding: 1rem;
+        font-family: 'Courier New', monospace;
+        font-size: 0.85rem;
+        line-height: 1.4;
+        max-height: 400px;
+        overflow-y: auto;
+        white-space: pre-wrap;
+        word-break: break-all;
+    }
+    
+    .info-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+    
+    .info-item {
+        background: #f8f9fa;
+        padding: 0.8rem;
+        border-radius: var(--border-radius);
+        border-left: 3px solid var(--accent-color);
+    }
+    
+    .info-label {
+        font-weight: 600;
+        color: var(--secondary-color);
+        font-size: 0.9rem;
+    }
+    
+    .info-value {
+        color: var(--primary-color);
+        font-size: 1rem;
+        margin-top: 0.2rem;
+    }
+    
+    .recommendations {
+        background: #eff6ff;
+        border: 1px solid #bfdbfe;
+        border-radius: var(--border-radius);
+        padding: 1rem;
+    }
+    
+    .recommendations ul {
+        margin: 0;
+        padding-left: 1.5rem;
+    }
+    
+    .recommendations li {
+        margin-bottom: 0.5rem;
+        color: var(--secondary-color);
+    }
+    
+    .content-sample {
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: var(--border-radius);
+        padding: 1rem;
+        margin-top: 1rem;
+    }
+    
+    .content-sample pre {
+        margin: 0;
+        font-family: 'Courier New', monospace;
+        font-size: 0.8rem;
+        line-height: 1.3;
+        white-space: pre-wrap;
+        color: #475569;
+    }
+    
+    .refresh-btn {
+        background: var(--accent-color);
+        color: white;
+        border: none;
+        padding: 0.8rem 1.5rem;
+        border-radius: var(--border-radius);
+        font-weight: 600;
+        cursor: pointer;
+        margin-bottom: 1rem;
+        transition: all 0.2s ease;
+    }
+    
+    .refresh-btn:hover {
+        background: #0052a3;
+        transform: translateY(-1px);
+    }
+    
+    .loading {
+        text-align: center;
+        color: var(--secondary-color);
+        font-style: italic;
+        padding: 2rem;
+    }
+    
+    .entity-list {
+        max-height: 300px;
+        overflow-y: auto;
+        border: 1px solid var(--border-color);
+        border-radius: var(--border-radius);
+        background: #fafafa;
+    }
+    
+    .entity-item {
+        padding: 0.5rem;
+        border-bottom: 1px solid #f0f0f0;
+        font-size: 0.85rem;
+    }
+    
+    .entity-item:last-child {
+        border-bottom: none;
+    }
+    
+    .entity-uri {
+        color: var(--accent-color);
+        font-weight: 500;
+    }
+    
+    .entity-label {
+        color: var(--secondary-color);
+        margin-left: 0.5rem;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="debug-container">
+    <h1 class="debug-title">🔍 Diagnóstico de Ontología OWX</h1>
+    
+    <button class="refresh-btn" onclick="loadDebugInfo()">
+        🔄 Actualizar Diagnóstico
+    </button>
+    
+    <button class="refresh-btn" onclick="testQuery()" style="background: #28a745; margin-left: 1rem;">
+        🧪 Probar Query de Películas
+    </button>
+    
+    <button class="refresh-btn" onclick="checkGraphStatus()" style="background: #ffc107; color: #000; margin-left: 1rem;">
+        📊 Estado del Grafo
+    </button>
+    
+    <div id="debug-content" class="loading">
+        Cargando información de diagnóstico...
+    </div>
+    
+    <div id="query-results" style="display: none;">
+    </div>
+</div>
+
+<script>
+let debugData = null;
+
+async function loadDebugInfo() {
+    const debugContent = document.getElementById('debug-content');
+    debugContent.innerHTML = '<div class="loading">🔄 Analizando archivo OWX...</div>';
+    
+    try {
+        const response = await fetch('/api/debug/ontology');
+        debugData = await response.json();
+        
+        if (response.ok) {
+            renderDebugInfo(debugData);
+        } else {
+            debugContent.innerHTML = `
+                <div class="debug-section">
+                    <h3>❌ Error en el Diagnóstico</h3>
+                    <p>Error: ${debugData.error || 'Error desconocido'}</p>
+                </div>
+            `;
+        }
+    } catch (error) {
+        debugContent.innerHTML = `
+            <div class="debug-section">
+                <h3>❌ Error de Conexión</h3>
+                <p>No se pudo conectar con el servidor: ${error.message}</p>
+            </div>
+        `;
+    }
+}
+
+function renderDebugInfo(data) {
+    const debugContent = document.getElementById('debug-content');
+    
+    let html = '';
+    
+    // Información del archivo
+    html += `
+        <div class="debug-section">
+            <h3>📁 Información del Archivo</h3>
+            ${renderFileInfo(data.file_info)}
+        </div>
+    `;
+    
+    // Análisis de contenido
+    if (data.content_analysis && data.content_analysis.first_lines) {
+        html += `
+            <div class="debug-section">
+                <h3>🔍 Análisis de Contenido</h3>
+                ${renderContentAnalysis(data.content_analysis)}
+            </div>
+        `;
+    }
+    
+    // Intentos de carga
+    html += `
+        <div class="debug-section">
+            <h3>⚙️ Intentos de Carga por Formato</h3>
+            ${renderLoadingAttempts(data.loading_attempts)}
+        </div>
+    `;
+    
+    // Estado del grafo actual
+    html += `
+        <div class="debug-section">
+            <h3>📊 Estado Actual del Grafo</h3>
+            ${renderCurrentGraph(data.current_graph)}
+        </div>
+    `;
+    
+    // Contenido del grafo (si se cargó exitosamente)
+    if (data.graph_content && Object.keys(data.graph_content).length > 0) {
+        html += `
+            <div class="debug-section">
+                <h3>🎬 Contenido de la Ontología</h3>
+                ${renderGraphContent(data.graph_content)}
+            </div>
+        `;
+    }
+    
+    // Recomendaciones
+    if (data.recommendations && data.recommendations.length > 0) {
+        html += `
+            <div class="debug-section">
+                <h3>💡 Recomendaciones</h3>
+                <div class="recommendations">
+                    <ul>
+                        ${data.recommendations.map(rec => `<li>${rec}</li>`).join('')}
+                    </ul>
+                </div>
+            </div>
+        `;
+    }
+    
+    debugContent.innerHTML = html;
+}
+
+function renderFileInfo(fileInfo) {
+    if (!fileInfo.exists) {
+        return `
+            <div class="status-indicator status-error">Archivo no encontrado</div>
+            <p><strong>Ruta:</strong> ${fileInfo.path}</p>
+        `;
+    }
+    
+    return `
+        <div class="info-grid">
+            <div class="info-item">
+                <div class="info-label">Estado</div>
+                <div class="info-value">
+                    <span class="status-indicator status-success">Archivo existe</span>
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Tamaño</div>
+                <div class="info-value">${fileInfo.size_kb} KB (${fileInfo.size_bytes} bytes)</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Última modificación</div>
+                <div class="info-value">${fileInfo.last_modified}</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Extensión</div>
+                <div class="info-value">${fileInfo.extension}</div>
+            </div>
+        </div>
+        <p><strong>Ruta:</strong> <code>${fileInfo.path}</code></p>
+    `;
+}
+
+function renderContentAnalysis(analysis) {
+    let html = '';
+    
+    // Formatos detectados
+    if (analysis.detected_formats) {
+        html += `
+            <h4>Formatos Detectados:</h4>
+            <div class="info-grid">
+                ${Object.entries(analysis.detected_formats).map(([format, detected]) => `
+                    <div class="info-item">
+                        <div class="info-label">${format}</div>
+                        <div class="info-value">
+                            <span class="status-indicator ${detected ? 'status-success' : 'status-error'}">
+                                ${detected ? '✅ Detectado' : '❌ No detectado'}
+                            </span>
+                        </div>
+                    </div>
+                `).join('')}
+            </div>
+        `;
+    }
+    
+    // Estadísticas del contenido
+    if (analysis.stats) {
+        html += `
+            <h4>Estadísticas del Contenido:</h4>
+            <div class="info-grid">
+                <div class="info-item">
+                    <div class="info-label">Caracteres totales</div>
+                    <div class="info-value">${analysis.stats.total_characters}</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Líneas analizadas</div>
+                    <div class="info-value">${analysis.stats.total_lines_sampled}</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Tags XML</div>
+                    <div class="info-value">${analysis.stats.xml_tags_count}</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Contiene español</div>
+                    <div class="info-value">
+                        <span class="status-indicator ${analysis.stats.contains_spanish ? 'status-success' : 'status-warning'}">
+                            ${analysis.stats.contains_spanish ? '✅ Sí' : '⚠️ No detectado'}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+    
+    // Primeras líneas del archivo
+    if (analysis.first_lines) {
+        html += `
+            <h4>Primeras Líneas del Archivo:</h4>
+            <div class="content-sample">
+                <pre>${analysis.first_lines.join('\n')}</pre>
+            </div>
+        `;
+    }
+    
+    return html;
+}
+
+function renderLoadingAttempts(attempts) {
+    return `
+        <div class="loading-attempts">
+            ${attempts.map(attempt => `
+                <div class="attempt-card ${attempt.success ? 'attempt-success' : 'attempt-error'}">
+                    <h4>${attempt.format.toUpperCase()}</h4>
+                    <div class="status-indicator ${attempt.success ? 'status-success' : 'status-error'}">
+                        ${attempt.success ? '✅ Éxito' : '❌ Error'}
+                    </div>
+                    ${attempt.success ? `
+                        <p><strong>Triples cargados:</strong> ${attempt.triples_loaded}</p>
+                        <p><strong>Tiempo:</strong> ${attempt.execution_time_ms} ms</p>
+                    ` : `
+                        <p><strong>Error:</strong></p>
+                        <div class="code-block" style="margin-top: 0.5rem; font-size: 0.75rem;">
+                            ${attempt.error}
+                        </div>
+                    `}
+                </div>
+            `).join('')}
+        </div>
+    `;
+}
+
+function renderCurrentGraph(graphInfo) {
+    return `
+        <div class="info-grid">
+            <div class="info-item">
+                <div class="info-label">Estado</div>
+                <div class="info-value">
+                    <span class="status-indicator ${graphInfo.loaded ? 'status-success' : 'status-error'}">
+                        ${graphInfo.loaded ? '✅ Cargado' : '❌ No cargado'}
+                    </span>
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Triples en memoria</div>
+                <div class="info-value">${graphInfo.triples}</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Namespaces</div>
+                <div class="info-value">${graphInfo.namespaces ? graphInfo.namespaces.length : 0}</div>
+            </div>
+        </div>
+        
+        ${graphInfo.namespaces && graphInfo.namespaces.length > 0 ? `
+            <h4>Namespaces Encontrados:</h4>
+            <div class="entity-list">
+                ${graphInfo.namespaces.map(ns => `
+                    <div class="entity-item">
+                        <span class="entity-uri">${ns.prefix || 'default'}:</span>
+                        <span class="entity-label">${ns.uri}</span>
+                    </div>
+                `).join('')}
+            </div>
+        ` : ''}
+    `;
+}
+
+function renderGraphContent(content) {
+    let html = '';
+    
+    // Clases encontradas
+    if (content.classes && content.classes.length > 0) {
+        html += `
+            <h4>🏷️ Clases Encontradas (${content.classes.length}):</h4>
+            <div class="entity-list">
+                ${content.classes.map(cls => `
+                    <div class="entity-item">
+                        <span class="entity-uri">${cls.local_name}</span>
+                        <span class="entity-label">${cls.label}</span>
+                    </div>
+                `).join('')}
+            </div>
+        `;
+    }
+    
+    // Propiedades encontradas
+    if (content.properties && content.properties.length > 0) {
+        html += `
+            <h4>🔗 Propiedades Encontradas (${content.properties.length}):</h4>
+            <div class="entity-list">
+                ${content.properties.map(prop => `
+                    <div class="entity-item">
+                        <span class="entity-uri">${prop.local_name}</span>
+                        <span class="entity-label">${prop.label}</span>
+                    </div>
+                `).join('')}
+            </div>
+        `;
+    }
+    
+    // Películas encontradas
+    if (content.movies_found && content.movies_found.length > 0) {
+        html += `
+            <h4>🎬 Películas Encontradas (${content.movies_found.length}):</h4>
+            <div class="entity-list">
+                ${content.movies_found.map(movie => `
+                    <div class="entity-item">
+                        <span class="entity-uri">${movie.local_name}</span>
+                        <span class="entity-label">${movie.title}</span>
+                        <br><small>Tipo: ${movie.type}</small>
+                    </div>
+                `).join('')}
+            </div>
+        `;
+    }
+    
+    // Muestra de triples
+    if (content.sample_triples && content.sample_triples.length > 0) {
+        html += `
+            <h4>📄 Muestra de Triples:</h4>
+            <div class="entity-list">
+                ${content.sample_triples.map(triple => `
+                    <div class="entity-item">
+                        <div><strong>S:</strong> ${triple.subject}</div>
+                        <div><strong>P:</strong> ${triple.predicate}</div>
+                        <div><strong>O:</strong> ${triple.object}</div>
+                    </div>
+                `).join('')}
+            </div>
+        `;
+    }
+    
+    return html || '<p>No se pudo analizar el contenido del grafo.</p>';
+}
+
+async function testQuery() {
+    const queryResults = document.getElementById('query-results');
+    queryResults.style.display = 'block';
+    queryResults.innerHTML = '<div class="loading">🧪 Probando query de películas...</div>';
+    
+    try {
+        const response = await fetch('/api/debug/test-query');
+        const data = await response.json();
+        
+        if (response.ok) {
+            let html = `
+                <div class="debug-section">
+                    <h3>🧪 Resultado de Query de Prueba</h3>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <div class="info-label">Películas encontradas</div>
+                            <div class="info-value">
+                                <span class="status-indicator ${data.total_found > 0 ? 'status-success' : 'status-error'}">
+                                    ${data.total_found} películas
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    ${data.movies && data.movies.length > 0 ? `
+                        <h4>🎬 Películas en la Ontología:</h4>
+                        <div class="entity-list">
+                            ${data.movies.map(movie => `
+                                <div class="entity-item">
+                                    <span class="entity-uri">${movie.titulo}</span>
+                                    <br><small>${movie.uri}</small>
+                                </div>
+                            `).join('')}
+                        </div>
+                    ` : '<p>❌ No se encontraron películas en la ontología.</p>'}
+                    
+                    <h4>📄 Query SPARQL Utilizada:</h4>
+                    <div class="code-block">
+                        ${data.query_used || 'No disponible'}
+                    </div>
+                    
+                    ${data.error ? `
+                        <div class="status-indicator status-error" style="display: block; margin-top: 1rem;">
+                            Error: ${data.error}
+                        </div>
+                    ` : ''}
+                </div>
+            `;
+            
+            queryResults.innerHTML = html;
+        } else {
+            queryResults.innerHTML = `
+                <div class="debug-section">
+                    <h3>❌ Error en Query de Prueba</h3>
+                    <p>Error: ${data.error || 'Error desconocido'}</p>
+                </div>
+            `;
+        }
+    } catch (error) {
+        queryResults.innerHTML = `
+            <div class="debug-section">
+                <h3>❌ Error de Conexión</h3>
+                <p>No se pudo conectar con el servidor: ${error.message}</p>
+            </div>
+        `;
+    }
+}
+
+async function checkGraphStatus() {
+    const queryResults = document.getElementById('query-results');
+    queryResults.style.display = 'block';
+    queryResults.innerHTML = '<div class="loading">📊 Verificando estado del grafo...</div>';
+    
+    try {
+        const response = await fetch('/api/debug/graph-status');
+        const data = await response.json();
+        
+        if (response.ok) {
+            let html = `
+                <div class="debug-section">
+                    <h3>📊 Estado del Grafo RDF</h3>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <div class="info-label">Grafo cargado</div>
+                            <div class="info-value">
+                                <span class="status-indicator ${data.graph_loaded ? 'status-success' : 'status-error'}">
+                                    ${data.graph_loaded ? '✅ Sí' : '❌ No'}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Triples en memoria</div>
+                            <div class="info-value">
+                                <span class="status-indicator ${data.graph_size > 0 ? 'status-success' : 'status-error'}">
+                                    ${data.graph_size} triples
+                                </span>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Archivo ontología</div>
+                            <div class="info-value">${data.ontology_file}</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Ruta ontología</div>
+                            <div class="info-value">${data.ontology_path}</div>
+                        </div>
+                    </div>
+                    
+                    ${data.namespaces && data.namespaces.length > 0 ? `
+                        <h4>🌐 Namespaces del Grafo:</h4>
+                        <div class="entity-list">
+                            ${data.namespaces.map(ns => `
+                                <div class="entity-item">
+                                    <span class="entity-uri">${ns.prefix}:</span>
+                                    <span class="entity-label">${ns.uri}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    ` : '<p>❌ No hay namespaces en el grafo.</p>'}
+                    
+                    ${data.error ? `
+                        <div class="status-indicator status-error" style="display: block; margin-top: 1rem;">
+                            Error: ${data.error}
+                        </div>
+                    ` : ''}
+                </div>
+            `;
+            
+            queryResults.innerHTML = html;
+        } else {
+            queryResults.innerHTML = `
+                <div class="debug-section">
+                    <h3>❌ Error verificando estado</h3>
+                    <p>Error: ${data.error || 'Error desconocido'}</p>
+                </div>
+            `;
+        }
+    } catch (error) {
+        queryResults.innerHTML = `
+            <div class="debug-section">
+                <h3>❌ Error de Conexión</h3>
+                <p>No se pudo conectar con el servidor: ${error.message}</p>
+            </div>
+        `;
+    }
+}
+
+// Cargar información al cargar la página
+document.addEventListener('DOMContentLoaded', loadDebugInfo);
+</script>
+{% endblock %}
