@@ -3,6 +3,7 @@ import logging
 import os
 import time
 from typing import List, Dict, Optional
+from services.mapping import PROPERTY_MAPPING, RELATION_MAPPING, LOCAL_NS
 
 logger = logging.getLogger(__name__)
 
@@ -483,3 +484,56 @@ class OntologyService:
             logger.error(f"Error analizando contenido del grafo: {e}")
             
         return analysis
+
+    def populate_from_dbpedia(self, dbpedia_rows: list, save_to: str = None):
+        from rdflib import URIRef, Literal, RDF
+
+        created = 0
+
+        for dbp_movie in dbpedia_rows:
+
+            # 1) Crear URI de película
+            movie_title = dbp_movie.get("rdfs:label", "PeliculaDesconocida")
+            movie_uri = URIRef(LOCAL_NS + movie_title.replace(" ", "_"))
+
+            # Declarar tipo Pelicula
+            self.graph.add((movie_uri, RDF.type, self.namespace["Pelicula"]))
+
+            # 2) Propiedades literales simples
+            for dbp_prop, local_prop in PROPERTY_MAPPING.items():
+                if dbp_prop in dbp_movie:
+                    self.graph.add((movie_uri, self.namespace[local_prop], Literal(dbp_movie[dbp_prop])))
+
+            # 3) Relaciones con actores / directores / distribuidores
+            for dbp_rel, rel_map in RELATION_MAPPING.items():
+
+                if dbp_rel not in dbp_movie:
+                    continue
+
+                entries = dbp_movie[dbp_rel]
+                if not isinstance(entries, list):
+                    entries = [entries]
+
+                for entry in entries:
+
+                    # Crear individuo (actor, director, etc.)
+                    ind_uri = URIRef(LOCAL_NS + entry["nombre"].replace(" ", "_"))
+                    self.graph.add((ind_uri, RDF.type, self.namespace[rel_map["local_class"]]))
+
+                    # Asignar propiedades mapeadas
+                    for local_attr, dbp_attr in rel_map["properties"].items():
+
+                        # soporte para: nombre, dbo:nombre, etc.
+                        value = entry.get(dbp_attr, entry.get(dbp_attr.split(":")[-1], "Desconocido"))
+
+                        self.graph.add((ind_uri, self.namespace[local_attr], Literal(value)))
+
+                    # Relación película → actor/director/etc.
+                    self.graph.add((movie_uri, self.namespace[rel_map["local_property"]], ind_uri))
+
+            created += 1
+
+        if save_to:
+            self.graph.serialize(save_to, format="xml")
+
+        return {"inserted": created}

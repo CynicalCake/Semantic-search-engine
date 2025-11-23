@@ -14,7 +14,7 @@ class DBpediaService:
         self.sparql = SPARQLWrapper(endpoint)
         self.sparql.setReturnFormat(JSON)
         
-    def search_movies(self, term: str, language: str = "es", limit: int = 10) -> List[Dict]:
+    def search_movies(self, term: str, language: str = "es", limit: int = 20) -> List[Dict]:
         """
         Busca películas en DBpedia
         
@@ -115,6 +115,7 @@ class DBpediaService:
                 movies.append(movie)
             
             logger.info(f"Encontradas {len(movies)} películas en DBpedia para '{term}' ({language})")
+            print(movies)
             return movies
             
         except Exception as e:
