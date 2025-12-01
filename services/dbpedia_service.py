@@ -186,6 +186,100 @@ class DBpediaService:
             
         return None
     
+    def search_movies_semantic(
+        self,
+        actor=None,
+        director=None,
+        year=None,
+        genre=None,
+        language: str = "es",
+        limit: int = 20
+    ):
+        try:
+            filters = []
+
+            # --- FILTRO POR ACTOR ---
+            if actor:
+                actor_safe = actor.replace('"', '\\"')
+                filters.append(f'?actor rdfs:label "{actor_safe}"@{language} .')
+                filters.append(f'?film ?pActor ?actor .')
+                filters.append('FILTER(?pActor IN (dbo:starring, dbo:castMember, dbp:starring, dbo:actor))')
+
+            # --- FILTRO POR DIRECTOR ---
+            if director:
+                director_safe = director.replace('"', '\\"')
+                filters.append(f'?dir rdfs:label "{director_safe}"@{language} .')
+                filters.append(f'?film dbo:director ?dir .')
+
+            # --- FILTRO POR AÑO ---
+            if year:
+                filters.append('?film dbo:releaseDate ?rd .')
+                filters.append(f'FILTER( STRSTARTS(STR(?rd), "{year}") )')
+
+            # --- FILTRO POR GÉNERO ---
+            if genre:
+                genre_safe = genre.replace('"', '\\"')
+                filters.append('?film dbo:genre ?g .')
+                filters.append(f'?g rdfs:label "{genre_safe}"@{language} .')
+
+            filter_block = "\n".join(filters)
+
+            # SPARQL FINAL
+            query = f"""
+            PREFIX dbo: <http://dbpedia.org/ontology/>
+            PREFIX dbp: <http://dbpedia.org/property/>
+            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+            SELECT DISTINCT ?film ?title ?releaseDate ?runtime ?directorName WHERE {{
+                ?film rdf:type dbo:Film .
+                ?film rdfs:label ?title .
+                FILTER(lang(?title) = "{language}")
+
+                OPTIONAL {{ ?film dbo:releaseDate ?releaseDate }}
+                OPTIONAL {{ ?film dbo:runtime ?runtime }}
+                OPTIONAL {{
+                    ?film dbo:director ?d .
+                    ?d rdfs:label ?directorName .
+                    FILTER(lang(?directorName) = "{language}")
+                }}
+
+                {filter_block}
+            }}
+            LIMIT {limit}
+            """
+
+            return self._run_sparql(query)
+
+        except Exception as e:
+            logger.error(f"Error en dbpedia search_movies_by_actor('{actor}') : {e}", exc_info=True)
+            return []
+
+    def _run_sparql(self, query):
+        try:
+            response = requests.get(
+                "https://dbpedia.org/sparql",
+                params={"query": query, "format": "json"},
+                timeout=8
+            )
+            data = response.json()
+
+            results = []
+            for b in data["results"]["bindings"]:
+                results.append({
+                    "uri": b.get("film", {}).get("value"),
+                    "titulo": b.get("title", {}).get("value"),
+                    "director": b.get("directorName", {}).get("value"),
+                    "anio": b.get("releaseDate", {}).get("value"),
+                    "duracion": b.get("runtime", {}).get("value"),
+                    "fuente": "DBpedia"
+                })
+
+            return results
+
+        except Exception as e:
+            logger.error(f"Error en _run_sparql: {e}", exc_info=True)
+            return []
+
     def search_directors(self, term: str, language: str = "es", limit: int = 5) -> List[Dict]:
         """
         Busca directores en DBpedia

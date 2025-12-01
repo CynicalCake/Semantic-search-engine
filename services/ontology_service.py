@@ -129,6 +129,78 @@ class OntologyService:
             logger.error(f"Error en búsqueda directa para '{term}': {e}")
             return []
     
+    def search_movies_semantic(self, actor=None, director=None, year=None, genre=None, language="es"):
+        try:
+            filters = ""
+
+            if actor:
+                filters += f'    ?movie ont:tieneActor ?actorURI .\n'
+                filters += f'    ?actorURI ont:nombrePersona "{actor}" .\n'
+
+            if director:
+                filters += f'    ?movie ont:dirigidaPor ?directorURI .\n'
+                filters += f'    ?directorURI ont:nombrePersona "{director}" .\n'
+
+            if year:
+                filters += f'    ?movie ont:anioEstreno {year} .\n'
+
+            if genre:
+                filters += f'    ?movie ont:tieneGenero ?genreURI .\n'
+                filters += f'    ?genreURI ont:nombreGenero "{genre}" .\n'
+
+            query = f"""
+            PREFIX ont: <http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#>
+            PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+            SELECT DISTINCT ?movie ?titulo ?directorName ?anio ?genreName
+            WHERE {{
+                ?movie ont:nombrePelicula ?titulo .
+
+                OPTIONAL {{ ?movie ont:dirigidaPor ?d2 . ?d2 ont:nombrePersona ?directorName }}
+                OPTIONAL {{ ?movie ont:anioEstreno ?anio }}
+                OPTIONAL {{ ?movie ont:tieneGenero ?g2 . ?g2 ont:nombreGenero ?genreName }}
+
+                {filters}
+            }}
+            LIMIT 50
+            """
+
+            print("DEBUG LOCAL: Ejecutando consulta para termino:", actor)
+
+            return self.run_sparql(query)
+
+        except Exception as e:
+            logger.error(f"Error en search_movies_semantic: {e}", exc_info=True)
+            return []
+
+    def run_sparql(self, query: str):
+        try:
+            results = self.graph.query(query)
+            parsed = []
+
+            for row in results:
+                movie_uri = str(row.get("movie", ""))
+                title = str(row.get("titulo", ""))
+                director = str(row.get("directorName", "")) if row.get("directorName") else None
+                year = str(row.get("anio", "")) if row.get("anio") else None
+                genre = str(row.get("genreName", "")) if row.get("genreName") else None
+
+                parsed.append({
+                    "uri": movie_uri,
+                    "titulo": title,
+                    "director": director,
+                    "anio": year,
+                    "genero": genre,
+                    "tipo": "local"
+                })
+            print("DEBUG: Películas encontradas:", parsed)
+            return parsed
+
+        except Exception as e:
+            self.logger.error(f"Error ejecutando SPARQL: {e}\n{query}")
+            return []
+
+
     def get_movie_details(self, movie_uri: str) -> Optional[Dict]:
         """Obtiene detalles completos de una película específica"""
         query = f"""

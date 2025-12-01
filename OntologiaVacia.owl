@@ -7,9 +7,7 @@
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:OntologiaPeliculas="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#">
-    <owl:Ontology rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas">
-        <owl:imports rdf:resource="file:/C:/Users/esteb/Documents/Cosas%20U/Web%20Semánticas/Ontologías/instancias_Roberto_Gamboa%20(1).ttl"/>
-    </owl:Ontology>
+    <owl:Ontology rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas"/>
     
 
 
@@ -283,6 +281,15 @@
     
 
 
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#anioPelicula -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#anioPelicula">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Pelicula"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#autorObra -->
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#autorObra">
@@ -359,6 +366,15 @@
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#fechaLanzamiento">
         <rdfs:domain rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#RecursosMultimedia"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#fechaNacimiento -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#fechaNacimiento">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Persona"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
     </owl:DatatypeProperty>
     
@@ -764,89 +780,6 @@
     <owl:Class rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Trailer">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#RecursosMultimedia"/>
     </owl:Class>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Individuals
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Clint_Eastwood -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Clint_Eastwood">
-        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Persona"/>
-        <OntologiaPeliculas:edadPersona rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">97</OntologiaPeliculas:edadPersona>
-        <OntologiaPeliculas:generoPersona>generoPersona</OntologiaPeliculas:generoPersona>
-        <OntologiaPeliculas:nacionalidadPersona>generoPersona</OntologiaPeliculas:nacionalidadPersona>
-        <OntologiaPeliculas:nombrePersona>Clint Eastwood</OntologiaPeliculas:nombrePersona>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#David_Lean -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#David_Lean">
-        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Persona"/>
-        <OntologiaPeliculas:generoPersona>Masculino</OntologiaPeliculas:generoPersona>
-        <OntologiaPeliculas:nombrePersona>David Lean</OntologiaPeliculas:nombrePersona>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Jennifer_Kent -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Jennifer_Kent">
-        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Persona"/>
-        <OntologiaPeliculas:generoPersona>Femenino</OntologiaPeliculas:generoPersona>
-        <OntologiaPeliculas:nombrePersona>Julia Ducournau</OntologiaPeliculas:nombrePersona>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Joseph_Mankiewicz -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Joseph_Mankiewicz">
-        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Persona"/>
-        <OntologiaPeliculas:generoPersona>Masculino</OntologiaPeliculas:generoPersona>
-        <OntologiaPeliculas:nombrePersona>Joseph L. Mankiewicz</OntologiaPeliculas:nombrePersona>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Julia_Ducournau -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Julia_Ducournau">
-        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Persona"/>
-        <OntologiaPeliculas:generoPersona>Femenino</OntologiaPeliculas:generoPersona>
-        <OntologiaPeliculas:nombrePersona>Julia Ducournau</OntologiaPeliculas:nombrePersona>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Rose_Glass -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Rose_Glass">
-        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Persona"/>
-        <OntologiaPeliculas:generoPersona>Femenino</OntologiaPeliculas:generoPersona>
-        <OntologiaPeliculas:nombrePersona>Rose Glas</OntologiaPeliculas:nombrePersona>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#William_Wyler -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#William_Wyler">
-        <rdf:type rdf:resource="http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Persona"/>
-        <OntologiaPeliculas:generoPersona>Masculino</OntologiaPeliculas:generoPersona>
-        <OntologiaPeliculas:nombrePersona>William Wyler</OntologiaPeliculas:nombrePersona>
-    </owl:NamedIndividual>
 </rdf:RDF>
 
 

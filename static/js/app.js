@@ -30,7 +30,7 @@ class CinemaSearch {
         
         if (searchInput) {
             // Búsqueda en tiempo real con debounce
-            searchInput.addEventListener('input', (e) => this.handleLiveSearch(e));
+            //searchInput.addEventListener('input', (e) => this.handleLiveSearch(e));
             
             // Limpiar resultados cuando se borra el input
             searchInput.addEventListener('focus', () => this.handleInputFocus());
@@ -95,40 +95,80 @@ class CinemaSearch {
      */
     async performSearch(term, language) {
         if (this.isSearching) return;
-        
+
         this.isSearching = true;
         this.showLoading(true);
         this.hideResults();
-        
+
         try {
-            const response = await fetch(`/api/search?term=${encodeURIComponent(term)}&lang=${language}`);
-            
+            const lower = term.toLowerCase();
+
+            // --- Detectar si la búsqueda es SEMÁNTICA ---
+            const isSemantic =
+                lower.includes("actuó") ||
+                lower.includes("actor") ||
+                lower.includes("actriz") ||
+                lower.includes("dirig") ||
+                lower.includes("películas de") ||
+                lower.includes("en que pelicula") ||
+                lower.includes("pelicula de") ||
+                lower.includes("director") ||
+                lower.includes("año") ||
+                lower.includes("estrenada") ||
+                lower.match(/(19|20)\d{2}/); // detectar año
+
+            let url = "";
+
+            if (isSemantic) {
+                //BÚSQUEDA SEMÁNTICA
+                url = `/api/semantic_search?q=${encodeURIComponent(term)}&lang=${language}`;
+                console.log("➡ Usando búsqueda SEMÁNTICA:", url);
+            } else {
+                //BÚSQUEDA NORMAL
+                url = `/api/search?term=${encodeURIComponent(term)}&lang=${language}`;
+                console.log("➡ Usando búsqueda NORMAL:", url);
+            }
+
+            // --- Ejecutar petición ---
+            const response = await fetch(url);
+
             if (!response.ok) {
                 throw new Error(`HTTP ${response.status}: ${response.statusText}`);
             }
-            
+
             const data = await response.json();
-            
+
             if (data.error) {
                 throw new Error(data.error);
             }
-            
-            this.currentResults = {
-                local: data.local || [],
-                external: data.external || [],
-                all: [...(data.local || []), ...(data.external || [])]
-            };
-            
+
+            // --- Unificar resultados ---
+            if (isSemantic) {
+                this.currentResults = {
+                    local: data.local || [],
+                    external: data.external || [],
+                    all: [...(data.local || []), ...(data.external || [])]
+                };
+            } else {
+                this.currentResults = {
+                    local: data.local || [],
+                    external: data.external || [],
+                    all: [...(data.local || []), ...(data.external || [])]
+                };
+            }
+
             this.displayResults();
-            
+
         } catch (error) {
-            console.error('Error en la búsqueda:', error);
+            console.error("Error en la búsqueda:", error);
             this.showError(error.message);
+
         } finally {
             this.isSearching = false;
             this.showLoading(false);
         }
     }
+
 
     /**
      * Muestra el indicador de carga
@@ -246,6 +286,62 @@ class CinemaSearch {
             </div>
         `;
     }
+
+
+    /**
+     * Crea una tarjeta HTML para una persona
+     */
+    createPersonCard(person) {
+        const sourceClass = person.tipo === 'local' ? 'local' : 'external';
+        const sourceText = person.fuente || (person.tipo === 'local' ? 'Ontología Local' : 'DBpedia');
+
+        return `
+            <div class="person-card ${sourceClass}">
+                
+                <h3 class="person-name">${this.escapeHtml(person.nombre)}</h3>
+
+                ${person.descripcion ? `
+                    <p class="person-description">
+                        ${this.escapeHtml(person.descripcion)}
+                    </p>
+                ` : ''}
+
+                <div class="person-details mb-2">
+                    
+                    ${person.fechaNacimiento ? `
+                        <div class="detail-item">
+                            <small class="text-muted">
+                                Fecha de nacimiento: ${this.escapeHtml(person.fechaNacimiento)}
+                            </small>
+                        </div>
+                    ` : ''}
+
+                    ${person.ocupacion ? `
+                        <div class="detail-item">
+                            <small class="text-muted">
+                                Ocupación: ${this.escapeHtml(person.ocupacion)}
+                            </small>
+                        </div>
+                    ` : ''}
+
+                </div>
+
+                <div class="person-meta">
+                    <span class="source-badge ${sourceClass}">
+                        ${sourceText}
+                    </span>
+
+                    ${person.uri ? `
+                        <a href="${person.uri}" target="_blank" class="btn btn-outline-secondary btn-sm">
+                            Ver más
+                        </a>
+                    ` : ''}
+                </div>
+
+            </div>
+        `;
+    }
+
 
     /**
      * Genera HTML para estado vacío

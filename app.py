@@ -1,6 +1,8 @@
 from flask import Flask, request, render_template, jsonify
 from services.ontology_service import OntologyService
 from services.dbpedia_service import DBpediaService
+from services.ner_service import NERService
+from services.intent_service import IntentService
 from config import Config
 from datetime import datetime
 import logging
@@ -14,6 +16,8 @@ app.config.from_object(Config)
 # Inicializar servicios
 ontology_service = OntologyService(app.config['ONTOLOGY_FILE'])
 dbpedia_service = DBpediaService()
+ner_service = NERService()
+intent_service = IntentService()
 
 @app.route('/')
 def index():
@@ -163,6 +167,88 @@ def api_search():
         logger.error(f"Error en búsqueda: {e}")
         return jsonify({'error': 'Error interno del servidor'}), 500
 
+@app.route('/api/semantic_search')
+def semantic_search():
+    language = request.args.get('lang', 'es')
+
+    try:
+        query = request.args.get("q", "").strip()
+
+        if not query:
+            return jsonify({"error": "Se requiere parámetro ?q"}), 400
+
+        # --- 1. Inicializar SIEMPRE las variables ---
+        actor = None
+        director = None
+        year = None
+        genre = None
+
+        # --- 2. NLP ---
+        entities = ner_service.extract_persons(query)
+        intent_data = intent_service.detect_intent(query)
+        intent = intent_data["intent"]
+
+        # Año y género detectados
+        year = intent_service.detect_year(query)
+        genre = intent_service.detect_genre(query)
+
+        if not intent:
+            return jsonify({
+                "error": "No se pudo entender la intención de la consulta",
+                "debug": {
+                    "entities": entities,
+                    "intent_detected": intent_data
+                }
+            }), 400
+
+        # --- 3. Selección según intención ---
+        if intent == "movie_by_actor":
+            if entities:
+                actor = entities[0]
+
+        elif intent == "movie_by_director":
+            if entities:
+                director = entities[0]
+
+        elif intent == "movie_by_genre":
+            pass  # ya tenemos genre
+
+        elif intent == "movie_by_year":
+            pass  # ya tenemos year
+
+        # --- 4. Llamadas a servicios semánticos con filtros combinados ---
+        local_results = ontology_service.search_movies_semantic(
+            actor=actor,
+            director=director,
+            year=year,
+            genre=genre
+        )
+
+        # Solo buscar en DBpedia si hay actor
+        external_results = dbpedia_service.search_movies_semantic(
+            actor=actor,
+            director=director,
+            year=year,
+            genre=genre,
+            language=language
+        )
+        return jsonify({
+            "query": query,
+            "intent": intent,
+            "entities": entities,
+            "year": year,
+            "genre": genre,
+            "local_count": len(local_results),
+            "external_count": len(external_results),
+            "local": local_results,
+            "external": external_results,
+            "total": len(local_results) + len(external_results)
+        })
+
+    except Exception as e:
+        logger.error(f"Error en semantic_search: {e}", exc_info=True)
+        return jsonify({"error": str(e)}), 500
+
 @app.route('/api/stats')
 def api_stats():
     """Estadísticas de la ontología"""
@@ -212,6 +298,25 @@ def handle_exception(error):
     """Maneja excepciones no controladas"""
     logger.error(f"Excepción no controlada: {error}", exc_info=True)
     return render_template('errors/500.html'), 500
+
+
+def merge_results(local, external):
+    """
+    Une resultados evitando duplicados por título.
+    """
+    merged = []
+    seen = set()
+
+    for m in local + external:
+        title = m.get("title") or m.get("nombre") or ""
+        key = title.lower().strip()
+
+        if key not in seen:
+            seen.add(key)
+            merged.append(m)
+
+    return merged
+
 
 if __name__ == '__main__':
     logger.info("Iniciando CinemaSearch - Buscador Semántico de Películas")

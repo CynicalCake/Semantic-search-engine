@@ -280,6 +280,30 @@ body {
     font-size: 0.8rem;
 }
 
+.person-card {
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.person-card.local {
+    border-left: 4px solid #28a745;
+}
+
+.person-card.external {
+    border-left: 4px solid #007bff;
+}
+
+.person-name {
+    margin-bottom: 5px;
+}
+
+.person-description {
+    color: #555;
+}
+
 .source-badge {
     padding: 0.2rem 0.5rem;
     border-radius: 3px;
