@@ -105,7 +105,7 @@ class CinemaSearch {
 
             // --- Detectar si la búsqueda es SEMÁNTICA ---
             const isSemantic =
-                lower.includes("actuó") ||
+                lower.includes("actuo") ||
                 lower.includes("actor") ||
                 lower.includes("actriz") ||
                 lower.includes("dirig") ||

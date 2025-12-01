@@ -177,7 +177,7 @@ def semantic_search():
         if not query:
             return jsonify({"error": "Se requiere parámetro ?q"}), 400
 
-        # --- 1. Inicializar SIEMPRE las variables ---
+        # --- 1. Inicializar variables ---
         actor = None
         director = None
         year = None
@@ -185,38 +185,48 @@ def semantic_search():
 
         # --- 2. NLP ---
         entities = ner_service.extract_persons(query)
-        intent_data = intent_service.detect_intent(query)
-        intent = intent_data["intent"]
 
-        # Año y género detectados
+        # Intentos múltiples
+        intent_data = intent_service.detect_intent(query)
+        intents = intent_data["intents"]
+
+        # Entidades detectadas por reglas
+        actor = intent_service.detect_actor(query)
+        director = intent_service.detect_director(query)
         year = intent_service.detect_year(query)
         genre = intent_service.detect_genre(query)
 
-        if not intent:
+        # Si hay entidades de NER, úsalas también
+        if entities:
+            if intents["movie_by_actor"] and not actor:
+                actor = ner_service.match_entity_after_keyword(
+                    query, "actor", entities
+                )
+                if not actor:
+                    actor = ner_service.match_entity_after_keyword(
+                        query, "actriz", entities
+                    )
+
+            if intents["movie_by_director"] and not director:
+                director = ner_service.match_entity_after_keyword(
+                    query, "director", entities
+                )
+                if not director:
+                    director = ner_service.match_entity_after_keyword(
+                        query, "dirigida por", entities
+                    )
+
+        # Si no se detectó ninguna intención
+        if not any(intents.values()):
             return jsonify({
                 "error": "No se pudo entender la intención de la consulta",
                 "debug": {
                     "entities": entities,
-                    "intent_detected": intent_data
+                    "intent_detected": intents
                 }
             }), 400
 
-        # --- 3. Selección según intención ---
-        if intent == "movie_by_actor":
-            if entities:
-                actor = entities[0]
-
-        elif intent == "movie_by_director":
-            if entities:
-                director = entities[0]
-
-        elif intent == "movie_by_genre":
-            pass  # ya tenemos genre
-
-        elif intent == "movie_by_year":
-            pass  # ya tenemos year
-
-        # --- 4. Llamadas a servicios semánticos con filtros combinados ---
+        # --- 3. Búsqueda semántica combinada ---
         local_results = ontology_service.search_movies_semantic(
             actor=actor,
             director=director,
@@ -224,7 +234,6 @@ def semantic_search():
             genre=genre
         )
 
-        # Solo buscar en DBpedia si hay actor
         external_results = dbpedia_service.search_movies_semantic(
             actor=actor,
             director=director,
@@ -232,14 +241,22 @@ def semantic_search():
             genre=genre,
             language=language
         )
+
+        # --- 4. Respuesta ---
         return jsonify({
             "query": query,
-            "intent": intent,
+
+            "intents_detected": intents,
+
             "entities": entities,
+            "actor": actor,
+            "director": director,
             "year": year,
             "genre": genre,
+
             "local_count": len(local_results),
             "external_count": len(external_results),
+
             "local": local_results,
             "external": external_results,
             "total": len(local_results) + len(external_results)
@@ -248,6 +265,7 @@ def semantic_search():
     except Exception as e:
         logger.error(f"Error en semantic_search: {e}", exc_info=True)
         return jsonify({"error": str(e)}), 500
+
 
 @app.route('/api/stats')
 def api_stats():

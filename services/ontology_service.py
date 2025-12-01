@@ -165,7 +165,7 @@ class OntologyService:
             LIMIT 50
             """
 
-            print("DEBUG LOCAL: Ejecutando consulta para termino:", actor)
+            print("DEBUG LOCAL: Ejecutando consulta para termino:", "actor : ", actor, "director : ", director, "año: ", year)
 
             return self.run_sparql(query)
 
@@ -193,7 +193,7 @@ class OntologyService:
                     "genero": genre,
                     "tipo": "local"
                 })
-            print("DEBUG: Películas encontradas:", parsed)
+            print("DEBUG LOCAL: Películas encontradas:", parsed)
             return parsed
 
         except Exception as e:

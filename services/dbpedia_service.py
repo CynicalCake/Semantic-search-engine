@@ -209,7 +209,9 @@ class DBpediaService:
             if director:
                 director_safe = director.replace('"', '\\"')
                 filters.append(f'?dir rdfs:label "{director_safe}"@{language} .')
-                filters.append(f'?film dbo:director ?dir .')
+                filters.append(f'?film ?pDirector ?dir .')
+                filters.append('FILTER(?pDirector IN (dbo:director, dbp:director))')
+
 
             # --- FILTRO POR AÑO ---
             if year:
