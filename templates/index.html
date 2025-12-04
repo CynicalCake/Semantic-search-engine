@@ -5,6 +5,13 @@
     <div class="container">
         <h1 class="search-title" data-i18n="searchTitle">PELÍCULAS</h1>
         <p class="search-subtitle" data-i18n="searchSubtitle">Buscador semántico de películas</p>
+        
+        <!-- Indicador de conectividad -->
+        <div class="connectivity-indicator mb-3">
+            <span id="connectivity-status" class="badge bg-secondary">
+                <i class="fas fa-wifi"></i> Verificando...
+            </span>
+        </div>
 
         <!-- Formulario de búsqueda principal -->
         <div class="search-form">
@@ -68,6 +75,12 @@
                             <span data-i18n="tabExternal">DBpedia</span> (<span id="externalCount">0</span>)
                         </button>
                     </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="reduced-tab" data-bs-toggle="pill" data-bs-target="#reduced-pane"
+                            type="button" role="tab">
+                            <span data-i18n="tabReduced">DBpedia Local</span> (<span id="reducedCount">0</span>)
+                        </button>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -82,6 +95,9 @@
             </div>
             <div class="tab-pane fade" id="external-pane" role="tabpanel">
                 <div id="externalResults" class="results-grid"></div>
+            </div>
+            <div class="tab-pane fade" id="reduced-pane" role="tabpanel">
+                <div id="reducedResults" class="results-grid"></div>
             </div>
         </div>
     </div>

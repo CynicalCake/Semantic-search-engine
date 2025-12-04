@@ -1,11 +1,13 @@
 from flask import Flask, request, render_template, jsonify
 from services.ontology_service import OntologyService
 from services.dbpedia_service import DBpediaService
+from services.dbpedia_reduced_service import DBpediaReducedService
 from services.ner_service import NERService
 from services.intent_service import IntentService
 from config import Config
 from datetime import datetime
 import logging
+import requests
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -16,8 +18,23 @@ app.config.from_object(Config)
 # Inicializar servicios
 ontology_service = OntologyService(app.config['ONTOLOGY_FILE'])
 dbpedia_service = DBpediaService()
+dbpedia_reduced_service = DBpediaReducedService()
 ner_service = NERService()
 intent_service = IntentService()
+
+def check_internet_connectivity():
+    """Verifica si hay conectividad a internet"""
+    try:
+        # Intentar conectar a DBpedia con timeout corto
+        response = requests.get('http://dbpedia.org/sparql', timeout=3)
+        return response.status_code == 200
+    except:
+        try:
+            # Fallback: intentar con Google DNS
+            response = requests.get('http://8.8.8.8', timeout=2)
+            return True
+        except:
+            return False
 
 @app.route('/')
 def index():
@@ -145,9 +162,28 @@ def graph_status():
             'graph_size': 0
         }), 500
 
+@app.route('/api/connectivity')
+def api_connectivity():
+    """Verifica el estado de conectividad"""
+    try:
+        is_online = check_internet_connectivity()
+        return jsonify({
+            'online': is_online,
+            'status': 'connected' if is_online else 'offline',
+            'timestamp': str(datetime.now())
+        })
+    except Exception as e:
+        logger.error(f"Error verificando conectividad: {e}")
+        return jsonify({
+            'online': False,
+            'status': 'offline',
+            'error': str(e),
+            'timestamp': str(datetime.now())
+        })
+
 @app.route('/api/search')
 def api_search():
-    """Endpoint API para búsquedas AJAX"""
+    """Endpoint API para búsquedas AJAX con comportamiento adaptativo según conectividad"""
     term = request.args.get('term', '')
     language = request.args.get('lang', 'es')
     
@@ -155,13 +191,28 @@ def api_search():
         return jsonify({'error': 'Término de búsqueda requerido'}), 400
     
     try:
-        local_results = ontology_service.search_movies(term)
-        external_results = dbpedia_service.search_movies(term, language)
+        # Verificar conectividad
+        is_online = check_internet_connectivity()
+        
+        if is_online:
+            # Conectado: solo DBpedia online
+            logger.info("Búsqueda en modo online: usando solo DBpedia")
+            local_results = []
+            external_results = dbpedia_service.search_movies(term, language)
+            reduced_results = []
+        else:
+            # Sin conexión: solo fuentes offline (local + DBpedia reducida)
+            logger.info("Búsqueda en modo offline: usando ontología local y DBpedia reducida")
+            local_results = ontology_service.search_movies(term)
+            external_results = []
+            reduced_results = dbpedia_reduced_service.search_movies(term)
         
         return jsonify({
             'local': local_results,
             'external': external_results,
-            'total': len(local_results) + len(external_results)
+            'reduced': reduced_results,
+            'total': len(local_results) + len(external_results) + len(reduced_results),
+            'online_mode': is_online
         })
     except Exception as e:
         logger.error(f"Error en búsqueda: {e}")
@@ -226,21 +277,37 @@ def semantic_search():
                 }
             }), 400
 
-        # --- 3. Búsqueda semántica combinada ---
-        local_results = ontology_service.search_movies_semantic(
-            actor=actor,
-            director=director,
-            year=year,
-            genre=genre
-        )
-
-        external_results = dbpedia_service.search_movies_semantic(
-            actor=actor,
-            director=director,
-            year=year,
-            genre=genre,
-            language=language
-        )
+        # --- 3. Búsqueda semántica combinada con comportamiento adaptativo ---
+        is_online = check_internet_connectivity()
+        
+        if is_online:
+            # Conectado: solo DBpedia online
+            logger.info("Búsqueda semántica en modo online: usando solo DBpedia")
+            local_results = []
+            external_results = dbpedia_service.search_movies_semantic(
+                actor=actor,
+                director=director,
+                year=year,
+                genre=genre,
+                language=language
+            )
+            reduced_results = []
+        else:
+            # Sin conexión: solo fuentes offline (local + DBpedia reducida)
+            logger.info("Búsqueda semántica en modo offline: usando ontología local y DBpedia reducida")
+            local_results = ontology_service.search_movies_semantic(
+                actor=actor,
+                director=director,
+                year=year,
+                genre=genre
+            )
+            external_results = []
+            reduced_results = dbpedia_reduced_service.search_movies_semantic(
+                actor=actor,
+                director=director,
+                year=year,
+                genre=genre
+            )
 
         # --- 4. Respuesta ---
         return jsonify({
@@ -256,10 +323,13 @@ def semantic_search():
 
             "local_count": len(local_results),
             "external_count": len(external_results),
+            "reduced_count": len(reduced_results),
 
             "local": local_results,
             "external": external_results,
-            "total": len(local_results) + len(external_results)
+            "reduced": reduced_results,
+            "total": len(local_results) + len(external_results) + len(reduced_results),
+            "online_mode": is_online
         })
 
     except Exception as e:
@@ -287,10 +357,14 @@ def api_health():
         # Verificar DBpedia
         dbpedia_status = dbpedia_service.health_check()
         
+        # Verificar DBpedia reducida
+        reduced_status = dbpedia_reduced_service.health_check()
+        
         return jsonify({
-            'status': 'healthy' if local_status else 'partial',
+            'status': 'healthy' if (local_status and reduced_status) else 'partial',
             'local_ontology': local_status,
             'dbpedia': dbpedia_status,
+            'dbpedia_reduced': reduced_status,
             'timestamp': str(datetime.now())
         })
     except Exception as e:
@@ -299,6 +373,74 @@ def api_health():
             'status': 'unhealthy',
             'error': str(e)
         }), 500
+
+@app.route('/api/reduced/stats')
+def api_reduced_stats():
+    """Estadísticas de DBpedia reducida"""
+    try:
+        stats = dbpedia_reduced_service.get_stats()
+        return jsonify(stats)
+    except Exception as e:
+        logger.error(f"Error obteniendo estadísticas de DBpedia reducida: {e}")
+        return jsonify({'error': 'Error obteniendo estadísticas'}), 500
+
+@app.route('/api/reduced/update', methods=['POST'])
+def api_reduced_update():
+    """Fuerza actualización de DBpedia reducida"""
+    try:
+        dbpedia_reduced_service.force_update()
+        return jsonify({
+            'status': 'success',
+            'message': 'Actualización iniciada',
+            'timestamp': str(datetime.now())
+        })
+    except Exception as e:
+        logger.error(f"Error actualizando DBpedia reducida: {e}")
+        return jsonify({'error': 'Error en actualización'}), 500
+
+@app.route('/api/reduced/expand', methods=['POST'])
+def api_reduced_expand():
+    """Expande la base de datos de DBpedia reducida"""
+    try:
+        data = request.get_json() or {}
+        additional_movies = data.get('additional_movies', 1000)
+        
+        # Validar límite razonable
+        if additional_movies > 5000:
+            additional_movies = 5000
+        elif additional_movies < 100:
+            additional_movies = 100
+            
+        added_count = dbpedia_reduced_service.expand_database(additional_movies)
+        current_stats = dbpedia_reduced_service.get_stats()
+        
+        return jsonify({
+            'status': 'success',
+            'message': f'Base de datos expandida con {added_count} películas',
+            'added_movies': added_count,
+            'total_movies': current_stats['peliculas'],
+            'total_triples': current_stats['triples_total'],
+            'timestamp': str(datetime.now())
+        })
+    except Exception as e:
+        logger.error(f"Error expandiendo DBpedia reducida: {e}")
+        return jsonify({'error': 'Error expandiendo base de datos'}), 500
+
+@app.route('/api/reduced/recommendations')
+def api_reduced_recommendations():
+    """Obtiene recomendaciones de tamaño para la base de datos"""
+    try:
+        recommendations = dbpedia_reduced_service.get_recommended_size()
+        current_count = dbpedia_reduced_service.get_movie_count()
+        
+        return jsonify({
+            'current_movies': current_count,
+            'recommendations': recommendations,
+            'timestamp': str(datetime.now())
+        })
+    except Exception as e:
+        logger.error(f"Error obteniendo recomendaciones: {e}")
+        return jsonify({'error': 'Error obteniendo recomendaciones'}), 500
 
 @app.errorhandler(404)
 def not_found_error(error):
@@ -342,7 +484,7 @@ if __name__ == '__main__':
     logger.info(f"Debug mode: {app.config.get('DEBUG', False)}")
     
     app.run(
-        debug=app.config.get('DEBUG', False),
+        debug=False,  # Temporal: desactivar debug para evitar problemas con spacy
         host=app.config.get('HOST', '127.0.0.1'),
         port=app.config.get('PORT', 5000)
     )

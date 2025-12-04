@@ -8,13 +8,16 @@ class CinemaSearch {
         this.currentResults = {
             local: [],
             external: [],
+            reduced: [],
             all: []
         };
         this.isSearching = false;
         this.debounceTimer = null;
+        this.connectivityStatus = null;
         
         this.initializeEventListeners();
         this.loadInitialStats();
+        this.startConnectivityMonitoring();
     }
 
     /**
@@ -147,13 +150,15 @@ class CinemaSearch {
                 this.currentResults = {
                     local: data.local || [],
                     external: data.external || [],
-                    all: [...(data.local || []), ...(data.external || [])]
+                    reduced: data.reduced || [],
+                    all: [...(data.local || []), ...(data.external || []), ...(data.reduced || [])]
                 };
             } else {
                 this.currentResults = {
                     local: data.local || [],
                     external: data.external || [],
-                    all: [...(data.local || []), ...(data.external || [])]
+                    reduced: data.reduced || [],
+                    all: [...(data.local || []), ...(data.external || []), ...(data.reduced || [])]
                 };
             }
 
@@ -200,6 +205,7 @@ class CinemaSearch {
         this.renderMovieResults('allResults', this.currentResults.all);
         this.renderMovieResults('localResults', this.currentResults.local);
         this.renderMovieResults('externalResults', this.currentResults.external);
+        this.renderMovieResults('reducedResults', this.currentResults.reduced);
         
         // Mostrar la sección de resultados
         resultsSection?.classList.remove('d-none');
@@ -214,10 +220,12 @@ class CinemaSearch {
         const allCount = document.getElementById('allCount');
         const localCount = document.getElementById('localCount');
         const externalCount = document.getElementById('externalCount');
+        const reducedCount = document.getElementById('reducedCount');
         
         if (allCount) allCount.textContent = this.currentResults.all.length;
         if (localCount) localCount.textContent = this.currentResults.local.length;
         if (externalCount) externalCount.textContent = this.currentResults.external.length;
+        if (reducedCount) reducedCount.textContent = this.currentResults.reduced.length;
     }
 
     /**
@@ -242,8 +250,26 @@ class CinemaSearch {
      * Crea una tarjeta HTML para una película
      */
     createMovieCard(movie) {
-        const sourceClass = movie.tipo === 'local' ? 'local' : 'external';
-        const sourceText = movie.fuente || (movie.tipo === 'local' ? 'Ontología Local' : 'DBpedia');
+        let sourceClass = 'external';
+        let sourceText = 'DBpedia';
+        
+        if (movie.tipo === 'local') {
+            sourceClass = 'local';
+            sourceText = 'Ontología Local';
+        } else if (movie.tipo === 'reduced') {
+            sourceClass = 'reduced';
+            sourceText = 'DBpedia Reducida';
+        }
+        
+        // Usar el texto de fuente si está disponible
+        if (movie.fuente) {
+            sourceText = movie.fuente;
+        }
+        
+        // Determinar si mostrar el botón "Ver más"
+        // No mostrar para fuentes offline (local y reduced)
+        const shouldShowMoreButton = movie.uri && 
+            (movie.tipo !== 'local' && movie.tipo !== 'reduced');
         
         return `
             <div class="movie-card ${sourceClass}">
@@ -277,7 +303,7 @@ class CinemaSearch {
                     <span class="source-badge ${sourceClass}">
                         ${sourceText}
                     </span>
-                    ${movie.uri ? `
+                    ${shouldShowMoreButton ? `
                         <a href="${movie.uri}" target="_blank" class="btn btn-outline-secondary btn-sm">
                             Ver más
                         </a>
@@ -413,7 +439,7 @@ class CinemaSearch {
      * Limpia todos los resultados
      */
     clearResults() {
-        this.currentResults = { local: [], external: [], all: [] };
+        this.currentResults = { local: [], external: [], reduced: [], all: [] };
         this.hideResults();
         this.hideError();
     }
@@ -554,6 +580,100 @@ class CinemaSearch {
      */
     log(message, data = null) {
         console.log(`[CinemaSearch] ${message}`, data);
+    }
+
+    /**
+     * Verifica el estado de DBpedia reducida
+     */
+    async checkReducedStatus() {
+        try {
+            const response = await fetch('/api/reduced/stats');
+            const stats = await response.json();
+            
+            if (stats.peliculas === 0) {
+                console.log('DBpedia reducida está descargando datos...');
+                return false;
+            }
+            return true;
+        } catch (error) {
+            console.error('Error verificando estado de DBpedia reducida:', error);
+            return false;
+        }
+    }
+
+    /**
+     * Fuerza actualización de DBpedia reducida
+     */
+    async forceReducedUpdate() {
+        try {
+            this.showLoading(true);
+            const response = await fetch('/api/reduced/update', {
+                method: 'POST'
+            });
+            const result = await response.json();
+            
+            if (result.status === 'success') {
+                this.showAlert('Actualización de DBpedia reducida iniciada', 'success');
+            } else {
+                this.showAlert('Error al iniciar actualización', 'danger');
+            }
+        } catch (error) {
+            console.error('Error forzando actualización:', error);
+            this.showAlert('Error al contactar el servidor', 'danger');
+        } finally {
+            this.showLoading(false);
+        }
+    }
+    
+    /**
+     * Inicia el monitoreo de conectividad
+     */
+    startConnectivityMonitoring() {
+        // Verificar conectividad inmediatamente
+        this.checkConnectivity();
+        
+        // Verificar cada 5 segundos
+        setInterval(() => {
+            this.checkConnectivity();
+        }, 5000);
+    }
+    
+    /**
+     * Verifica el estado de conectividad
+     */
+    async checkConnectivity() {
+        try {
+            const response = await fetch('/api/connectivity');
+            const data = await response.json();
+            
+            this.connectivityStatus = data.online;
+            this.updateConnectivityIndicator(data);
+            
+        } catch (error) {
+            console.error('Error verificando conectividad:', error);
+            this.connectivityStatus = false;
+            this.updateConnectivityIndicator({
+                online: false,
+                status: 'offline',
+                error: 'Error de conexión'
+            });
+        }
+    }
+    
+    /**
+     * Actualiza el indicador visual de conectividad
+     */
+    updateConnectivityIndicator(data) {
+        const indicator = document.getElementById('connectivity-status');
+        if (!indicator) return;
+        
+        if (data.online) {
+            indicator.className = 'badge bg-success';
+            indicator.innerHTML = '<i class="fas fa-wifi"></i> Conectado - Búsqueda online';
+        } else {
+            indicator.className = 'badge bg-warning';
+            indicator.innerHTML = '<i class="fas fa-wifi-slash"></i> Sin conexión - Búsqueda offline';
+        }
     }
 }
 

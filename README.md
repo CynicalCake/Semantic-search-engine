@@ -5,10 +5,28 @@ Un buscador avanzado de películas que combina ontologías locales con datos enl
 ## ✨ Características
 
 - **🔍 Búsqueda Híbrida**: Combina datos de tu ontología local con información de DBpedia
+- **📦 DBpedia Reducida**: Base de datos local con un subconjunto específico de películas de DBpedia
 - **🌍 Multiidioma**: Soporte para español, inglés, francés y alemán
 - **⚡ Interfaz Moderna**: Diseño responsivo con Bootstrap 5 y JavaScript ES6+
 - **📊 Estadísticas en Tiempo Real**: Visualización de métricas de la ontología
 - **🎨 Experiencia de Usuario Optimizada**: Búsqueda en tiempo real y animaciones fluidas
+
+## 🎯 Nueva Característica: DBpedia Reducida
+
+### ¿Qué es DBpedia Reducida?
+
+DBpedia Reducida es una base de datos local que contiene un **subconjunto específico de películas descargado desde DBpedia**. Esta característica te proporciona:
+
+- **📱 Acceso Offline**: Consulta datos de películas sin conexión a internet
+- **⚡ Rapidez**: Búsquedas más rápidas que las consultas en línea a DBpedia
+- **🔄 Actualización Periódica**: Los datos se actualizan automáticamente cada semana
+- **🎬 Datos Curados**: Solo películas con información completa (director, año, etc.)
+
+### Tres Fuentes de Datos
+
+1. **🏠 Ontología Local**: Tus datos personalizados (verde)
+2. **🌐 DBpedia Online**: Consultas en tiempo real (azul)
+3. **💾 DBpedia Reducida**: Subconjunto local de DBpedia (morado)
 
 ## 🏗️ Arquitectura
 
@@ -18,6 +36,7 @@ Un buscador avanzado de películas que combina ontologías locales con datos enl
 - **`services/`**: Servicios especializados
   - `ontology_service.py`: Manejo de la ontología local
   - `dbpedia_service.py`: Consultas a DBpedia
+  - `dbpedia_reduced_service.py`: **NUEVO** - Manejo de DBpedia reducida
 
 ### Frontend
 - **Templates Jinja2** con Bootstrap 5
@@ -26,7 +45,8 @@ Un buscador avanzado de películas que combina ontologías locales con datos enl
 
 ### Datos
 - **Ontología local**: Archivo OWL/OWX con datos estructurados
-- **DBpedia**: Base de conocimiento enlazado externa
+- **DBpedia Online**: Base de conocimiento enlazado externa
+- **DBpedia Reducida**: Archivos locales (`dbpedia_reduced.ttl` y `dbpedia_reduced_metadata.json`)
 
 ## 🚀 Instalación
 
@@ -75,6 +95,57 @@ python app.py
 
 La aplicación estará disponible en: `http://127.0.0.1:5000`
 
+### Funcionalidades Principales
+
+#### 🔍 Búsqueda de Películas
+1. **Búsqueda Simple**: Ingresa el título de una película
+2. **Navegación por Pestañas**: 
+   - **Todos**: Resultados combinados de las tres fuentes
+   - **Local**: Solo resultados de tu ontología personal
+   - **DBpedia**: Solo resultados de consultas online a DBpedia
+   - **DBpedia Local**: Solo resultados de la base reducida local
+
+### ⚙️ Gestión de DBpedia Reducida
+- **Descarga Automática**: La primera vez que ejecutes la app, se descargarán ~2000 películas
+- **Actualización Semanal**: Los datos se actualizan automáticamente
+- **Expansión de Base**: Agrega más películas según tus necesidades
+- **Estrategias de Descarga**:
+  - Películas recientes (2000-2025)
+  - Películas clásicas (1980-1999) 
+  - Directores populares (Spielberg, Nolan, etc.)
+  - Películas por género
+
+#### 🎯 Tamaños Recomendados
+- **Pequeña**: 500 películas (desarrollo/pruebas)
+- **Mediana**: 2,000 películas (uso académico) ⭐ Recomendado
+- **Grande**: 5,000 películas (aplicaciones de producción)
+- **Completa**: 10,000+ películas (investigación)
+
+#### 📱 Gestor de Base de Datos
+
+```bash
+# Ver estado actual
+python manage_dbpedia.py status
+
+# Configuración rápida a tamaño mediano
+python manage_dbpedia.py setup mediana
+
+# Expandir a 3000 películas
+python manage_dbpedia.py expand 3000
+
+# Actualizar completamente
+python manage_dbpedia.py update
+
+# Modo interactivo (recomendado)
+python manage_dbpedia.py
+```
+
+#### 🧠 Búsqueda Semántica
+Usa consultas en lenguaje natural como:
+- "Películas dirigidas por Spielberg"
+- "Filmes de acción del 2020"
+- "Películas con Leonardo DiCaprio"
+
 ### Endpoints API
 
 | Endpoint | Método | Descripción |
@@ -82,12 +153,44 @@ La aplicación estará disponible en: `http://127.0.0.1:5000`
 | `/` | GET | Página principal |
 | `/about` | GET | Información del proyecto |
 | `/api/search` | GET | Búsqueda de películas |
+| `/api/semantic_search` | GET | Búsqueda semántica |
 | `/api/stats` | GET | Estadísticas de la ontología |
 | `/api/health` | GET | Estado del servicio |
+| `/api/reduced/stats` | GET | **NUEVO** - Estadísticas de DBpedia reducida |
+| `/api/reduced/update` | POST | **NUEVO** - Forzar actualización |
+| `/api/reduced/expand` | POST | **NUEVO** - Expandir base de datos |
+| `/api/reduced/recommendations` | GET | **NUEVO** - Recomendaciones de tamaño |
 
 ### Parámetros de Búsqueda
 - `term`: Término de búsqueda (requerido)
 - `lang`: Idioma (es, en, fr, de) - por defecto: es
+- `q`: Query en lenguaje natural para búsqueda semántica
+
+### Prueba del Sistema
+
+```bash
+# Probar DBpedia Reducida
+python test_dbpedia_reduced.py
+
+# Gestionar la base de datos
+python manage_dbpedia.py
+
+# Probar endpoints de la aplicación
+python test_endpoints.py
+```
+
+### Ejemplos de Expansión
+
+```bash
+# Configuración rápida para uso académico (2000 películas)
+python manage_dbpedia.py setup mediana
+
+# Para aplicaciones más robustas (5000 películas)
+python manage_dbpedia.py setup grande
+
+# Expansión personalizada
+python manage_dbpedia.py expand 3500
+```
 
 ## 🔧 Tecnologías Utilizadas
 

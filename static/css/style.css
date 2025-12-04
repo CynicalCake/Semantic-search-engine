@@ -307,6 +307,10 @@ body {
     border-left: 4px solid var(--accent-color);
 }
 
+.movie-card.reduced {
+    border-left: 4px solid #6f42c1;
+}
+
 .movie-title {
     font-size: 1.25rem;
     font-weight: 700;
@@ -403,6 +407,11 @@ body {
 
 .source-badge.external {
     background-color: var(--accent-color);
+    color: white;
+}
+
+.source-badge.reduced {
+    background-color: #6f42c1;
     color: white;
 }
 
@@ -634,4 +643,33 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
     background: #e67e22;
+}
+
+/* ===== INDICADOR DE CONECTIVIDAD ===== */
+.connectivity-indicator {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.connectivity-indicator .badge {
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    transition: var(--transition);
+}
+
+.connectivity-indicator .badge.bg-success {
+    background-color: var(--success-color) !important;
+}
+
+.connectivity-indicator .badge.bg-warning {
+    background-color: var(--warning-color) !important;
+}
+
+.connectivity-indicator .badge.bg-secondary {
+    background-color: var(--muted-color) !important;
+}
+
+.connectivity-indicator .fas {
+    margin-right: 0.5rem;
 }
