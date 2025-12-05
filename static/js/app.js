@@ -1,6 +1,6 @@
 /**
  * CinemaSearch - Aplicación de búsqueda semántica de películas
- * Maneja la interacción con APIs y la actualización dinámica de la interfaz
+ * Versión con sistema de internacionalización integrado
  */
 
 class CinemaSearch {
@@ -14,7 +14,15 @@ class CinemaSearch {
         this.isSearching = false;
         this.debounceTimer = null;
         this.connectivityStatus = null;
-        
+
+        // Esperar a que i18n esté disponible
+        if (window.i18nManager) {
+            this.i18n = window.i18nManager;
+            this.i18n.initialize();
+        } else {
+            console.error('Sistema i18n no disponible');
+        }
+
         this.initializeEventListeners();
         this.loadInitialStats();
         this.startConnectivityMonitoring();
@@ -26,19 +34,28 @@ class CinemaSearch {
     initializeEventListeners() {
         const searchForm = document.getElementById('searchForm');
         const searchInput = document.getElementById('searchTerm');
-        
+        const langSelector = document.getElementById('language');
+
         if (searchForm) {
             searchForm.addEventListener('submit', (e) => this.handleSearch(e));
         }
-        
+
         if (searchInput) {
-            // Búsqueda en tiempo real con debounce
-            //searchInput.addEventListener('input', (e) => this.handleLiveSearch(e));
-            
-            // Limpiar resultados cuando se borra el input
             searchInput.addEventListener('focus', () => this.handleInputFocus());
         }
-        
+
+        // Listener para cambio de idioma
+        if (langSelector) {
+            langSelector.addEventListener('change', (e) => {
+                this.i18n.setLanguage(e.target.value);
+
+                // Si hay resultados, re-renderizarlos en el nuevo idioma
+                if (this.currentResults.all.length > 0) {
+                    this.displayResults();
+                }
+            });
+        }
+
         // Manejar cambios de pestaña
         const tabButtons = document.querySelectorAll('[data-bs-toggle="pill"]');
         tabButtons.forEach(button => {
@@ -51,36 +68,16 @@ class CinemaSearch {
      */
     async handleSearch(event) {
         event.preventDefault();
-        
+
         const searchTerm = document.getElementById('searchTerm').value.trim();
         const language = document.getElementById('language').value;
-        
+
         if (!searchTerm) {
-            this.showAlert('Por favor ingresa un término de búsqueda', 'warning');
+            this.showAlert(this.i18n.t('enterSearchTerm'), 'warning');
             return;
         }
-        
-        await this.performSearch(searchTerm, language);
-    }
 
-    /**
-     * Maneja la búsqueda en tiempo real con debounce
-     */
-    handleLiveSearch(event) {
-        const searchTerm = event.target.value.trim();
-        
-        if (this.debounceTimer) {
-            clearTimeout(this.debounceTimer);
-        }
-        
-        if (searchTerm.length >= 3) {
-            this.debounceTimer = setTimeout(() => {
-                const language = document.getElementById('language').value;
-                this.performSearch(searchTerm, language);
-            }, 500);
-        } else if (searchTerm.length === 0) {
-            this.clearResults();
-        }
+        await this.performSearch(searchTerm, language);
     }
 
     /**
@@ -106,7 +103,7 @@ class CinemaSearch {
         try {
             const lower = term.toLowerCase();
 
-            // --- Detectar si la búsqueda es SEMÁNTICA ---
+            // Detectar si la búsqueda es SEMÁNTICA
             const isSemantic =
                 lower.includes("actuo") ||
                 lower.includes("actor") ||
@@ -118,21 +115,18 @@ class CinemaSearch {
                 lower.includes("director") ||
                 lower.includes("año") ||
                 lower.includes("estrenada") ||
-                lower.match(/(19|20)\d{2}/); // detectar año
+                lower.match(/(19|20)\d{2}/);
 
             let url = "";
 
             if (isSemantic) {
-                //BÚSQUEDA SEMÁNTICA
                 url = `/api/semantic_search?q=${encodeURIComponent(term)}&lang=${language}`;
                 console.log("➡ Usando búsqueda SEMÁNTICA:", url);
             } else {
-                //BÚSQUEDA NORMAL
                 url = `/api/search?term=${encodeURIComponent(term)}&lang=${language}`;
                 console.log("➡ Usando búsqueda NORMAL:", url);
             }
 
-            // --- Ejecutar petición ---
             const response = await fetch(url);
 
             if (!response.ok) {
@@ -145,22 +139,12 @@ class CinemaSearch {
                 throw new Error(data.error);
             }
 
-            // --- Unificar resultados ---
-            if (isSemantic) {
-                this.currentResults = {
-                    local: data.local || [],
-                    external: data.external || [],
-                    reduced: data.reduced || [],
-                    all: [...(data.local || []), ...(data.external || []), ...(data.reduced || [])]
-                };
-            } else {
-                this.currentResults = {
-                    local: data.local || [],
-                    external: data.external || [],
-                    reduced: data.reduced || [],
-                    all: [...(data.local || []), ...(data.external || []), ...(data.reduced || [])]
-                };
-            }
+            this.currentResults = {
+                local: data.local || [],
+                external: data.external || [],
+                reduced: data.reduced || [],
+                all: [...(data.local || []), ...(data.external || []), ...(data.reduced || [])]
+            };
 
             this.displayResults();
 
@@ -173,7 +157,6 @@ class CinemaSearch {
             this.showLoading(false);
         }
     }
-
 
     /**
      * Muestra el indicador de carga
@@ -191,23 +174,20 @@ class CinemaSearch {
     displayResults() {
         const resultsSection = document.getElementById('resultsSection');
         const noResults = document.getElementById('noResults');
-        
+
         if (this.currentResults.all.length === 0) {
             resultsSection?.classList.add('d-none');
             noResults?.classList.remove('d-none');
             return;
         }
-        
-        // Actualizar contadores en las pestañas
+
         this.updateTabCounts();
-        
-        // Mostrar resultados en cada pestaña
+
         this.renderMovieResults('allResults', this.currentResults.all);
         this.renderMovieResults('localResults', this.currentResults.local);
         this.renderMovieResults('externalResults', this.currentResults.external);
         this.renderMovieResults('reducedResults', this.currentResults.reduced);
-        
-        // Mostrar la sección de resultados
+
         resultsSection?.classList.remove('d-none');
         noResults?.classList.add('d-none');
         this.hideError();
@@ -217,15 +197,17 @@ class CinemaSearch {
      * Actualiza los contadores en las pestañas
      */
     updateTabCounts() {
-        const allCount = document.getElementById('allCount');
-        const localCount = document.getElementById('localCount');
-        const externalCount = document.getElementById('externalCount');
-        const reducedCount = document.getElementById('reducedCount');
-        
-        if (allCount) allCount.textContent = this.currentResults.all.length;
-        if (localCount) localCount.textContent = this.currentResults.local.length;
-        if (externalCount) externalCount.textContent = this.currentResults.external.length;
-        if (reducedCount) reducedCount.textContent = this.currentResults.reduced.length;
+        const counts = {
+            'allCount': this.currentResults.all.length,
+            'localCount': this.currentResults.local.length,
+            'externalCount': this.currentResults.external.length,
+            'reducedCount': this.currentResults.reduced.length
+        };
+
+        Object.entries(counts).forEach(([id, count]) => {
+            const el = document.getElementById(id);
+            if (el) el.textContent = count;
+        });
     }
 
     /**
@@ -234,15 +216,13 @@ class CinemaSearch {
     renderMovieResults(containerId, movies) {
         const container = document.getElementById(containerId);
         if (!container) return;
-        
+
         if (movies.length === 0) {
             container.innerHTML = this.getEmptyStateHtml(containerId);
             return;
         }
-        
+
         container.innerHTML = movies.map(movie => this.createMovieCard(movie)).join('');
-        
-        // Añadir animación de aparición
         this.animateCards(container);
     }
 
@@ -251,50 +231,47 @@ class CinemaSearch {
      */
     createMovieCard(movie) {
         let sourceClass = 'external';
-        let sourceText = 'DBpedia';
-        
+        let sourceText = this.i18n.t('dbpedia');
+
         if (movie.tipo === 'local') {
             sourceClass = 'local';
-            sourceText = 'Ontología Local';
+            sourceText = this.i18n.t('localOntology');
         } else if (movie.tipo === 'reduced') {
             sourceClass = 'reduced';
-            sourceText = 'DBpedia Reducida';
+            sourceText = this.i18n.t('dbpediaReduced');
         }
-        
-        // Usar el texto de fuente si está disponible
+
         if (movie.fuente) {
             sourceText = movie.fuente;
         }
-        
-        // Determinar si mostrar el botón "Ver más"
-        // No mostrar para fuentes offline (local y reduced)
-        const shouldShowMoreButton = movie.uri && 
+
+        const shouldShowMoreButton = movie.uri &&
             (movie.tipo !== 'local' && movie.tipo !== 'reduced');
-        
+
         return `
             <div class="movie-card ${sourceClass}">
                 <h3 class="movie-title">${this.escapeHtml(movie.titulo)}</h3>
                 <div class="movie-director">
-                    Director: ${this.escapeHtml(movie.director)}
+                    ${this.i18n.t('director')}: ${this.escapeHtml(movie.director)}
                 </div>
                 <p class="movie-synopsis">${this.escapeHtml(movie.sinopsis)}</p>
                 
                 <div class="movie-details mb-2">
                     ${movie.anio ? `
                         <div class="detail-item">
-                            <small class="text-muted">Año: ${this.escapeHtml(movie.anio)}</small>
+                            <small class="text-muted">${this.i18n.t('year')}: ${this.escapeHtml(movie.anio)}</small>
                         </div>
                     ` : ''}
                     
                     ${movie.duracion ? `
                         <div class="detail-item">
-                            <small class="text-muted">Duración: ${this.escapeHtml(movie.duracion)}</small>
+                            <small class="text-muted">${this.i18n.t('duration')}: ${this.escapeHtml(movie.duracion)}</small>
                         </div>
                     ` : ''}
                     
                     ${movie.genero ? `
                         <div class="detail-item">
-                            <small class="text-muted">Género: ${this.escapeHtml(movie.genero)}</small>
+                            <small class="text-muted">${this.i18n.t('genre')}: ${this.escapeHtml(movie.genero)}</small>
                         </div>
                     ` : ''}
                 </div>
@@ -305,69 +282,13 @@ class CinemaSearch {
                     </span>
                     ${shouldShowMoreButton ? `
                         <a href="${movie.uri}" target="_blank" class="btn btn-outline-secondary btn-sm">
-                            Ver más
+                            ${this.i18n.t('seeMore')}
                         </a>
                     ` : ''}
                 </div>
             </div>
         `;
     }
-
-
-    /**
-     * Crea una tarjeta HTML para una persona
-     */
-    createPersonCard(person) {
-        const sourceClass = person.tipo === 'local' ? 'local' : 'external';
-        const sourceText = person.fuente || (person.tipo === 'local' ? 'Ontología Local' : 'DBpedia');
-
-        return `
-            <div class="person-card ${sourceClass}">
-                
-                <h3 class="person-name">${this.escapeHtml(person.nombre)}</h3>
-
-                ${person.descripcion ? `
-                    <p class="person-description">
-                        ${this.escapeHtml(person.descripcion)}
-                    </p>
-                ` : ''}
-
-                <div class="person-details mb-2">
-                    
-                    ${person.fechaNacimiento ? `
-                        <div class="detail-item">
-                            <small class="text-muted">
-                                Fecha de nacimiento: ${this.escapeHtml(person.fechaNacimiento)}
-                            </small>
-                        </div>
-                    ` : ''}
-
-                    ${person.ocupacion ? `
-                        <div class="detail-item">
-                            <small class="text-muted">
-                                Ocupación: ${this.escapeHtml(person.ocupacion)}
-                            </small>
-                        </div>
-                    ` : ''}
-
-                </div>
-
-                <div class="person-meta">
-                    <span class="source-badge ${sourceClass}">
-                        ${sourceText}
-                    </span>
-
-                    ${person.uri ? `
-                        <a href="${person.uri}" target="_blank" class="btn btn-outline-secondary btn-sm">
-                            Ver más
-                        </a>
-                    ` : ''}
-                </div>
-
-            </div>
-        `;
-    }
-
 
     /**
      * Genera HTML para estado vacío
@@ -375,20 +296,24 @@ class CinemaSearch {
     getEmptyStateHtml(containerId) {
         const messages = {
             'localResults': {
-                title: 'Sin resultados locales',
-                text: 'No se encontraron películas en tu ontología local.'
+                title: this.i18n.t('noLocalResults'),
+                text: this.i18n.t('noLocalResultsText')
             },
             'externalResults': {
-                title: 'Sin resultados de DBpedia',
-                text: 'No se encontraron películas en DBpedia para esta búsqueda.'
+                title: this.i18n.t('noExternalResults'),
+                text: this.i18n.t('noExternalResultsText')
+            },
+            'reducedResults': {
+                title: this.i18n.t('noReducedResults'),
+                text: this.i18n.t('noReducedResultsText')
             }
         };
-        
+
         const config = messages[containerId] || {
-            title: 'Sin resultados',
-            text: 'No hay películas para mostrar.'
+            title: this.i18n.t('noResults'),
+            text: this.i18n.t('noResultsText')
         };
-        
+
         return `
             <div class="text-center py-4">
                 <h5 class="text-muted">${config.title}</h5>
@@ -407,7 +332,7 @@ class CinemaSearch {
                 card.style.opacity = '0';
                 card.style.transform = 'translateY(30px)';
                 card.style.transition = 'all 0.6s ease';
-                
+
                 setTimeout(() => {
                     card.style.opacity = '1';
                     card.style.transform = 'translateY(0)';
@@ -430,7 +355,7 @@ class CinemaSearch {
     hideResults() {
         const resultsSection = document.getElementById('resultsSection');
         const noResults = document.getElementById('noResults');
-        
+
         resultsSection?.classList.add('d-none');
         noResults?.classList.add('d-none');
     }
@@ -450,14 +375,14 @@ class CinemaSearch {
     showError(message) {
         const errorState = document.getElementById('errorState');
         const errorMessage = document.getElementById('errorMessage');
-        
+
         if (errorState && errorMessage) {
             errorMessage.textContent = message;
             errorState.classList.remove('d-none');
         } else {
             this.showAlert(message, 'error');
         }
-        
+
         this.hideResults();
     }
 
@@ -479,7 +404,7 @@ class CinemaSearch {
             'error': 'alert-danger',
             'success': 'alert-success'
         };
-        
+
         const alertHtml = `
             <div class="alert ${alertTypes[type]} alert-dismissible fade show" role="alert">
                 <i class="fas fa-info-circle me-2"></i>
@@ -487,14 +412,12 @@ class CinemaSearch {
                 <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
             </div>
         `;
-        
-        // Insertar en el contenedor de alertas o al principio del contenido
+
         const container = document.querySelector('.container') || document.body;
         const alertElement = document.createElement('div');
         alertElement.innerHTML = alertHtml;
         container.prepend(alertElement.firstElementChild);
-        
-        // Auto-remover después de 5 segundos
+
         setTimeout(() => {
             const alert = document.querySelector('.alert');
             if (alert) {
@@ -510,14 +433,14 @@ class CinemaSearch {
         try {
             const response = await fetch('/api/stats');
             const stats = await response.json();
-            
+
             if (stats.error) {
                 console.warn('Error cargando estadísticas:', stats.error);
                 return;
             }
-            
+
             this.updateStatsDisplay(stats);
-            
+
         } catch (error) {
             console.error('Error cargando estadísticas iniciales:', error);
         }
@@ -532,7 +455,7 @@ class CinemaSearch {
             'totalDirectors': stats.total_directores,
             'totalTriples': stats.total_triples
         };
-        
+
         Object.entries(elements).forEach(([id, value]) => {
             const element = document.getElementById(id);
             if (element && value !== undefined) {
@@ -548,96 +471,32 @@ class CinemaSearch {
         const startValue = 0;
         const duration = 2000;
         const startTime = performance.now();
-        
+
         const updateCounter = (currentTime) => {
             const elapsed = currentTime - startTime;
             const progress = Math.min(elapsed / duration, 1);
-            
+
             const currentValue = Math.floor(startValue + (targetValue - startValue) * progress);
             element.textContent = currentValue.toLocaleString();
-            
+
             if (progress < 1) {
                 requestAnimationFrame(updateCounter);
             }
         };
-        
+
         requestAnimationFrame(updateCounter);
     }
 
     /**
-     * Escapa HTML para prevenir XSS
-     */
-    escapeHtml(text) {
-        if (typeof text !== 'string') return text;
-        
-        const div = document.createElement('div');
-        div.textContent = text;
-        return div.innerHTML;
-    }
-
-    /**
-     * Método de utilidad para logging
-     */
-    log(message, data = null) {
-        console.log(`[CinemaSearch] ${message}`, data);
-    }
-
-    /**
-     * Verifica el estado de DBpedia reducida
-     */
-    async checkReducedStatus() {
-        try {
-            const response = await fetch('/api/reduced/stats');
-            const stats = await response.json();
-            
-            if (stats.peliculas === 0) {
-                console.log('DBpedia reducida está descargando datos...');
-                return false;
-            }
-            return true;
-        } catch (error) {
-            console.error('Error verificando estado de DBpedia reducida:', error);
-            return false;
-        }
-    }
-
-    /**
-     * Fuerza actualización de DBpedia reducida
-     */
-    async forceReducedUpdate() {
-        try {
-            this.showLoading(true);
-            const response = await fetch('/api/reduced/update', {
-                method: 'POST'
-            });
-            const result = await response.json();
-            
-            if (result.status === 'success') {
-                this.showAlert('Actualización de DBpedia reducida iniciada', 'success');
-            } else {
-                this.showAlert('Error al iniciar actualización', 'danger');
-            }
-        } catch (error) {
-            console.error('Error forzando actualización:', error);
-            this.showAlert('Error al contactar el servidor', 'danger');
-        } finally {
-            this.showLoading(false);
-        }
-    }
-    
-    /**
      * Inicia el monitoreo de conectividad
      */
     startConnectivityMonitoring() {
-        // Verificar conectividad inmediatamente
         this.checkConnectivity();
-        
-        // Verificar cada 5 segundos
         setInterval(() => {
             this.checkConnectivity();
         }, 5000);
     }
-    
+
     /**
      * Verifica el estado de conectividad
      */
@@ -645,10 +504,10 @@ class CinemaSearch {
         try {
             const response = await fetch('/api/connectivity');
             const data = await response.json();
-            
+
             this.connectivityStatus = data.online;
             this.updateConnectivityIndicator(data);
-            
+
         } catch (error) {
             console.error('Error verificando conectividad:', error);
             this.connectivityStatus = false;
@@ -659,21 +518,32 @@ class CinemaSearch {
             });
         }
     }
-    
+
     /**
      * Actualiza el indicador visual de conectividad
      */
     updateConnectivityIndicator(data) {
         const indicator = document.getElementById('connectivity-status');
         if (!indicator) return;
-        
+
         if (data.online) {
             indicator.className = 'badge bg-success';
-            indicator.innerHTML = '<i class="fas fa-wifi"></i> Conectado - Búsqueda online';
+            indicator.innerHTML = `<i class="fas fa-wifi"></i> ${this.i18n.t('connectivityOnline')}`;
         } else {
             indicator.className = 'badge bg-warning';
-            indicator.innerHTML = '<i class="fas fa-wifi-slash"></i> Sin conexión - Búsqueda offline';
+            indicator.innerHTML = `<i class="fas fa-wifi-slash"></i> ${this.i18n.t('connectivityOffline')}`;
         }
+    }
+
+    /**
+     * Escapa HTML para prevenir XSS
+     */
+    escapeHtml(text) {
+        if (typeof text !== 'string') return text;
+
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
     }
 }
 
@@ -681,8 +551,3 @@ class CinemaSearch {
 document.addEventListener('DOMContentLoaded', () => {
     window.cinemaSearch = new CinemaSearch();
 });
-
-// Exportar para uso en módulos (opcional)
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = CinemaSearch;
-}

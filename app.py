@@ -484,7 +484,7 @@ if __name__ == '__main__':
     logger.info(f"Debug mode: {app.config.get('DEBUG', False)}")
     
     app.run(
-        debug=False,  # Temporal: desactivar debug para evitar problemas con spacy
+        debug=True,  # Temporal: desactivar debug para evitar problemas con spacy
         host=app.config.get('HOST', '127.0.0.1'),
         port=app.config.get('PORT', 5000)
     )
