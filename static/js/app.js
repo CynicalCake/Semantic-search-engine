@@ -103,30 +103,9 @@ class CinemaSearch {
         try {
             const lower = term.toLowerCase();
 
-            // Detectar si la búsqueda es SEMÁNTICA
-            const isSemantic =
-                lower.includes("actuo") ||
-                lower.includes("actor") ||
-                lower.includes("actriz") ||
-                lower.includes("dirig") ||
-                lower.includes("películas de") ||
-                lower.includes("en que pelicula") ||
-                lower.includes("pelicula de") ||
-                lower.includes("director") ||
-                lower.includes("año") ||
-                lower.includes("estrenada") ||
-                lower.match(/(19|20)\d{2}/);
-
-            let url = "";
-
-            if (isSemantic) {
-                url = `/api/semantic_search?q=${encodeURIComponent(term)}&lang=${language}`;
-                console.log("➡ Usando búsqueda SEMÁNTICA:", url);
-            } else {
-                url = `/api/search?term=${encodeURIComponent(term)}&lang=${language}`;
-                console.log("➡ Usando búsqueda NORMAL:", url);
-            }
-
+            const url = `/api/semantic_search?q=${encodeURIComponent(term)}&lang=${language}`;
+            console.log("➡ Usando búsqueda SEMÁNTICA:", url);
+            
             const response = await fetch(url);
 
             if (!response.ok) {
@@ -250,6 +229,7 @@ class CinemaSearch {
 
         return `
             <div class="movie-card ${sourceClass}">
+                ${movie.poster ? `<img src="${movie.poster}" class="movie-poster"/>` : ''}
                 <h3 class="movie-title">${this.escapeHtml(movie.titulo)}</h3>
                 <div class="movie-director">
                     ${this.i18n.t('director')}: ${this.escapeHtml(movie.director)}
@@ -257,6 +237,7 @@ class CinemaSearch {
                 <p class="movie-synopsis">${this.escapeHtml(movie.sinopsis)}</p>
                 
                 <div class="movie-details mb-2">
+                
                     ${movie.anio ? `
                         <div class="detail-item">
                             <small class="text-muted">${this.i18n.t('year')}: ${this.escapeHtml(movie.anio)}</small>

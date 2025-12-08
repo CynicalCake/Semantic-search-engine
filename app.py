@@ -4,6 +4,7 @@ from services.dbpedia_service import DBpediaService
 from services.dbpedia_reduced_service import DBpediaReducedService
 from services.ner_service import NERService
 from services.intent_service import IntentService
+from services.tmdb_service import TMDBService
 from config import Config
 from datetime import datetime
 import logging
@@ -20,7 +21,8 @@ ontology_service = OntologyService(app.config['ONTOLOGY_FILE'])
 dbpedia_service = DBpediaService()
 dbpedia_reduced_service = DBpediaReducedService()
 ner_service = NERService()
-intent_service = IntentService()
+tmdb_service = TMDBService(api_key="a6e641c79b947ea3f97330b3b9928daf")
+intent_service = IntentService(ner_service, tmdb_service)
 
 def check_internet_connectivity():
     """Verifica si hay conectividad a internet"""
@@ -228,54 +230,37 @@ def semantic_search():
         if not query:
             return jsonify({"error": "Se requiere parámetro ?q"}), 400
 
-        # --- 1. Inicializar variables ---
-        actor = None
-        director = None
-        year = None
-        genre = None
-
-        # --- 2. NLP ---
-        entities = ner_service.extract_persons(query)
-
-        # Intentos múltiples
-        intent_data = intent_service.detect_intent(query)
+    # --- Detectar intenciones y entidades con NER PRO + TMDB
+        intent_data = intent_service.detect_intent(query, language)
         intents = intent_data["intents"]
 
-        # Entidades detectadas por reglas
-        actor = intent_service.detect_actor(query)
-        director = intent_service.detect_director(query)
-        year = intent_service.detect_year(query)
-        genre = intent_service.detect_genre(query)
+        persons = intent_data.get("persons", [])
+        roles = intent_data.get("roles", {})
+        years = intent_data.get("years", [])
+        genres = intent_data.get("genres", [])
+        studios = intent_data.get("studios", [])
 
-        # Si hay entidades de NER, úsalas también
-        if entities:
-            if intents["movie_by_actor"] and not actor:
-                actor = ner_service.match_entity_after_keyword(
-                    query, "actor", entities
-                )
-                if not actor:
-                    actor = ner_service.match_entity_after_keyword(
-                        query, "actriz", entities
-                    )
-
-            if intents["movie_by_director"] and not director:
-                director = ner_service.match_entity_after_keyword(
-                    query, "director", entities
-                )
-                if not director:
-                    director = ner_service.match_entity_after_keyword(
-                        query, "dirigida por", entities
-                    )
+        # Extraer actor/director principales
+        actor = roles["actor"][0] if roles["actor"] else None
+        director = roles["director"][0] if roles["director"] else None
+        year = years[0] if years else None
+        genre = genres[0] if genres else None
+        studio = studios[0] if studios else None
 
         # Si no se detectó ninguna intención
         if not any(intents.values()):
             return jsonify({
                 "error": "No se pudo entender la intención de la consulta",
                 "debug": {
-                    "entities": entities,
+                    "persons": persons,
+                    "roles": roles,
+                    "years": years,
+                    "genres": genres,
+                    "studios": studios,
                     "intent_detected": intents
                 }
             }), 400
+
 
         # --- 3. Búsqueda semántica combinada con comportamiento adaptativo ---
         is_online = check_internet_connectivity()
@@ -289,6 +274,7 @@ def semantic_search():
                 director=director,
                 year=year,
                 genre=genre,
+                studio=studio,
                 language=language
             )
             reduced_results = []
@@ -315,7 +301,6 @@ def semantic_search():
 
             "intents_detected": intents,
 
-            "entities": entities,
             "actor": actor,
             "director": director,
             "year": year,
@@ -335,7 +320,6 @@ def semantic_search():
     except Exception as e:
         logger.error(f"Error en semantic_search: {e}", exc_info=True)
         return jsonify({"error": str(e)}), 500
-
 
 @app.route('/api/stats')
 def api_stats():
