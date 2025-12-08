@@ -27,16 +27,21 @@ intent_service = IntentService(ner_service, tmdb_service)
 def check_internet_connectivity():
     """Verifica si hay conectividad a internet"""
     try:
-        # Intentar conectar a DBpedia con timeout corto
-        response = requests.get('http://dbpedia.org/sparql', timeout=3)
+        # Intentar conectar a un endpoint para verificar la conectividad
+        response = requests.get('https://httpbin.org/status/200', timeout=8)
         return response.status_code == 200
     except:
         try:
-            # Fallback: intentar con Google DNS
-            response = requests.get('http://8.8.8.8', timeout=2)
-            return True
+            # Fallback: intentar con Google
+            response = requests.get('https://www.google.com', timeout=6)
+            return response.status_code == 200
         except:
-            return False
+            try:
+                # Último fallback: CloudFlare DNS
+                response = requests.get('https://1.1.1.1', timeout=5)
+                return True
+            except:
+                return False
 
 @app.route('/')
 def index():

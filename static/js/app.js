@@ -475,7 +475,7 @@ class CinemaSearch {
         this.checkConnectivity();
         setInterval(() => {
             this.checkConnectivity();
-        }, 5000);
+        }, 15000); // Reducir frecuencia de verificación a cada 15 segundos
     }
 
     /**
