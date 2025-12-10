@@ -492,9 +492,21 @@ class CinemaSearch {
      */
     startConnectivityMonitoring() {
         this.checkConnectivity();
-        setInterval(() => {
+        // Usar polling adaptivo basado en el estado actual
+        this.scheduleNextConnectivityCheck();
+    }
+
+    /**
+     * Programa la próxima verificación de conectividad de forma adaptiva
+     */
+    scheduleNextConnectivityCheck() {
+        // Intervalo adaptivo: 30s si está online, 10s si está offline
+        const interval = this.connectivityStatus === true ? 30000 : 10000;
+        
+        setTimeout(() => {
             this.checkConnectivity();
-        }, 15000); // Reducir frecuencia de verificación a cada 15 segundos
+            this.scheduleNextConnectivityCheck();
+        }, interval);
     }
 
     /**
@@ -502,15 +514,34 @@ class CinemaSearch {
      */
     async checkConnectivity() {
         try {
-            const response = await fetch('/api/connectivity');
+            const response = await fetch('/api/connectivity', {
+                method: 'GET',
+                cache: 'no-cache',
+                headers: {
+                    'Cache-Control': 'no-cache'
+                }
+            });
             const data = await response.json();
 
+            const previousStatus = this.connectivityStatus;
             this.connectivityStatus = data.online;
+            
+            // Log solo cuando cambia el estado para evitar spam
+            if (previousStatus !== this.connectivityStatus) {
+                console.log(`Estado de conectividad cambió: ${this.connectivityStatus ? 'ONLINE' : 'OFFLINE'}`);
+            }
+            
             this.updateConnectivityIndicator(data);
 
         } catch (error) {
             console.error('Error verificando conectividad:', error);
+            const previousStatus = this.connectivityStatus;
             this.connectivityStatus = false;
+            
+            if (previousStatus !== false) {
+                console.log('Estado de conectividad cambió: OFFLINE (error de fetch)');
+            }
+            
             this.updateConnectivityIndicator({
                 online: false,
                 status: 'offline',

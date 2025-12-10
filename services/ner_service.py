@@ -16,7 +16,7 @@ class NERService:
     GENRES = {
         "en": [
             "action", "comedy", "drama", "horror", "thriller", "romance",
-            "science fiction", "sci[- ]?fi", "fantasy", "animation", "documentary",
+            "science fiction", "sci-fi", "scifi", "fantasy", "animation", "documentary",
             "crime", "mystery", "adventure", "family"
         ],
         "es": [
@@ -26,12 +26,12 @@ class NERService:
         ],
         "fr": [
             "action", "comédie", "drame", "horreur", "thriller", "romance",
-            "science[- ]?fiction", "fantastique", "animation", "documentaire",
+            "science fiction", "science-fiction", "fantastique", "animation", "documentaire",
             "crime", "mystère", "aventure", "familial"
         ],
         "de": [
             "action", "komödie", "drama", "horror", "thriller", "romantik",
-            "science[- ]?fiction", "fantasy", "animation", "dokumentation",
+            "science fiction", "science-fiction", "fantasy", "animation", "dokumentation",
             "krimi", "mysterium", "abenteuer", "familie"
         ]
     }
@@ -101,6 +101,7 @@ class NERService:
         # Añadir EntityRuler correctamente en spaCy 3.x
         ruler = nlp.add_pipe("entity_ruler", before="ner", config={"overwrite_ents": False})
         ruler.add_patterns(patterns)
+        return ruler
 
     # -----------------------
     # Métodos públicos
@@ -137,12 +138,13 @@ class NERService:
             if ent.label_ == "GENRE" and ent.text.lower() not in seen:
                 found.append(ent.text)
                 seen.add(ent.text.lower())
-        # También hacer fallback con regex simple sobre diccionario
+        # También hacer fallback con búsqueda simple sobre diccionario
         if not found:
-            for pattern in self.GENRES.get(self._normalize_lang(lang), []):
-                if re.search(pattern, text, flags=re.IGNORECASE):
-                    if pattern not in found:
-                        found.append(pattern)
+            text_lower = text.lower()
+            for genre in self.GENRES.get(self._normalize_lang(lang), []):
+                if genre.lower() in text_lower and genre not in found:
+                    found.append(genre)
+                    seen.add(genre.lower())
         return found
 
     def extract_orgs(self, text: str, lang: str = "en") -> List[str]:

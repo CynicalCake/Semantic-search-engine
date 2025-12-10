@@ -9,12 +9,36 @@ from config import Config
 from datetime import datetime
 import logging
 import requests
+import time
+from threading import Lock
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
 app.config.from_object(Config)
+
+# Sistema de caché para conectividad
+connectivity_cache = {
+    "status": None,
+    "timestamp": 0,
+    "ttl": 30,  # 30 segundos TTL
+    "lock": Lock()
+}
+
+# Session global optimizada para verificaciones de conectividad
+connectivity_session = requests.Session()
+connectivity_session.timeout = 10
+adapter = requests.adapters.HTTPAdapter(
+    pool_connections=3,
+    pool_maxsize=3,
+    max_retries=requests.adapters.Retry(
+        total=0,  # No retry automático
+        backoff_factor=0
+    )
+)
+connectivity_session.mount('http://', adapter)
+connectivity_session.mount('https://', adapter)
 
 # Inicializar servicios
 ontology_service = OntologyService(app.config['ONTOLOGY_FILE'])
@@ -25,23 +49,76 @@ tmdb_service = TMDBService(api_key="a6e641c79b947ea3f97330b3b9928daf")
 intent_service = IntentService(ner_service, tmdb_service)
 
 def check_internet_connectivity():
-    """Verifica si hay conectividad a internet"""
-    try:
-        # Intentar conectar a un endpoint para verificar la conectividad
-        response = requests.get('https://httpbin.org/status/200', timeout=8)
-        return response.status_code == 200
-    except:
+    """Verifica si hay conectividad a internet con caché y fallbacks robustos"""
+    current_time = time.time()
+    
+    # Verificar caché con lock para thread safety
+    with connectivity_cache["lock"]:
+        cache_valid = (connectivity_cache["timestamp"] + connectivity_cache["ttl"]) > current_time
+        if cache_valid and connectivity_cache["status"] is not None:
+            logger.debug(f"Usando estado de conectividad desde caché: {connectivity_cache['status']}")
+            return connectivity_cache["status"]
+    
+    # Realizar verificación real
+    result = _perform_connectivity_check()
+    
+    # Actualizar caché
+    with connectivity_cache["lock"]:
+        connectivity_cache.update({
+            "status": result,
+            "timestamp": current_time
+        })
+    
+    logger.info(f"Estado de conectividad actualizado: {'online' if result else 'offline'}")
+    return result
+
+def _perform_connectivity_check():
+    """Realiza la verificación real de conectividad con endpoints optimizados"""
+    # Endpoints optimizados para verificación de conectividad
+    endpoints = [
+        {
+            "url": "https://www.google.com/generate_204",
+            "expected_status": 204,
+            "timeout": 4,
+            "name": "Google Connectivity Check"
+        },
+        {
+            "url": "https://httpbin.org/status/200",
+            "expected_status": 200,
+            "timeout": 6,
+            "name": "HTTPBin Test Service"
+        },
+        {
+            "url": "https://1.1.1.1",
+            "expected_status": 200,
+            "timeout": 4,
+            "name": "Cloudflare DNS"
+        }
+    ]
+    
+    for endpoint in endpoints:
         try:
-            # Fallback: intentar con Google
-            response = requests.get('https://www.google.com', timeout=6)
-            return response.status_code == 200
-        except:
-            try:
-                # Último fallback: CloudFlare DNS
-                response = requests.get('https://1.1.1.1', timeout=5)
+            logger.debug(f"Verificando conectividad con {endpoint['name']}...")
+            response = connectivity_session.get(
+                endpoint["url"],
+                timeout=endpoint["timeout"]
+            )
+            
+            if response.status_code == endpoint["expected_status"]:
+                logger.debug(f"Conectividad confirmada con {endpoint['name']}")
                 return True
-            except:
-                return False
+            else:
+                logger.debug(f"{endpoint['name']} respondió con status {response.status_code}, esperado {endpoint['expected_status']}")
+                
+        except requests.exceptions.Timeout:
+            logger.debug(f"Timeout al conectar con {endpoint['name']} ({endpoint['timeout']}s)")
+        except requests.exceptions.RequestException as e:
+            logger.debug(f"Error conectando con {endpoint['name']}: {type(e).__name__}")
+        except Exception as e:
+            logger.debug(f"Error inesperado con {endpoint['name']}: {e}")
+    
+    logger.debug("Todos los endpoints de conectividad fallaron")
+    return False
 
 @app.route('/')
 def index():
@@ -224,8 +301,24 @@ def semantic_search(query, language):
         if not query:
             return jsonify({"error": "Se requiere parámetro ?q"}), 400
 
-        # Detectar intenciones y entidades
-        intent_data = intent_service.detect_intent(query, language)
+        # Verificar conectividad
+        is_online = check_internet_connectivity()
+
+        # Detectar intenciones y entidades (con modo conectividad)
+        try:
+            intent_data = intent_service.detect_intent(query, language, online_mode=is_online)
+        except Exception as e:
+            logger.error(f"Error en detección de intenciones en semantic_search: {e}")
+            # Fallback: crear intent_data mínimo para continuar
+            intent_data = {
+                "intents": {"movie_by_person": True},
+                "persons": [],
+                "roles": {"actor": [], "director": []},
+                "years": [],
+                "genres": [],
+                "studios": []
+            }
+            
         intents = intent_data.get("intents", {})
 
         persons = intent_data.get("persons", [])
@@ -318,9 +411,17 @@ def search_auto():
     if not term:
         return jsonify({'error': 'Se requiere parámetro ?q'}), 400
 
-    # Detectar intención para decidir
-    intent_data = intent_service.detect_intent(term, language)
-    intents = intent_data.get("intents", {})
+    # Verificar conectividad ANTES de la detección de intenciones
+    is_online = check_internet_connectivity()
+
+    # Detectar intención con información de conectividad
+    try:
+        intent_data = intent_service.detect_intent(term, language, online_mode=is_online)
+        intents = intent_data.get("intents", {})
+    except Exception as e:
+        logger.error(f"Error en detección de intenciones: {e}")
+        # Fallback: asumir búsqueda clásica si falla intent detection
+        return api_search(term, language)
 
     if any(intents.values()):
         # Hay intención, usar búsqueda semántica

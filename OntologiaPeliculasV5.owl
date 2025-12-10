@@ -31,6 +31,56 @@ OntologiaPeliculas:Alicia_en_el_país_de_las_maravillas a OntologiaPeliculas:Pel
         OntologiaPeliculas:Cine_fantástico,
         OntologiaPeliculas:Comedia .
 
+<http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#Always_&_Forever_(film)> a OntologiaPeliculas:Pelicula ;
+    OntologiaPeliculas:duracionPelicula "85 min" ;
+    OntologiaPeliculas:fechaEstreno "No disponible" ;
+    OntologiaPeliculas:lenguaje "en"^^xsd:string ;
+    OntologiaPeliculas:nombrePelicula "Always & Forever (film)"@en ;
+    OntologiaPeliculas:sinopsisPelicula "Sinopsis no disponible"@en .
+
+OntologiaPeliculas:Always_\(1989_film\) a OntologiaPeliculas:Pelicula ;
+    OntologiaPeliculas:duracionPelicula "123 min" ;
+    OntologiaPeliculas:fechaEstreno "No disponible" ;
+    OntologiaPeliculas:lenguaje "en"^^xsd:string ;
+    OntologiaPeliculas:nombrePelicula "Always (1989 film)"@en ;
+    OntologiaPeliculas:sinopsisPelicula "Sinopsis no disponible"@en .
+
+OntologiaPeliculas:Always_\(2011_film\) a OntologiaPeliculas:Pelicula ;
+    OntologiaPeliculas:duracionPelicula "106 min" ;
+    OntologiaPeliculas:fechaEstreno "No disponible" ;
+    OntologiaPeliculas:lenguaje "en"^^xsd:string ;
+    OntologiaPeliculas:nombrePelicula "Always (2011 film)"@en ;
+    OntologiaPeliculas:sinopsisPelicula "Sinopsis no disponible"@en .
+
+OntologiaPeliculas:Always_Afternoon a OntologiaPeliculas:Pelicula ;
+    OntologiaPeliculas:duracionPelicula "No disponible" ;
+    OntologiaPeliculas:fechaEstreno "1988" ;
+    OntologiaPeliculas:lenguaje "en"^^xsd:string ;
+    OntologiaPeliculas:nombrePelicula "Always Afternoon"@en ;
+    OntologiaPeliculas:sinopsisPelicula "Sinopsis no disponible"@en .
+
+OntologiaPeliculas:Always_Another_Dawn a OntologiaPeliculas:Pelicula ;
+    OntologiaPeliculas:duracionPelicula "108 min",
+        "73 min" ;
+    OntologiaPeliculas:fechaEstreno "No disponible" ;
+    OntologiaPeliculas:lenguaje "en"^^xsd:string ;
+    OntologiaPeliculas:nombrePelicula "Always Another Dawn"@en ;
+    OntologiaPeliculas:sinopsisPelicula "Sinopsis no disponible"@en .
+
+OntologiaPeliculas:Always_Audacious a OntologiaPeliculas:Pelicula ;
+    OntologiaPeliculas:duracionPelicula "50 min" ;
+    OntologiaPeliculas:fechaEstreno "No disponible" ;
+    OntologiaPeliculas:lenguaje "en"^^xsd:string ;
+    OntologiaPeliculas:nombrePelicula "Always Audacious"@en ;
+    OntologiaPeliculas:sinopsisPelicula "Sinopsis no disponible"@en .
+
+OntologiaPeliculas:Always_Be_My_Maybe a OntologiaPeliculas:Pelicula ;
+    OntologiaPeliculas:duracionPelicula "102 min" ;
+    OntologiaPeliculas:fechaEstreno "No disponible" ;
+    OntologiaPeliculas:lenguaje "en"^^xsd:string ;
+    OntologiaPeliculas:nombrePelicula "Always Be My Maybe"@en ;
+    OntologiaPeliculas:sinopsisPelicula "Sinopsis no disponible"@en .
+
 OntologiaPeliculas:American_Pastoral a OntologiaPeliculas:Pelicula,
         owl:NamedIndividual ;
     OntologiaPeliculas:dirigidaPor OntologiaPeliculas:Ewan_McGregor,
@@ -38,8 +88,10 @@ OntologiaPeliculas:American_Pastoral a OntologiaPeliculas:Pelicula,
     OntologiaPeliculas:duracionPelicula "108 min" ;
     OntologiaPeliculas:fechaEstreno "2016" ;
     OntologiaPeliculas:idiomaDatos "fr" ;
-    OntologiaPeliculas:lenguaje "fr" ;
-    OntologiaPeliculas:nombrePelicula "American Pastoral" ;
+    OntologiaPeliculas:lenguaje "fr",
+        "fr"^^xsd:string ;
+    OntologiaPeliculas:nombrePelicula "American Pastoral",
+        "American Pastoral"@fr ;
     OntologiaPeliculas:sinopsisPelicula "American Pastoral est un film dramatique américain de Ewan McGregor, sorti en 2016."@fr ;
     OntologiaPeliculas:tieneActor OntologiaPeliculas:Dakota_Fanning,
         OntologiaPeliculas:Dan_Hedaya,
@@ -129,6 +181,27 @@ OntologiaPeliculas:Big_Eyes a OntologiaPeliculas:Pelicula ;
         OntologiaPeliculas:Krysten_Ritter,
         OntologiaPeliculas:Terence_Stamp ;
     OntologiaPeliculas:tieneGenero OntologiaPeliculas:Géneros_no_disponibles .
+
+OntologiaPeliculas:Charlie_y_La_Fábrica_de_Chocolate a OntologiaPeliculas:Pelicula ;
+    OntologiaPeliculas:dirigidaPor OntologiaPeliculas:Tim_Burton ;
+    OntologiaPeliculas:duracionPelicula "115 min" ;
+    OntologiaPeliculas:fechaEstreno "No disponible" ;
+    OntologiaPeliculas:lenguaje "es"^^xsd:string ;
+    OntologiaPeliculas:nombrePelicula "Charlie y La Fábrica de Chocolate"@es ;
+    OntologiaPeliculas:sinopsisPelicula "Charlie y la fábrica de chocolate (Charlie and the Chocolate Factory en inglés) es una película estrenada en el año 2005, dirigida por Tim Burton. Es la segunda adaptación cinematográfica de la novela homónima escrita por Roald Dahl en 1964, y está protagonizada por Johnny Depp como Willy Wonka y..."@es ;
+    OntologiaPeliculas:tieneActor OntologiaPeliculas:Christopher_Lee,
+        OntologiaPeliculas:David_Kelly,
+        OntologiaPeliculas:Deep_Roy,
+        OntologiaPeliculas:Freddie_Highmore,
+        OntologiaPeliculas:Helena_Bonham_Carter,
+        OntologiaPeliculas:James_Fox,
+        OntologiaPeliculas:Johnny_Depp,
+        OntologiaPeliculas:Missi_Pyle,
+        OntologiaPeliculas:Noah_Taylor ;
+    OntologiaPeliculas:tieneGenero OntologiaPeliculas:Cine_de_aventuras,
+        OntologiaPeliculas:Cine_de_ciencia_ficción,
+        OntologiaPeliculas:Cine_fantástico,
+        OntologiaPeliculas:Comedia_cinematográfica .
 
 OntologiaPeliculas:Compositor a owl:Class ;
     rdfs:subClassOf OntologiaPeliculas:Persona .
@@ -290,6 +363,27 @@ OntologiaPeliculas:Dumbo a OntologiaPeliculas:Pelicula ;
         OntologiaPeliculas:Michael_Keaton ;
     OntologiaPeliculas:tieneGenero OntologiaPeliculas:Géneros_no_disponibles .
 
+OntologiaPeliculas:El_Buen_Pastor a OntologiaPeliculas:Pelicula ;
+    OntologiaPeliculas:dirigidaPor OntologiaPeliculas:Robert_De_Niro,
+        OntologiaPeliculas:Robert_Richardson ;
+    OntologiaPeliculas:duracionPelicula "168 min" ;
+    OntologiaPeliculas:fechaEstreno "No disponible" ;
+    OntologiaPeliculas:lenguaje "es"^^xsd:string ;
+    OntologiaPeliculas:nombrePelicula "El Buen Pastor"@es ;
+    OntologiaPeliculas:sinopsisPelicula "El buen pastor es una película estadounidense de 2006, dirigida por Robert De Niro."@es ;
+    OntologiaPeliculas:tieneActor OntologiaPeliculas:Alec_Baldwin,
+        OntologiaPeliculas:Angelina_Jolie,
+        OntologiaPeliculas:Billy_Crudup,
+        OntologiaPeliculas:Joe_Pesci,
+        OntologiaPeliculas:John_Turturro,
+        OntologiaPeliculas:Lee_Pace,
+        OntologiaPeliculas:Matt_Damon,
+        OntologiaPeliculas:Michael_Gambon,
+        OntologiaPeliculas:Robert_De_Niro,
+        OntologiaPeliculas:Timothy_Hutton,
+        OntologiaPeliculas:William_Hurt ;
+    OntologiaPeliculas:tieneGenero OntologiaPeliculas:Géneros_no_disponibles .
+
 OntologiaPeliculas:El_Callejón_de_Las_Almas_Perdidas a OntologiaPeliculas:Pelicula ;
     OntologiaPeliculas:dirigidaPor OntologiaPeliculas:Guillermo_del_Toro ;
     OntologiaPeliculas:duracionPelicula "No disponible" ;
@@ -311,6 +405,46 @@ OntologiaPeliculas:El_Ejecutor a OntologiaPeliculas:Pelicula ;
         OntologiaPeliculas:Sung_Kang,
         OntologiaPeliculas:Sylvester_Stallone ;
     OntologiaPeliculas:tieneGenero OntologiaPeliculas:Géneros_no_disponibles .
+
+OntologiaPeliculas:El_Joven_Manos_de_Tijera a OntologiaPeliculas:Pelicula ;
+    OntologiaPeliculas:dirigidaPor OntologiaPeliculas:Tim_Burton ;
+    OntologiaPeliculas:duracionPelicula "105 min" ;
+    OntologiaPeliculas:fechaEstreno "No disponible" ;
+    OntologiaPeliculas:lenguaje "es"^^xsd:string ;
+    OntologiaPeliculas:nombrePelicula "El Joven Manos de Tijera"@es ;
+    OntologiaPeliculas:sinopsisPelicula "Edward Scissorhands (titulada Eduardo Manostijeras en España y El joven manos de tijera en Hispanoamérica) es una película estadounidense de 1990 dirigida por Tim Burton, que mezcla géneros como la fantasía oscura junto con elementos románticos. La película cuenta la historia de un hombre creado ..."@es ;
+    OntologiaPeliculas:tieneActor OntologiaPeliculas:Alan_Arkin,
+        OntologiaPeliculas:Anthony_Michael_Hall,
+        OntologiaPeliculas:Dianne_Wiest,
+        OntologiaPeliculas:Johnny_Depp,
+        OntologiaPeliculas:Vincent_Price,
+        OntologiaPeliculas:Winona_Ryder ;
+    OntologiaPeliculas:tieneGenero OntologiaPeliculas:Géneros_no_disponibles .
+
+OntologiaPeliculas:El_despertar_del_diablo a OntologiaPeliculas:Pelicula ;
+    OntologiaPeliculas:dirigidaPor OntologiaPeliculas:Alexandre_Aja ;
+    OntologiaPeliculas:duracionPelicula "No disponible" ;
+    OntologiaPeliculas:fechaEstreno "No disponible" ;
+    OntologiaPeliculas:lenguaje "es"^^xsd:string ;
+    OntologiaPeliculas:nombrePelicula "El despertar del diablo"@es ;
+    OntologiaPeliculas:sinopsisPelicula "The Hills Have Eyes (Las colinas tienen ojos en España y El despertar del diablo en Hispanoamérica) es una versión de la película de terror del mismo título creada en 1977 por Wes Craven. Dirigida por Alexandre Aja y con la dirección artística de , el filme tuvo tanto éxito que tiene una secuela,..."@es ;
+    OntologiaPeliculas:tieneActor OntologiaPeliculas:Actores_no_disponibles ;
+    OntologiaPeliculas:tieneGenero OntologiaPeliculas:Ciencia_Ficción,
+        OntologiaPeliculas:Cine_de_terror,
+        OntologiaPeliculas:Cine_gore,
+        OntologiaPeliculas:Slasher .
+
+OntologiaPeliculas:El_despertar_del_miedo a OntologiaPeliculas:Pelicula ;
+    OntologiaPeliculas:dirigidaPor OntologiaPeliculas:Alexandre_Aja ;
+    OntologiaPeliculas:duracionPelicula "91 min" ;
+    OntologiaPeliculas:fechaEstreno "No disponible" ;
+    OntologiaPeliculas:lenguaje "es"^^xsd:string ;
+    OntologiaPeliculas:nombrePelicula "El despertar del miedo"@es ;
+    OntologiaPeliculas:sinopsisPelicula "Haute tension, titulada Alta tensión en España y Argentina y El despertar del miedo en México y Venezuela, es una película de terror francesa dirigida por Alexandre Aja. Fue estrenada en Francia en 2003, en 2004 en el Reino Unido y en Estados Unidos el 2005 bajo el nombre High Tension.​ La cinta ..."@es ;
+    OntologiaPeliculas:tieneActor OntologiaPeliculas:Cécile_de_France,
+        OntologiaPeliculas:Maïwenn,
+        OntologiaPeliculas:Philippe_Nahon ;
+    OntologiaPeliculas:tieneGenero OntologiaPeliculas:Cine_de_terror .
 
 OntologiaPeliculas:El_laberinto_del_fauno a OntologiaPeliculas:Pelicula ;
     OntologiaPeliculas:dirigidaPor OntologiaPeliculas:Guillermo_del_Toro ;
@@ -340,8 +474,63 @@ OntologiaPeliculas:El_orgullo_de_un_comisario a OntologiaPeliculas:Pelicula ;
         OntologiaPeliculas:Ryan_Robbins ;
     OntologiaPeliculas:tieneGenero OntologiaPeliculas:Géneros_no_disponibles .
 
+OntologiaPeliculas:Elysium a OntologiaPeliculas:Pelicula ;
+    OntologiaPeliculas:dirigidaPor OntologiaPeliculas:Neill_Blomkamp ;
+    OntologiaPeliculas:duracionPelicula "109 min" ;
+    OntologiaPeliculas:fechaEstreno "No disponible" ;
+    OntologiaPeliculas:lenguaje "es"^^xsd:string ;
+    OntologiaPeliculas:nombrePelicula "Elysium"@es ;
+    OntologiaPeliculas:sinopsisPelicula "Elysium es una película estadounidense de ciencia ficción dirigida por Neill Blomkamp y protagonizada por Matt Damon, Jodie Foster, Sharlto Copley, Alice Braga, Wagner Moura, Diego Luna y William Fichtner. Está ambientado en un futuro cercano en el que una Tierra superpoblada tiene graves problem..."@es ;
+    OntologiaPeliculas:tieneActor OntologiaPeliculas:Alice_Braga,
+        OntologiaPeliculas:Diego_Luna,
+        OntologiaPeliculas:Jodie_Foster,
+        OntologiaPeliculas:Matt_Damon,
+        OntologiaPeliculas:Sharlto_Copley,
+        OntologiaPeliculas:Wagner_Moura,
+        OntologiaPeliculas:William_Fichtner ;
+    OntologiaPeliculas:tieneGenero OntologiaPeliculas:Cine_de_acción,
+        OntologiaPeliculas:Cine_de_ciencia_ficción .
+
+OntologiaPeliculas:Espejos_siniestros a OntologiaPeliculas:Pelicula ;
+    OntologiaPeliculas:dirigidaPor OntologiaPeliculas:Alexandre_Aja ;
+    OntologiaPeliculas:duracionPelicula "110 min" ;
+    OntologiaPeliculas:fechaEstreno "No disponible" ;
+    OntologiaPeliculas:lenguaje "es"^^xsd:string ;
+    OntologiaPeliculas:nombrePelicula "Espejos siniestros"@es ;
+    OntologiaPeliculas:sinopsisPelicula "Mirrors (nombre promocional: MIRЯORS), titulada en castellano Reflejos en España y Espejos siniestros en Hispanoamérica, es un remake basado en la película surcoreana Geoul Sokeuro (nombre original en coreano: 거울 속으로) (traducción literal en castellano: Hacia el interior del espejo) estrenada el 1..."@es ;
+    OntologiaPeliculas:tieneActor OntologiaPeliculas:Amy_Smart,
+        OntologiaPeliculas:Jason_Flemyng,
+        OntologiaPeliculas:John_Shrapnel,
+        OntologiaPeliculas:Kiefer_Sutherland,
+        OntologiaPeliculas:Paula_Patton ;
+    OntologiaPeliculas:tieneGenero OntologiaPeliculas:Cine_de_terror .
+
+OntologiaPeliculas:Espíritu_salvaje a OntologiaPeliculas:Pelicula ;
+    OntologiaPeliculas:dirigidaPor OntologiaPeliculas:Billy_Bob_Thornton ;
+    OntologiaPeliculas:duracionPelicula "116 min" ;
+    OntologiaPeliculas:fechaEstreno "No disponible" ;
+    OntologiaPeliculas:lenguaje "es"^^xsd:string ;
+    OntologiaPeliculas:nombrePelicula "Espíritu salvaje"@es ;
+    OntologiaPeliculas:sinopsisPelicula "All the Pretty Horses es una película estadounidense de 2000 encaminada por Billy Bob Thornton. Fue adaptada por  de la novela de Cormac McCarthy Todos los hermosos caballos y fue protagonizada por Matt Damon y Penélope Cruz. La película recibió críticas generalmente negativas y recaudó solo US$1..."@es ;
+    OntologiaPeliculas:tieneActor OntologiaPeliculas:Henry_Thomas,
+        OntologiaPeliculas:Lucas_Black,
+        OntologiaPeliculas:Matt_Damon,
+        OntologiaPeliculas:Penélope_Cruz ;
+    OntologiaPeliculas:tieneGenero OntologiaPeliculas:Géneros_no_disponibles .
+
 OntologiaPeliculas:Festival a owl:Class ;
     rdfs:subClassOf OntologiaPeliculas:Evento .
+
+OntologiaPeliculas:Gerry a OntologiaPeliculas:Pelicula ;
+    OntologiaPeliculas:dirigidaPor OntologiaPeliculas:Gus_Van_Sant ;
+    OntologiaPeliculas:duracionPelicula "103 min" ;
+    OntologiaPeliculas:fechaEstreno "No disponible" ;
+    OntologiaPeliculas:lenguaje "es"^^xsd:string ;
+    OntologiaPeliculas:nombrePelicula "Gerry"@es ;
+    OntologiaPeliculas:sinopsisPelicula "Gerry es una película estadounidense estrenada en 2002, dirigida por Gus Van Sant y protagonizada por Matt Damon y Casey Affleck."@es ;
+    OntologiaPeliculas:tieneActor OntologiaPeliculas:Casey_Affleck,
+        OntologiaPeliculas:Matt_Damon ;
+    OntologiaPeliculas:tieneGenero OntologiaPeliculas:Géneros_no_disponibles .
 
 OntologiaPeliculas:Gigantes_de_Acero a OntologiaPeliculas:Pelicula ;
     OntologiaPeliculas:dirigidaPor OntologiaPeliculas:Shawn_Levy ;
@@ -429,6 +618,30 @@ OntologiaPeliculas:How_to_Train_Your_Dragon_\(2010_film\) a OntologiaPeliculas:P
     OntologiaPeliculas:nombrePelicula "How to Train Your Dragon (2010 film)"@en ;
     OntologiaPeliculas:sinopsisPelicula "Sinopsis no disponible"@en .
 
+OntologiaPeliculas:Interestelar a OntologiaPeliculas:Pelicula ;
+    OntologiaPeliculas:dirigidaPor OntologiaPeliculas:Christopher_Nolan,
+        OntologiaPeliculas:Hoyte_van_Hoytema ;
+    OntologiaPeliculas:duracionPelicula "169 min" ;
+    OntologiaPeliculas:fechaEstreno "No disponible" ;
+    OntologiaPeliculas:lenguaje "es"^^xsd:string ;
+    OntologiaPeliculas:nombrePelicula "Interestelar"@es ;
+    OntologiaPeliculas:sinopsisPelicula "Interstellar (Interestelar, en Hispanoamérica) es una película épica de ciencia ficción estadounidense de 2014, dirigida por Christopher Nolan y protagonizada por Matthew McConaughey, Anne Hathaway, Jessica Chastain, Michael Caine y Matt Damon. Presenta a un equipo de astronautas que viajan a tra..."@es ;
+    OntologiaPeliculas:tieneActor OntologiaPeliculas:Anne_Hathaway,
+        OntologiaPeliculas:Bill_Irwin,
+        OntologiaPeliculas:Ellen_Burstyn,
+        OntologiaPeliculas:Jessica_Chastain,
+        OntologiaPeliculas:Matt_Damon,
+        OntologiaPeliculas:Matthew_McConaughey,
+        OntologiaPeliculas:Michael_Caine ;
+    OntologiaPeliculas:tieneGenero OntologiaPeliculas:Cine_de_ciencia_ficción .
+
+OntologiaPeliculas:Interstellar a OntologiaPeliculas:Pelicula ;
+    OntologiaPeliculas:duracionPelicula "169 min" ;
+    OntologiaPeliculas:fechaEstreno "No disponible" ;
+    OntologiaPeliculas:lenguaje "es"^^xsd:string ;
+    OntologiaPeliculas:nombrePelicula "Interstellar"@es ;
+    OntologiaPeliculas:sinopsisPelicula "Interstellar (Interestelar, en Hispanoamérica) es una película épica de ciencia ficción estadounidense de 2014, dirigida por Christopher Nolan y protagonizada por Matthew McConaughey, Anne Hathaway, Jessica Chastain, Michael Caine y Matt Damon. Presenta a un equipo de astronautas que viajan a tra..."@es .
+
 OntologiaPeliculas:Jumanji_El_siguiente_nivel a OntologiaPeliculas:Pelicula ;
     OntologiaPeliculas:dirigidaPor OntologiaPeliculas:Jake_Kasdan ;
     OntologiaPeliculas:duracionPelicula "122 min" ;
@@ -478,6 +691,27 @@ OntologiaPeliculas:La_Huésped a OntologiaPeliculas:Pelicula ;
         OntologiaPeliculas:Song_Kang-ho ;
     OntologiaPeliculas:tieneGenero OntologiaPeliculas:Película_de_monstruos,
         OntologiaPeliculas:Terror .
+
+OntologiaPeliculas:La_Leyenda_del_Jinete_Sin_Cabeza a OntologiaPeliculas:Pelicula ;
+    OntologiaPeliculas:dirigidaPor OntologiaPeliculas:Tim_Burton ;
+    OntologiaPeliculas:duracionPelicula "105 min" ;
+    OntologiaPeliculas:fechaEstreno "No disponible" ;
+    OntologiaPeliculas:lenguaje "es"^^xsd:string ;
+    OntologiaPeliculas:nombrePelicula "La Leyenda del Jinete Sin Cabeza"@es ;
+    OntologiaPeliculas:sinopsisPelicula "Sleepy Hollow (titulada La leyenda del jinete sin cabeza en Hispanoamérica) es una película de aventuras de 1999 dirigida por Tim Burton y protagonizada por Johnny Depp, basada en el relato de terror La leyenda de Sleepy Hollow de Washington Irving. El título significa oquedad soñolienta en inglé..."@es ;
+    OntologiaPeliculas:tieneActor OntologiaPeliculas:Casper_Van_Dien,
+        OntologiaPeliculas:Christina_Ricci,
+        OntologiaPeliculas:Christopher_Lee,
+        OntologiaPeliculas:Christopher_Walken,
+        OntologiaPeliculas:Jeffrey_Jones_\(actor\),
+        OntologiaPeliculas:Johnny_Depp,
+        OntologiaPeliculas:Lisa_Marie,
+        OntologiaPeliculas:Michael_Gambon,
+        OntologiaPeliculas:Miranda_Richardson ;
+    OntologiaPeliculas:tieneGenero OntologiaPeliculas:Cine_de_aventura,
+        OntologiaPeliculas:Cine_de_terror,
+        OntologiaPeliculas:Cine_policíaco,
+        OntologiaPeliculas:Fantasía_oscura .
 
 OntologiaPeliculas:La_Pantera_Rosa_2 a OntologiaPeliculas:Pelicula ;
     OntologiaPeliculas:dirigidaPor OntologiaPeliculas:Shawn_Levy ;
@@ -533,6 +767,16 @@ OntologiaPeliculas:La_invención_de_Cronos a OntologiaPeliculas:Pelicula ;
     OntologiaPeliculas:tieneActor OntologiaPeliculas:Actores_no_disponibles ;
     OntologiaPeliculas:tieneGenero OntologiaPeliculas:Cine_de_terror .
 
+OntologiaPeliculas:La_resureccion_de_Louis_Drax a OntologiaPeliculas:Pelicula ;
+    OntologiaPeliculas:dirigidaPor OntologiaPeliculas:Alexandre_Aja ;
+    OntologiaPeliculas:duracionPelicula "No disponible" ;
+    OntologiaPeliculas:fechaEstreno "No disponible" ;
+    OntologiaPeliculas:lenguaje "es"^^xsd:string ;
+    OntologiaPeliculas:nombrePelicula "La resureccion de Louis Drax"@es ;
+    OntologiaPeliculas:sinopsisPelicula "The 9th Life of Louis Drax es una película de suspenso basada en la novela homónima de Liz Jensen. Está protagonizada por Jamie Dornan, Sarah Gadon, Aiden Longworth, Oliver Platt, Molly Parker, , Jane McGregor, Barbara Hershey y Aaron Paul. Se estrenó en Estados Unidos el 2 de septiembre de 2016.​"@es ;
+    OntologiaPeliculas:tieneActor OntologiaPeliculas:Actores_no_disponibles ;
+    OntologiaPeliculas:tieneGenero OntologiaPeliculas:Géneros_no_disponibles .
+
 OntologiaPeliculas:La_venenosa a OntologiaPeliculas:Pelicula ;
     OntologiaPeliculas:dirigidaPor OntologiaPeliculas:Phedon_Papamichael ;
     OntologiaPeliculas:duracionPelicula "90 min" ;
@@ -550,6 +794,22 @@ OntologiaPeliculas:La_venenosa a OntologiaPeliculas:Pelicula ;
 
 OntologiaPeliculas:Largometraje a owl:Class ;
     rdfs:subClassOf OntologiaPeliculas:Pelicula .
+
+OntologiaPeliculas:Los_agentes_del_destino a OntologiaPeliculas:Pelicula ;
+    OntologiaPeliculas:dirigidaPor OntologiaPeliculas:Director_no_disponible ;
+    OntologiaPeliculas:duracionPelicula "107 min" ;
+    OntologiaPeliculas:fechaEstreno "No disponible" ;
+    OntologiaPeliculas:lenguaje "es"^^xsd:string ;
+    OntologiaPeliculas:nombrePelicula "Los agentes del destino"@es ;
+    OntologiaPeliculas:sinopsisPelicula "The Adjustment Bureau, titulada en España Destino oculto y en Hispanoamérica Agentes del destino, es una película de ciencia ficción estrenada el 4 de marzo de 2011 en Estados Unidos y España, y el 7 de abril del mismo año en Argentina y México. Protagonizada por Matt Damon y Emily Blunt. Dirigid..."@es ;
+    OntologiaPeliculas:tieneActor OntologiaPeliculas:Anthony_Mackie,
+        OntologiaPeliculas:Emily_Blunt,
+        OntologiaPeliculas:John_Slattery,
+        OntologiaPeliculas:Matt_Damon,
+        OntologiaPeliculas:Terence_Stamp ;
+    OntologiaPeliculas:tieneGenero OntologiaPeliculas:Ciencia_ficción,
+        OntologiaPeliculas:Cine_romántico,
+        OntologiaPeliculas:Suspense .
 
 OntologiaPeliculas:Man_on_Fire a OntologiaPeliculas:Pelicula,
         owl:NamedIndividual ;
@@ -579,6 +839,20 @@ OntologiaPeliculas:Memorias_de_un_Asesino a OntologiaPeliculas:Pelicula ;
     OntologiaPeliculas:nombrePelicula "Memorias de un Asesino"@es ;
     OntologiaPeliculas:sinopsisPelicula "Salinui chueok (conocida en español como Memories of Murder o como Memorias de un asesino, dependiendo del país) es una película coreana de 2003 dirigida por Bong Joon-ho. El guion está basado en la obra teatral de  y fue adaptado por Bong Joon-ho y ; se inspira en la historia real del primer ase..."@es ;
     OntologiaPeliculas:tieneActor OntologiaPeliculas:Song_Kang-ho ;
+    OntologiaPeliculas:tieneGenero OntologiaPeliculas:Géneros_no_disponibles .
+
+OntologiaPeliculas:Mente_indomable a OntologiaPeliculas:Pelicula ;
+    OntologiaPeliculas:dirigidaPor OntologiaPeliculas:Gus_Van_Sant ;
+    OntologiaPeliculas:duracionPelicula "126 min" ;
+    OntologiaPeliculas:fechaEstreno "No disponible" ;
+    OntologiaPeliculas:lenguaje "es"^^xsd:string ;
+    OntologiaPeliculas:nombrePelicula "Mente indomable"@es ;
+    OntologiaPeliculas:sinopsisPelicula "Good Will Hunting (El indomable Will Hunting en España, Mente indomable en México y En busca del destino en el resto de Hispanoamérica) es una película de 1997 dirigida por Gus Van Sant. La película obtuvo 9 nominaciones a los Óscar (ganando dos de ellos: uno al mejor guion original, para Matt Da..."@es ;
+    OntologiaPeliculas:tieneActor OntologiaPeliculas:Ben_Affleck,
+        OntologiaPeliculas:Matt_Damon,
+        OntologiaPeliculas:Minnie_Driver,
+        OntologiaPeliculas:Robin_Williams,
+        OntologiaPeliculas:Stellan_Skarsgård ;
     OntologiaPeliculas:tieneGenero OntologiaPeliculas:Géneros_no_disponibles .
 
 OntologiaPeliculas:Más_barato_por_docena a OntologiaPeliculas:Pelicula ;
@@ -1367,6 +1641,9 @@ OntologiaPeliculas:Agnieszka_Holland a OntologiaPeliculas:Director ;
 OntologiaPeliculas:Alan_Rickman a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Alan Rickman" .
 
+OntologiaPeliculas:Alec_Baldwin a OntologiaPeliculas:Actor ;
+    OntologiaPeliculas:nombrePersona "Alec Baldwin" .
+
 OntologiaPeliculas:Alex_Wolff a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Alex Wolff" .
 
@@ -1378,6 +1655,9 @@ OntologiaPeliculas:Alexandra_Krosney a OntologiaPeliculas:Actor ;
 
 OntologiaPeliculas:Ali_Fazal a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Ali Fazal" .
+
+OntologiaPeliculas:Alice_Braga a OntologiaPeliculas:Actor ;
+    OntologiaPeliculas:nombrePersona "Alice Braga" .
 
 OntologiaPeliculas:Allan_Melvin a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Allan Melvin" .
@@ -1397,9 +1677,6 @@ OntologiaPeliculas:Amanda_Righetti a OntologiaPeliculas:Actor ;
 OntologiaPeliculas:Amy_Ryan a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Amy Ryan" .
 
-OntologiaPeliculas:Amy_Smart a OntologiaPeliculas:Actor ;
-    OntologiaPeliculas:nombrePersona "Amy Smart" .
-
 OntologiaPeliculas:Andrew_Dunn a OntologiaPeliculas:Director,
         owl:NamedIndividual ;
     OntologiaPeliculas:nombrePersona "Andrew Dunn" .
@@ -1411,11 +1688,11 @@ OntologiaPeliculas:Andy_Tennant a OntologiaPeliculas:Director,
 OntologiaPeliculas:Angel_Aquino a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Angel Aquino" .
 
+OntologiaPeliculas:Angelina_Jolie a OntologiaPeliculas:Actor ;
+    OntologiaPeliculas:nombrePersona "Angelina Jolie" .
+
 OntologiaPeliculas:Anna_Faris a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Anna Faris" .
-
-OntologiaPeliculas:Anne_Hathaway a OntologiaPeliculas:Actor ;
-    OntologiaPeliculas:nombrePersona "Anne Hathaway" .
 
 OntologiaPeliculas:Anne_Katarine a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Anne Katarine" .
@@ -1426,8 +1703,8 @@ OntologiaPeliculas:Annette_Bening a OntologiaPeliculas:Actor ;
 OntologiaPeliculas:Anthology_series a OntologiaPeliculas:Genero ;
     OntologiaPeliculas:nombreGenero "Anthology series" .
 
-OntologiaPeliculas:Anthony_Mackie a OntologiaPeliculas:Actor ;
-    OntologiaPeliculas:nombrePersona "Anthony Mackie" .
+OntologiaPeliculas:Anthony_Michael_Hall a OntologiaPeliculas:Actor ;
+    OntologiaPeliculas:nombrePersona "Anthony Michael Hall" .
 
 OntologiaPeliculas:Arnold_Vosloo a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Arnold Vosloo" .
@@ -1447,6 +1724,9 @@ OntologiaPeliculas:Bae_Doona a OntologiaPeliculas:Actor ;
 OntologiaPeliculas:Bailee_Madison a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Bailee Madison" .
 
+OntologiaPeliculas:Ben_Affleck a OntologiaPeliculas:Actor ;
+    OntologiaPeliculas:nombrePersona "Ben Affleck" .
+
 OntologiaPeliculas:Ben_Daniels a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Ben Daniels" .
 
@@ -1462,6 +1742,15 @@ OntologiaPeliculas:Bill_Cobbs a OntologiaPeliculas:Actor ;
 OntologiaPeliculas:Bill_Condon a OntologiaPeliculas:Director,
         owl:NamedIndividual ;
     OntologiaPeliculas:nombrePersona "Bill Condon" .
+
+OntologiaPeliculas:Bill_Irwin a OntologiaPeliculas:Actor ;
+    OntologiaPeliculas:nombrePersona "Bill Irwin" .
+
+OntologiaPeliculas:Billy_Bob_Thornton a OntologiaPeliculas:Director ;
+    OntologiaPeliculas:nombrePersona "Billy Bob Thornton" .
+
+OntologiaPeliculas:Billy_Crudup a OntologiaPeliculas:Actor ;
+    OntologiaPeliculas:nombrePersona "Billy Crudup" .
 
 OntologiaPeliculas:Billy_Kane a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Billy Kane" .
@@ -1498,6 +1787,12 @@ OntologiaPeliculas:Carl_Banas a OntologiaPeliculas:Actor ;
 OntologiaPeliculas:Carla_Gugino a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Carla Gugino" .
 
+OntologiaPeliculas:Casey_Affleck a OntologiaPeliculas:Actor ;
+    OntologiaPeliculas:nombrePersona "Casey Affleck" .
+
+OntologiaPeliculas:Casper_Van_Dien a OntologiaPeliculas:Actor ;
+    OntologiaPeliculas:nombrePersona "Casper Van Dien" .
+
 OntologiaPeliculas:Cerina_Vincent a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Cerina Vincent" .
 
@@ -1529,11 +1824,14 @@ OntologiaPeliculas:Chris_Weitz a OntologiaPeliculas:Director,
         owl:NamedIndividual ;
     OntologiaPeliculas:nombrePersona "Chris Weitz" .
 
+OntologiaPeliculas:Christina_Ricci a OntologiaPeliculas:Actor ;
+    OntologiaPeliculas:nombrePersona "Christina Ricci" .
+
+OntologiaPeliculas:Christopher_Nolan a OntologiaPeliculas:Director ;
+    OntologiaPeliculas:nombrePersona "Christopher Nolan" .
+
 OntologiaPeliculas:Christopher_de_Leon a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Christopher de Leon" .
-
-OntologiaPeliculas:Ciencia_Ficción a OntologiaPeliculas:Genero ;
-    OntologiaPeliculas:nombreGenero "Ciencia Ficción" .
 
 OntologiaPeliculas:Cine_bélico a OntologiaPeliculas:Genero ;
     OntologiaPeliculas:nombreGenero "Cine bélico" .
@@ -1542,8 +1840,14 @@ OntologiaPeliculas:Cine_de_animación a OntologiaPeliculas:Genero,
         owl:NamedIndividual ;
     OntologiaPeliculas:nombreGenero "Cine de animación" .
 
+OntologiaPeliculas:Cine_de_aventura a OntologiaPeliculas:Genero ;
+    OntologiaPeliculas:nombreGenero "Cine de aventura" .
+
 OntologiaPeliculas:Cine_de_superhéroes a OntologiaPeliculas:Genero ;
     OntologiaPeliculas:nombreGenero "Cine de superhéroes" .
+
+OntologiaPeliculas:Cine_gore a OntologiaPeliculas:Genero ;
+    OntologiaPeliculas:nombreGenero "Cine gore" .
 
 OntologiaPeliculas:Cinéma_fantastique a OntologiaPeliculas:Genero ;
     OntologiaPeliculas:nombreGenero "Cinéma fantastique" .
@@ -1573,6 +1877,9 @@ OntologiaPeliculas:Creagen_Dow a OntologiaPeliculas:Actor ;
 OntologiaPeliculas:Crispin_Glover a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Crispin Glover" .
 
+OntologiaPeliculas:Cécile_de_France a OntologiaPeliculas:Actor ;
+    OntologiaPeliculas:nombrePersona "Cécile de France" .
+
 OntologiaPeliculas:Dakota_Goyo a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Dakota Goyo" .
 
@@ -1596,6 +1903,9 @@ OntologiaPeliculas:David_Dobkin a OntologiaPeliculas:Director ;
 OntologiaPeliculas:David_Harbour a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "David Harbour" .
 
+OntologiaPeliculas:David_Kelly a OntologiaPeliculas:Actor ;
+    OntologiaPeliculas:nombrePersona "David Kelly" .
+
 OntologiaPeliculas:David_Morse a OntologiaPeliculas:Actor,
         owl:NamedIndividual ;
     OntologiaPeliculas:nombrePersona "David Morse" .
@@ -1618,6 +1928,9 @@ OntologiaPeliculas:Deborah_Kampmeier a OntologiaPeliculas:Director,
         owl:NamedIndividual ;
     OntologiaPeliculas:nombrePersona "Deborah Kampmeier" .
 
+OntologiaPeliculas:Deep_Roy a OntologiaPeliculas:Actor ;
+    OntologiaPeliculas:nombrePersona "Deep Roy" .
+
 OntologiaPeliculas:Demi_Moore a OntologiaPeliculas:Actor,
         owl:NamedIndividual ;
     OntologiaPeliculas:nombrePersona "Demi Moore" .
@@ -1628,11 +1941,17 @@ OntologiaPeliculas:Denyse_Tontz a OntologiaPeliculas:Actor ;
 OntologiaPeliculas:Derek_Luke a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Derek Luke" .
 
+OntologiaPeliculas:Dianne_Wiest a OntologiaPeliculas:Actor ;
+    OntologiaPeliculas:nombrePersona "Dianne Wiest" .
+
 OntologiaPeliculas:Dick_Van_Dyke a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Dick Van Dyke" .
 
 OntologiaPeliculas:Diego_Klattenhoff a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Diego Klattenhoff" .
+
+OntologiaPeliculas:Diego_Luna a OntologiaPeliculas:Actor ;
+    OntologiaPeliculas:nombrePersona "Diego Luna" .
 
 OntologiaPeliculas:Distribuidor a owl:Class ;
     rdfs:subClassOf OntologiaPeliculas:Organizacion .
@@ -1674,6 +1993,12 @@ OntologiaPeliculas:Ellen_Barkin a OntologiaPeliculas:Actor,
         owl:NamedIndividual ;
     OntologiaPeliculas:nombrePersona "Ellen Barkin" .
 
+OntologiaPeliculas:Ellen_Burstyn a OntologiaPeliculas:Actor ;
+    OntologiaPeliculas:nombrePersona "Ellen Burstyn" .
+
+OntologiaPeliculas:Emily_Blunt a OntologiaPeliculas:Actor ;
+    OntologiaPeliculas:nombrePersona "Emily Blunt" .
+
 OntologiaPeliculas:Emily_Mortimer a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Emily Mortimer" .
 
@@ -1701,6 +2026,9 @@ OntologiaPeliculas:Fantasy_comedy a OntologiaPeliculas:Genero ;
 OntologiaPeliculas:Fantasía a OntologiaPeliculas:Genero ;
     OntologiaPeliculas:nombreGenero "Fantasía" .
 
+OntologiaPeliculas:Fantasía_oscura a OntologiaPeliculas:Genero ;
+    OntologiaPeliculas:nombreGenero "Fantasía oscura" .
+
 OntologiaPeliculas:Film_criminel a OntologiaPeliculas:Genero,
         owl:NamedIndividual ;
     OntologiaPeliculas:nombreGenero "Film criminel" .
@@ -1724,6 +2052,9 @@ OntologiaPeliculas:Frankie_Muniz a OntologiaPeliculas:Actor ;
 OntologiaPeliculas:Fred_Ward a OntologiaPeliculas:Actor,
         owl:NamedIndividual ;
     OntologiaPeliculas:nombrePersona "Fred Ward" .
+
+OntologiaPeliculas:Freddie_Highmore a OntologiaPeliculas:Actor ;
+    OntologiaPeliculas:nombrePersona "Freddie Highmore" .
 
 OntologiaPeliculas:Gavin_Hood a OntologiaPeliculas:Director ;
     OntologiaPeliculas:nombrePersona "Gavin Hood" .
@@ -1751,11 +2082,17 @@ OntologiaPeliculas:Henry_Selick a OntologiaPeliculas:Director,
         owl:NamedIndividual ;
     OntologiaPeliculas:nombrePersona "Henry Selick" .
 
+OntologiaPeliculas:Henry_Thomas a OntologiaPeliculas:Actor ;
+    OntologiaPeliculas:nombrePersona "Henry Thomas" .
+
 OntologiaPeliculas:Hilary_Duff a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Hilary Duff" .
 
 OntologiaPeliculas:Howard_Morris a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Howard Morris" .
+
+OntologiaPeliculas:Hoyte_van_Hoytema a OntologiaPeliculas:Director ;
+    OntologiaPeliculas:nombrePersona "Hoyte van Hoytema" .
 
 OntologiaPeliculas:Ian_McShane a OntologiaPeliculas:Actor,
         owl:NamedIndividual ;
@@ -1796,6 +2133,9 @@ OntologiaPeliculas:Jake_Kasdan a OntologiaPeliculas:Director ;
 OntologiaPeliculas:James_Brolin a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "James Brolin" .
 
+OntologiaPeliculas:James_Fox a OntologiaPeliculas:Actor ;
+    OntologiaPeliculas:nombrePersona "James Fox" .
+
 OntologiaPeliculas:James_Franco a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "James Franco" .
 
@@ -1810,6 +2150,9 @@ OntologiaPeliculas:Jansen_Panettiere a OntologiaPeliculas:Actor ;
 
 OntologiaPeliculas:Jason_Bateman a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Jason Bateman" .
+
+OntologiaPeliculas:Jason_Flemyng a OntologiaPeliculas:Actor ;
+    OntologiaPeliculas:nombrePersona "Jason Flemyng" .
 
 OntologiaPeliculas:Jason_Momoa a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Jason Momoa" .
@@ -1834,6 +2177,9 @@ OntologiaPeliculas:Jean_Smart a OntologiaPeliculas:Actor,
 OntologiaPeliculas:Jeffrey_Combs a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Jeffrey Combs" .
 
+OntologiaPeliculas:Jeffrey_Jones_\(actor\) a OntologiaPeliculas:Actor ;
+    OntologiaPeliculas:nombrePersona "Jeffrey Jones (actor)" .
+
 OntologiaPeliculas:Jennette_McCurdy a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Jennette McCurdy" .
 
@@ -1857,9 +2203,6 @@ OntologiaPeliculas:Jerry_Nelson a OntologiaPeliculas:Actor ;
 OntologiaPeliculas:Jesse_James_\(actor\) a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Jesse James (actor)" .
 
-OntologiaPeliculas:Jessica_Chastain a OntologiaPeliculas:Actor ;
-    OntologiaPeliculas:nombrePersona "Jessica Chastain" .
-
 OntologiaPeliculas:Jessica_Tuck a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Jessica Tuck" .
 
@@ -1879,8 +2222,23 @@ OntologiaPeliculas:Jimmy_Bennett a OntologiaPeliculas:Actor ;
 OntologiaPeliculas:Joan_Gerber a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Joan Gerber" .
 
+OntologiaPeliculas:Jodie_Foster a OntologiaPeliculas:Actor ;
+    OntologiaPeliculas:nombrePersona "Jodie Foster" .
+
+OntologiaPeliculas:Joe_Pesci a OntologiaPeliculas:Actor ;
+    OntologiaPeliculas:nombrePersona "Joe Pesci" .
+
 OntologiaPeliculas:John_Ortiz a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "John Ortiz" .
+
+OntologiaPeliculas:John_Shrapnel a OntologiaPeliculas:Actor ;
+    OntologiaPeliculas:nombrePersona "John Shrapnel" .
+
+OntologiaPeliculas:John_Slattery a OntologiaPeliculas:Actor ;
+    OntologiaPeliculas:nombrePersona "John Slattery" .
+
+OntologiaPeliculas:John_Turturro a OntologiaPeliculas:Actor ;
+    OntologiaPeliculas:nombrePersona "John Turturro" .
 
 OntologiaPeliculas:Johnny_Knoxville a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Johnny Knoxville" .
@@ -1953,6 +2311,9 @@ OntologiaPeliculas:Kevin_Sussman a OntologiaPeliculas:Actor,
         owl:NamedIndividual ;
     OntologiaPeliculas:nombrePersona "Kevin Sussman" .
 
+OntologiaPeliculas:Kiefer_Sutherland a OntologiaPeliculas:Actor ;
+    OntologiaPeliculas:nombrePersona "Kiefer Sutherland" .
+
 OntologiaPeliculas:Kim_Raver a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Kim Raver" .
 
@@ -1971,6 +2332,9 @@ OntologiaPeliculas:L._Scott_Caldwell a OntologiaPeliculas:Actor ;
 OntologiaPeliculas:Laura_Michelle_Kelly a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Laura Michelle Kelly" .
 
+OntologiaPeliculas:Lee_Pace a OntologiaPeliculas:Actor ;
+    OntologiaPeliculas:nombrePersona "Lee Pace" .
+
 OntologiaPeliculas:Leslie_Mann a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Leslie Mann" .
 
@@ -1982,12 +2346,6 @@ OntologiaPeliculas:Liliana_Mumy a OntologiaPeliculas:Actor ;
 
 OntologiaPeliculas:Lisa_Hartman_Black a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Lisa Hartman Black" .
-
-OntologiaPeliculas:Lisa_Marie a OntologiaPeliculas:Actor ;
-    OntologiaPeliculas:nombrePersona "Lisa Marie" .
-
-OntologiaPeliculas:Lucas_Black a OntologiaPeliculas:Actor ;
-    OntologiaPeliculas:nombrePersona "Lucas Black" .
 
 OntologiaPeliculas:Lukas_Haas a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Lukas Haas" .
@@ -2027,8 +2385,14 @@ OntologiaPeliculas:Mary_Lynn_Rajskub a OntologiaPeliculas:Actor,
         owl:NamedIndividual ;
     OntologiaPeliculas:nombrePersona "Mary Lynn Rajskub" .
 
+OntologiaPeliculas:Matthew_McConaughey a OntologiaPeliculas:Actor ;
+    OntologiaPeliculas:nombrePersona "Matthew McConaughey" .
+
 OntologiaPeliculas:Max_Martini a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Max Martini" .
+
+OntologiaPeliculas:Maïwenn a OntologiaPeliculas:Actor ;
+    OntologiaPeliculas:nombrePersona "Maïwenn" .
 
 OntologiaPeliculas:Mecha_\(ciencia_ficción\) a OntologiaPeliculas:Genero ;
     OntologiaPeliculas:nombreGenero "Mecha (ciencia ficción)" .
@@ -2042,6 +2406,9 @@ OntologiaPeliculas:Melissa_George a OntologiaPeliculas:Actor ;
 
 OntologiaPeliculas:Michael_Bowen a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Michael Bowen" .
+
+OntologiaPeliculas:Michael_Caine a OntologiaPeliculas:Actor ;
+    OntologiaPeliculas:nombrePersona "Michael Caine" .
 
 OntologiaPeliculas:Michael_Clarke_Duncan a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Michael Clarke Duncan" .
@@ -2066,6 +2433,15 @@ OntologiaPeliculas:Michelle_Rodríguez a OntologiaPeliculas:Actor ;
 
 OntologiaPeliculas:Mickey_Rooney a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Mickey Rooney" .
+
+OntologiaPeliculas:Minnie_Driver a OntologiaPeliculas:Actor ;
+    OntologiaPeliculas:nombrePersona "Minnie Driver" .
+
+OntologiaPeliculas:Miranda_Richardson a OntologiaPeliculas:Actor ;
+    OntologiaPeliculas:nombrePersona "Miranda Richardson" .
+
+OntologiaPeliculas:Missi_Pyle a OntologiaPeliculas:Actor ;
+    OntologiaPeliculas:nombrePersona "Missi Pyle" .
 
 OntologiaPeliculas:Molly_Parker a OntologiaPeliculas:Actor,
         owl:NamedIndividual ;
@@ -2096,8 +2472,14 @@ OntologiaPeliculas:Nathalie_Emmanuel a OntologiaPeliculas:Actor ;
 OntologiaPeliculas:Neal_McDonough a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Neal McDonough" .
 
+OntologiaPeliculas:Neill_Blomkamp a OntologiaPeliculas:Director ;
+    OntologiaPeliculas:nombrePersona "Neill Blomkamp" .
+
 OntologiaPeliculas:Nick_Jonas a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Nick Jonas" .
+
+OntologiaPeliculas:Noah_Taylor a OntologiaPeliculas:Actor ;
+    OntologiaPeliculas:nombrePersona "Noah Taylor" .
 
 OntologiaPeliculas:Olivia_Wilde a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Olivia Wilde" .
@@ -2131,11 +2513,17 @@ OntologiaPeliculas:Paul_Winchell a OntologiaPeliculas:Actor ;
 OntologiaPeliculas:Paul_Winfield a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Paul Winfield" .
 
+OntologiaPeliculas:Paula_Patton a OntologiaPeliculas:Actor ;
+    OntologiaPeliculas:nombrePersona "Paula Patton" .
+
 OntologiaPeliculas:Película_de_monstruos a OntologiaPeliculas:Genero ;
     OntologiaPeliculas:nombreGenero "Película de monstruos" .
 
 OntologiaPeliculas:Películas_de_superhéroes a OntologiaPeliculas:Genero ;
     OntologiaPeliculas:nombreGenero "Películas de superhéroes" .
+
+OntologiaPeliculas:Penélope_Cruz a OntologiaPeliculas:Actor ;
+    OntologiaPeliculas:nombrePersona "Penélope Cruz" .
 
 OntologiaPeliculas:Peter_Riegert a OntologiaPeliculas:Actor,
         owl:NamedIndividual ;
@@ -2150,6 +2538,9 @@ OntologiaPeliculas:Phedon_Papamichael a OntologiaPeliculas:Director ;
 
 OntologiaPeliculas:Philip_Baker_Hall a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Philip Baker Hall" .
+
+OntologiaPeliculas:Philippe_Nahon a OntologiaPeliculas:Actor ;
+    OntologiaPeliculas:nombrePersona "Philippe Nahon" .
 
 OntologiaPeliculas:Pierce_Brosnan a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Pierce Brosnan" .
@@ -2202,12 +2593,6 @@ OntologiaPeliculas:Rinko_Kikuchi a OntologiaPeliculas:Actor ;
 
 OntologiaPeliculas:Robert_Kazinsky a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Robert Kazinsky" .
-
-OntologiaPeliculas:Robert_Richardson a OntologiaPeliculas:Director ;
-    OntologiaPeliculas:nombrePersona "Robert Richardson" .
-
-OntologiaPeliculas:Robin_Williams a OntologiaPeliculas:Actor ;
-    OntologiaPeliculas:nombrePersona "Robin Williams" .
 
 OntologiaPeliculas:Robin_Wright a OntologiaPeliculas:Actor,
         owl:NamedIndividual ;
@@ -2291,11 +2676,20 @@ OntologiaPeliculas:Serena_Dalrymple a OntologiaPeliculas:Actor ;
 OntologiaPeliculas:Shaina_Magdayao a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Shaina Magdayao" .
 
+OntologiaPeliculas:Sharlto_Copley a OntologiaPeliculas:Actor ;
+    OntologiaPeliculas:nombrePersona "Sharlto Copley" .
+
+OntologiaPeliculas:Slasher a OntologiaPeliculas:Genero ;
+    OntologiaPeliculas:nombreGenero "Slasher" .
+
 OntologiaPeliculas:Sobrenatural a OntologiaPeliculas:Genero ;
     OntologiaPeliculas:nombreGenero "Sobrenatural" .
 
 OntologiaPeliculas:Sofia_Carson a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Sofia Carson" .
+
+OntologiaPeliculas:Stellan_Skarsgård a OntologiaPeliculas:Actor ;
+    OntologiaPeliculas:nombrePersona "Stellan Skarsgård" .
 
 OntologiaPeliculas:Steve_Carell a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Steve Carell" .
@@ -2321,9 +2715,6 @@ OntologiaPeliculas:Taylor_Kitsch a OntologiaPeliculas:Actor ;
 OntologiaPeliculas:Teen_film a OntologiaPeliculas:Genero ;
     OntologiaPeliculas:nombreGenero "Teen film" .
 
-OntologiaPeliculas:Terence_Stamp a OntologiaPeliculas:Actor ;
-    OntologiaPeliculas:nombrePersona "Terence Stamp" .
-
 OntologiaPeliculas:Teri_Hatcher a OntologiaPeliculas:Actor,
         owl:NamedIndividual ;
     OntologiaPeliculas:nombrePersona "Teri Hatcher" .
@@ -2337,6 +2728,9 @@ OntologiaPeliculas:Thriller_\(genre\) a OntologiaPeliculas:Genero ;
 
 OntologiaPeliculas:Tim_Roth a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Tim Roth" .
+
+OntologiaPeliculas:Timothy_Hutton a OntologiaPeliculas:Actor ;
+    OntologiaPeliculas:nombrePersona "Timothy Hutton" .
 
 OntologiaPeliculas:Timothy_Spall a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Timothy Spall" .
@@ -2379,11 +2773,11 @@ OntologiaPeliculas:Valorie_Curry a OntologiaPeliculas:Actor,
         owl:NamedIndividual ;
     OntologiaPeliculas:nombrePersona "Valorie Curry" .
 
-OntologiaPeliculas:Vincent_Price a OntologiaPeliculas:Actor ;
-    OntologiaPeliculas:nombrePersona "Vincent Price" .
-
 OntologiaPeliculas:Vincent_Schiavelli a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Vincent Schiavelli" .
+
+OntologiaPeliculas:Wagner_Moura a OntologiaPeliculas:Actor ;
+    OntologiaPeliculas:nombrePersona "Wagner Moura" .
 
 OntologiaPeliculas:Walter_Hill a OntologiaPeliculas:Director ;
     OntologiaPeliculas:nombrePersona "Walter Hill" .
@@ -2396,6 +2790,15 @@ OntologiaPeliculas:Will_Ferrell a OntologiaPeliculas:Actor ;
 
 OntologiaPeliculas:William_Abadie a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "William Abadie" .
+
+OntologiaPeliculas:William_Fichtner a OntologiaPeliculas:Actor ;
+    OntologiaPeliculas:nombrePersona "William Fichtner" .
+
+OntologiaPeliculas:William_Hurt a OntologiaPeliculas:Actor ;
+    OntologiaPeliculas:nombrePersona "William Hurt" .
+
+OntologiaPeliculas:Winona_Ryder a OntologiaPeliculas:Actor ;
+    OntologiaPeliculas:nombrePersona "Winona Ryder" .
 
 OntologiaPeliculas:Xzibit a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Xzibit" .
@@ -2427,11 +2830,17 @@ OntologiaPeliculas:tieneCategoria a owl:ObjectProperty ;
     rdfs:domain OntologiaPeliculas:Premios ;
     rdfs:range OntologiaPeliculas:Categoria .
 
-OntologiaPeliculas:Alan_Arkin a OntologiaPeliculas:Actor ;
-    OntologiaPeliculas:nombrePersona "Alan Arkin" .
-
 OntologiaPeliculas:Amy_Adams a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Amy Adams" .
+
+OntologiaPeliculas:Amy_Smart a OntologiaPeliculas:Actor ;
+    OntologiaPeliculas:nombrePersona "Amy Smart" .
+
+OntologiaPeliculas:Anne_Hathaway a OntologiaPeliculas:Actor ;
+    OntologiaPeliculas:nombrePersona "Anne Hathaway" .
+
+OntologiaPeliculas:Anthony_Mackie a OntologiaPeliculas:Actor ;
+    OntologiaPeliculas:nombrePersona "Anthony Mackie" .
 
 OntologiaPeliculas:Ashley_Greene a OntologiaPeliculas:Actor,
         owl:NamedIndividual ;
@@ -2443,11 +2852,11 @@ OntologiaPeliculas:Charlie_Hunnam a OntologiaPeliculas:Actor ;
 OntologiaPeliculas:Christoph_Waltz a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Christoph Waltz" .
 
-OntologiaPeliculas:Ciencia_ficción a OntologiaPeliculas:Genero ;
-    OntologiaPeliculas:nombreGenero "Ciencia ficción" .
+OntologiaPeliculas:Christopher_Lee a OntologiaPeliculas:Actor ;
+    OntologiaPeliculas:nombrePersona "Christopher Lee" .
 
-OntologiaPeliculas:Cine_policíaco a OntologiaPeliculas:Genero ;
-    OntologiaPeliculas:nombreGenero "Cine policíaco" .
+OntologiaPeliculas:Ciencia_Ficción a OntologiaPeliculas:Genero ;
+    OntologiaPeliculas:nombreGenero "Ciencia Ficción" .
 
 OntologiaPeliculas:Comedy a OntologiaPeliculas:Genero ;
     OntologiaPeliculas:nombreGenero "Comedy" .
@@ -2487,6 +2896,9 @@ OntologiaPeliculas:Giancarlo_Giannini a OntologiaPeliculas:Actor,
         owl:NamedIndividual ;
     OntologiaPeliculas:nombrePersona "Giancarlo Giannini" .
 
+OntologiaPeliculas:Gus_Van_Sant a OntologiaPeliculas:Director ;
+    OntologiaPeliculas:nombrePersona "Gus Van Sant" .
+
 OntologiaPeliculas:Hugh_Jackman a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Hugh Jackman" .
 
@@ -2508,12 +2920,12 @@ OntologiaPeliculas:Jennifer_Connelly a OntologiaPeliculas:Actor,
         owl:NamedIndividual ;
     OntologiaPeliculas:nombrePersona "Jennifer Connelly" .
 
+OntologiaPeliculas:Jessica_Chastain a OntologiaPeliculas:Actor ;
+    OntologiaPeliculas:nombrePersona "Jessica Chastain" .
+
 OntologiaPeliculas:Jim_Henson a OntologiaPeliculas:Actor,
         OntologiaPeliculas:Director ;
     OntologiaPeliculas:nombrePersona "Jim Henson" .
-
-OntologiaPeliculas:Johnny_Depp a OntologiaPeliculas:Actor ;
-    OntologiaPeliculas:nombrePersona "Johnny Depp" .
 
 OntologiaPeliculas:Jordana_Brewster a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Jordana Brewster" .
@@ -2529,6 +2941,12 @@ OntologiaPeliculas:Kristen_Stewart a OntologiaPeliculas:Actor,
         owl:NamedIndividual ;
     OntologiaPeliculas:nombrePersona "Kristen Stewart" .
 
+OntologiaPeliculas:Lisa_Marie a OntologiaPeliculas:Actor ;
+    OntologiaPeliculas:nombrePersona "Lisa Marie" .
+
+OntologiaPeliculas:Lucas_Black a OntologiaPeliculas:Actor ;
+    OntologiaPeliculas:nombrePersona "Lucas Black" .
+
 OntologiaPeliculas:Ludacris a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Ludacris" .
 
@@ -2538,6 +2956,9 @@ OntologiaPeliculas:Marc_Anthony a OntologiaPeliculas:Actor,
 
 OntologiaPeliculas:Mia_Wasikowska a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Mia Wasikowska" .
+
+OntologiaPeliculas:Michael_Gambon a OntologiaPeliculas:Actor ;
+    OntologiaPeliculas:nombrePersona "Michael Gambon" .
 
 OntologiaPeliculas:Mickey_Rourke a OntologiaPeliculas:Actor,
         owl:NamedIndividual ;
@@ -2571,9 +2992,19 @@ OntologiaPeliculas:Radha_Mitchell a OntologiaPeliculas:Actor,
         owl:NamedIndividual ;
     OntologiaPeliculas:nombrePersona "Radha Mitchell" .
 
+OntologiaPeliculas:Robert_De_Niro a OntologiaPeliculas:Actor,
+        OntologiaPeliculas:Director ;
+    OntologiaPeliculas:nombrePersona "Robert De Niro" .
+
 OntologiaPeliculas:Robert_Pattinson a OntologiaPeliculas:Actor,
         owl:NamedIndividual ;
     OntologiaPeliculas:nombrePersona "Robert Pattinson" .
+
+OntologiaPeliculas:Robert_Richardson a OntologiaPeliculas:Director ;
+    OntologiaPeliculas:nombrePersona "Robert Richardson" .
+
+OntologiaPeliculas:Robin_Williams a OntologiaPeliculas:Actor ;
+    OntologiaPeliculas:nombrePersona "Robin Williams" .
 
 OntologiaPeliculas:Samuel_L._Jackson a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Samuel L. Jackson" .
@@ -2591,6 +3022,9 @@ OntologiaPeliculas:Taylor_Lautner a OntologiaPeliculas:Actor,
         owl:NamedIndividual ;
     OntologiaPeliculas:nombrePersona "Taylor Lautner" .
 
+OntologiaPeliculas:Terence_Stamp a OntologiaPeliculas:Actor ;
+    OntologiaPeliculas:nombrePersona "Terence Stamp" .
+
 OntologiaPeliculas:Terror a OntologiaPeliculas:Genero ;
     OntologiaPeliculas:nombreGenero "Terror" .
 
@@ -2601,27 +3035,26 @@ OntologiaPeliculas:Tony_Scott a OntologiaPeliculas:Director,
 OntologiaPeliculas:Vin_Diesel a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Vin Diesel" .
 
+OntologiaPeliculas:Vincent_Price a OntologiaPeliculas:Actor ;
+    OntologiaPeliculas:nombrePersona "Vincent Price" .
+
+OntologiaPeliculas:Alan_Arkin a OntologiaPeliculas:Actor ;
+    OntologiaPeliculas:nombrePersona "Alan Arkin" .
+
 OntologiaPeliculas:Bong_Joon-ho a OntologiaPeliculas:Director ;
     OntologiaPeliculas:nombrePersona "Bong Joon-ho" .
 
-OntologiaPeliculas:Cine_de_ciencia_ficción a OntologiaPeliculas:Genero ;
-    OntologiaPeliculas:nombreGenero "Cine de ciencia ficción" .
+OntologiaPeliculas:Ciencia_ficción a OntologiaPeliculas:Genero ;
+    OntologiaPeliculas:nombreGenero "Ciencia ficción" .
 
-OntologiaPeliculas:Cine_romántico a OntologiaPeliculas:Genero,
-        owl:NamedIndividual ;
-    OntologiaPeliculas:nombreGenero "Cine romántico" .
-
-OntologiaPeliculas:Comedia_cinematográfica a OntologiaPeliculas:Genero ;
-    OntologiaPeliculas:nombreGenero "Comedia cinematográfica" .
+OntologiaPeliculas:Cine_policíaco a OntologiaPeliculas:Genero ;
+    OntologiaPeliculas:nombreGenero "Cine policíaco" .
 
 OntologiaPeliculas:Fantasy a OntologiaPeliculas:Genero ;
     OntologiaPeliculas:nombreGenero "Fantasy" .
 
 OntologiaPeliculas:Fantasy_film a OntologiaPeliculas:Genero ;
     OntologiaPeliculas:nombreGenero "Fantasy film" .
-
-OntologiaPeliculas:Helena_Bonham_Carter a OntologiaPeliculas:Actor ;
-    OntologiaPeliculas:nombrePersona "Helena Bonham Carter" .
 
 OntologiaPeliculas:Mark_Wahlberg a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Mark Wahlberg" .
@@ -2645,22 +3078,27 @@ OntologiaPeliculas:trabajaEn a owl:ObjectProperty ;
 
 xsd:date a rdfs:Datatype .
 
-OntologiaPeliculas:Christopher_Walken a OntologiaPeliculas:Actor,
-        owl:NamedIndividual ;
-    OntologiaPeliculas:nombrePersona "Christopher Walken" .
+OntologiaPeliculas:Alexandre_Aja a OntologiaPeliculas:Director ;
+    OntologiaPeliculas:nombrePersona "Alexandre Aja" .
 
-OntologiaPeliculas:Cine_de_terror a OntologiaPeliculas:Genero,
+OntologiaPeliculas:Cine_romántico a OntologiaPeliculas:Genero,
         owl:NamedIndividual ;
-    OntologiaPeliculas:nombreGenero "Cine de terror" .
+    OntologiaPeliculas:nombreGenero "Cine romántico" .
+
+OntologiaPeliculas:Comedia_cinematográfica a OntologiaPeliculas:Genero ;
+    OntologiaPeliculas:nombreGenero "Comedia cinematográfica" .
 
 OntologiaPeliculas:Danny_DeVito a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Danny DeVito" .
 
+OntologiaPeliculas:Helena_Bonham_Carter a OntologiaPeliculas:Actor ;
+    OntologiaPeliculas:nombrePersona "Helena Bonham Carter" .
+
 OntologiaPeliculas:Obra a owl:Class .
 
-OntologiaPeliculas:Suspense a OntologiaPeliculas:Genero,
+OntologiaPeliculas:Christopher_Walken a OntologiaPeliculas:Actor,
         owl:NamedIndividual ;
-    OntologiaPeliculas:nombreGenero "Suspense" .
+    OntologiaPeliculas:nombrePersona "Christopher Walken" .
 
 OntologiaPeliculas:Cine_dramático a OntologiaPeliculas:Genero,
         owl:NamedIndividual ;
@@ -2675,6 +3113,9 @@ OntologiaPeliculas:Género_de_acción a OntologiaPeliculas:Genero,
         owl:NamedIndividual ;
     OntologiaPeliculas:nombreGenero "Género de acción" .
 
+OntologiaPeliculas:Johnny_Depp a OntologiaPeliculas:Actor ;
+    OntologiaPeliculas:nombrePersona "Johnny Depp" .
+
 OntologiaPeliculas:Organizacion a owl:Class .
 
 OntologiaPeliculas:Personaje a owl:Class .
@@ -2682,11 +3123,12 @@ OntologiaPeliculas:Personaje a owl:Class .
 OntologiaPeliculas:Ryan_Reynolds a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Ryan Reynolds" .
 
-OntologiaPeliculas:Cine_de_acción a OntologiaPeliculas:Genero ;
-    OntologiaPeliculas:nombreGenero "Cine de acción" .
+OntologiaPeliculas:Suspense a OntologiaPeliculas:Genero,
+        owl:NamedIndividual ;
+    OntologiaPeliculas:nombreGenero "Suspense" .
 
-OntologiaPeliculas:Cine_de_aventuras a OntologiaPeliculas:Genero ;
-    OntologiaPeliculas:nombreGenero "Cine de aventuras" .
+OntologiaPeliculas:Cine_de_ciencia_ficción a OntologiaPeliculas:Genero ;
+    OntologiaPeliculas:nombreGenero "Cine de ciencia ficción" .
 
 OntologiaPeliculas:Evento a owl:Class .
 
@@ -2701,25 +3143,35 @@ OntologiaPeliculas:Shawn_Levy a OntologiaPeliculas:Director ;
 
 OntologiaPeliculas:Categoria a owl:Class .
 
-OntologiaPeliculas:Cine_fantástico a OntologiaPeliculas:Genero,
-        owl:NamedIndividual ;
-    OntologiaPeliculas:nombreGenero "Cine fantástico" .
+OntologiaPeliculas:Cine_de_acción a OntologiaPeliculas:Genero ;
+    OntologiaPeliculas:nombreGenero "Cine de acción" .
+
+OntologiaPeliculas:Cine_de_aventuras a OntologiaPeliculas:Genero ;
+    OntologiaPeliculas:nombreGenero "Cine de aventuras" .
 
 OntologiaPeliculas:Guillermo_del_Toro a OntologiaPeliculas:Director ;
     OntologiaPeliculas:nombrePersona "Guillermo del Toro" .
 
+OntologiaPeliculas:Matt_Damon a OntologiaPeliculas:Actor ;
+    OntologiaPeliculas:nombrePersona "Matt Damon" .
+
 OntologiaPeliculas:RecursosMultimedia a owl:Class .
 
-OntologiaPeliculas:Actores_no_disponibles a OntologiaPeliculas:Actor ;
-    OntologiaPeliculas:nombrePersona "Actores no disponibles" .
+OntologiaPeliculas:Cine_de_terror a OntologiaPeliculas:Genero,
+        owl:NamedIndividual ;
+    OntologiaPeliculas:nombreGenero "Cine de terror" .
 
-OntologiaPeliculas:Tim_Burton a OntologiaPeliculas:Director ;
-    OntologiaPeliculas:nombrePersona "Tim Burton" .
+OntologiaPeliculas:Cine_fantástico a OntologiaPeliculas:Genero,
+        owl:NamedIndividual ;
+    OntologiaPeliculas:nombreGenero "Cine fantástico" .
 
 OntologiaPeliculas:Dwayne_Johnson a OntologiaPeliculas:Actor ;
     OntologiaPeliculas:nombrePersona "Dwayne Johnson" .
 
 OntologiaPeliculas:Persona a owl:Class .
+
+OntologiaPeliculas:Actores_no_disponibles a OntologiaPeliculas:Actor ;
+    OntologiaPeliculas:nombrePersona "Actores no disponibles" .
 
 OntologiaPeliculas:Dakota_Fanning a OntologiaPeliculas:Actor,
         owl:NamedIndividual ;
@@ -2727,6 +3179,9 @@ OntologiaPeliculas:Dakota_Fanning a OntologiaPeliculas:Actor,
 
 OntologiaPeliculas:Director_no_disponible a OntologiaPeliculas:Director ;
     OntologiaPeliculas:nombrePersona "Director no disponible" .
+
+OntologiaPeliculas:Tim_Burton a OntologiaPeliculas:Director ;
+    OntologiaPeliculas:nombrePersona "Tim Burton" .
 
 OntologiaPeliculas:Géneros_no_disponibles a OntologiaPeliculas:Genero,
         owl:NamedIndividual ;

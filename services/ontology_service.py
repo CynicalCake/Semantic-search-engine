@@ -161,9 +161,10 @@ class OntologyService:
                 filters += f'    FILTER ( ?anioName="{year}") \n'
 
             if genre:
+                genre_lower = genre.lower()
                 filters += f'    ?movie ont:tieneGenero ?genero .\n'
                 filters += f'    ?genero ont:nombreGenero ?nombreGenero .\n'
-                filters += f'    FILTER ( ?nombreGenero="{genre}") \n'
+                filters += f'    FILTER(CONTAINS(lcase(?nombreGenero), "{genre_lower}")) \n'
 
             if studio:
                 filters += f'    ?movie ont:estaAfiliadoA ?studio .\n'

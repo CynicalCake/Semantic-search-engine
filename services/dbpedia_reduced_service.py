@@ -64,11 +64,11 @@ class DBpediaReducedService:
                 logger.info(f"Cargados {len(self.graph)} triples desde {self.data_file}")
                 
                 # Verificar si necesita actualización
-                if self._needs_update():
-                    logger.info("Los datos necesitan actualización, iniciando descarga...")
-                    self._download_movie_data()
-                else:
-                    logger.info("Datos de DBpedia reducida están actualizados")
+                #if self._needs_update():
+                #    logger.info("Los datos necesitan actualización, iniciando descarga...")
+                #    self._download_movie_data()
+                #else:
+                #    logger.info("Datos de DBpedia reducida están actualizados")
                     
             except Exception as e:
                 logger.error(f"Error cargando datos existentes: {e}")

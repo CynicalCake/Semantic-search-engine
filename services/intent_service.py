@@ -5,17 +5,18 @@ class IntentService:
 
     ACTOR_KEYWORDS = [
         "actor", "actriz", "actuó", "actuo", "actua", "actuó en",
-        "actuado por", "cast", "performed by", "acteur", "schauspieler"
+        "actuado por", "cast", "performed by", "acteur", "schauspieler",
+        "películas de", "movies of", "films de", "filmes de", "starring",
+        "protagonizada por", "interpretada por", "protagonizó"
     ]
 
     DIRECTOR_KEYWORDS = [
         "director", "dirigió", "dirigio", "dirigida por", "directed by",
-        "réalisé par", "regie"
+        "réalisé par", "regie", "dirigida por", "dirigió"
     ]
 
     GENRE_KEYWORDS = [
-        "género", "genre", "películas de", "movies of", "films de",
-        "filme de", "genre de film", "film genre"
+        "género", "genre", "genre de film", "film genre", "tipo de película"
     ]
 
     YEAR_KEYWORDS = [
@@ -41,16 +42,59 @@ class IntentService:
         roles = {"actor": [], "director": []}
         if not self.tmdb:
             return roles
+        
         for p in persons:
-            role = self.tmdb.get_role(p)
-            if role == "actor":
-                roles["actor"].append(p)
-            elif role == "director":
-                roles["director"].append(p)
+            try:
+                role = self.tmdb.get_role(p)
+                if role == "actor":
+                    roles["actor"].append(p)
+                elif role == "director":
+                    roles["director"].append(p)
+            except Exception:
+                # Si hay error de conexión, continuar con el siguiente
+                # No logging para evitar spam en modo offline
+                continue
+                
+        return roles
+
+    def _detect_roles_by_keywords(self, text_low: str, persons: List[str]) -> Dict[str, List[str]]:
+        """Detecta roles de personas basándose en keywords cuando TMDB no está disponible"""
+        roles = {"actor": [], "director": []}
+        
+        # DEBUG: Logging para debugging
+        print(f"DEBUG ROLES: text='{text_low}', persons={persons}")
+        
+        # Buscar keywords específicos de roles
+        has_actor_keywords = any(k in text_low for k in self.ACTOR_KEYWORDS)
+        has_director_keywords = any(k in text_low for k in self.DIRECTOR_KEYWORDS)
+        
+        print(f"DEBUG ROLES: actor_keywords={has_actor_keywords}, director_keywords={has_director_keywords}")
+        
+        # Si hay keywords específicos, asignar personas a esos roles
+        if has_actor_keywords and not has_director_keywords:
+            roles["actor"] = persons.copy()
+        elif has_director_keywords and not has_actor_keywords:
+            roles["director"] = persons.copy()
+        elif has_actor_keywords and has_director_keywords:
+            # Si hay ambos keywords, dividir las personas
+            # Primero actor, segundo director, etc.
+            for i, person in enumerate(persons):
+                if i % 2 == 0:
+                    roles["actor"].append(person)
+                else:
+                    roles["director"].append(person)
+        else:
+            # Fallback: si no hay keywords específicos pero hay patterns como "películas de X"
+            generic_movie_patterns = ["películas de", "movies of", "films de", "filmes de"]
+            if any(pattern in text_low for pattern in generic_movie_patterns):
+                # Asumir que son actores por defecto
+                roles["actor"] = persons.copy()
+        
+        print(f"DEBUG ROLES: final_roles={roles}")
         return roles
 
     # Detectar intenciones y extraer entidades
-    def detect_intent(self, text: str, lang: str) -> Dict[str, Any]:
+    def detect_intent(self, text: str, lang: str, online_mode: bool = True) -> Dict[str, Any]:
         text_low = text.lower()
         entities = self.ner.extract_all(text, lang)
 
@@ -59,8 +103,19 @@ class IntentService:
         genres = entities.get("genres", [])
         studios = entities.get("orgs", [])
 
-        tmdb_roles = self.detect_roles_from_tmdb(persons)
+        # Solo usar TMDB si estamos online
+        if online_mode and self.tmdb:
+            try:
+                tmdb_roles = self.detect_roles_from_tmdb(persons)
+            except Exception as e:
+                # Fallback silencioso si TMDB falla
+                tmdb_roles = {"actor": [], "director": []}
+        else:
+            # Modo offline: inferir roles por keywords
+            tmdb_roles = self._detect_roles_by_keywords(text_low, persons)
 
+        print(f"DEBUG INTENT: tmdb_roles={tmdb_roles}")
+        
         # Inicializar intenciones
         intents = {
             "movie_by_actor": False,

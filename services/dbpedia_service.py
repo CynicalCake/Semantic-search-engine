@@ -368,7 +368,7 @@ class DBpediaService:
                 # Géneros
                 OPTIONAL {{
                     ?film ?pGenero ?generoURI .
-                    FILTER(?pGenero IN (dbo:genre, dbp:genres, prop-es:géneros))
+                    FILTER(?pGenero IN (dbo:genre, dbp:genres, prop-es:géneros, prop-es:género))
                     ?generoURI rdfs:label ?generoName .
                     FILTER(lang(?generoName) = "{language}" || lang(?generoName) = "en")
                 }}
