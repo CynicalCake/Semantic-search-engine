@@ -33,6 +33,7 @@ const i18n = {
         director: 'Director',
         year: 'Año',
         duration: 'Duración',
+        actors: 'Actores',
         genre: 'Género',
         seeMore: 'Ver más',
 
@@ -96,6 +97,7 @@ const i18n = {
         director: 'Director',
         year: 'Year',
         duration: 'Duration',
+        actors: 'Actors',
         genre: 'Genre',
         seeMore: 'See more',
 
@@ -159,6 +161,7 @@ const i18n = {
         director: 'Réalisateur',
         year: 'Année',
         duration: 'Durée',
+        actors: 'Acteurs',
         genre: 'Genre',
         seeMore: 'Voir plus',
 
@@ -223,6 +226,7 @@ const i18n = {
         year: 'Jahr',
         duration: 'Dauer',
         genre: 'Genre',
+        actors: 'Schauspieler',
         seeMore: 'Mehr sehen',
 
         // Leere Zustände

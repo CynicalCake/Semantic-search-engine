@@ -4,6 +4,11 @@ import logging
 from typing import List, Dict, Optional
 import requests
 from urllib.parse import quote
+from concurrent.futures import ThreadPoolExecutor
+import hashlib
+import time
+
+
 
 logger = logging.getLogger(__name__)
 tmdb_service = TMDBService(api_key="a6e641c79b947ea3f97330b3b9928daf")
@@ -23,6 +28,8 @@ class DBpediaService:
 
         # Usar el endpoint por defecto o el especificado
         self.default_endpoint = endpoint
+        self.dbpedia_cache = {}  # cache simple en memoria
+        self.tmdb_cache = {}     # cache simple en memoria
         self.timeout = 10
 
     def get_sparql_wrapper(self, language: str = 'es'):
@@ -279,17 +286,33 @@ class DBpediaService:
 
             if genre:
                 genre_safe = genre.replace('"', '\\"')
-                filters.append('?film dbo:genre ?genreURI .')
-                filters.append('?genreURI rdfs:label ?genero .')
-
-                if language == 'en':
-                    filters.append('FILTER(lang(?genero) = "en")')
+                genre_property_by_lang = {
+                    'en': 'dbo:genre',
+                    'es': 'prop-es:género',
+                    'fr': 'prop-fr:genre',
+                    'de': 'prop-de:genre'
+                }
+                if language in genre_property_by_lang:
+                    genre_prop = genre_property_by_lang[language]
+                    filters.append(f'?film {genre_prop} ?genreURI .')
+                    if language == 'en':
+                        filters.append('?genreURI rdfs:label ?genero .')
+                    else:
+                        filters.append('BIND(?genreURI AS ?genero)')
+                    if language == 'en':
+                        filters.append('FILTER(lang(?genero) = "en")')
+                    else:
+                        filters.append(f'FILTER(lang(?genero) = "{language}" || lang(?genero) = "" )')
+                    filters.append(
+                        f'FILTER(regex(lcase(str(?genero)), lcase("{genre_safe}"), "i"))'
+                    )
                 else:
+                    filters.append('?film dbo:genre ?genreURI .')
+                    filters.append('?genreURI rdfs:label ?genero .')
                     filters.append(f'FILTER(lang(?genero) = "{language}")')
-
-                filters.append(
-                    f'FILTER(regex(lcase(str(?genero)), lcase("{genre_safe}"), "i"))'
-                )
+                    filters.append(
+                        f'FILTER(regex(lcase(str(?genero)), lcase("{genre_safe}"), "i"))'
+                    )
 
             if studio:
                 studio_safe = studio.replace('"', '\\"')
@@ -309,33 +332,54 @@ class DBpediaService:
             PREFIX dbo: <http://dbpedia.org/ontology/>
             PREFIX dbp: <http://dbpedia.org/property/>
             PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-
-            SELECT DISTINCT ?film 
-                (SAMPLE(?title) AS ?title)
-                (SAMPLE(?releaseDate) AS ?releaseDate)
-                (SAMPLE(?runtime) AS ?runtime)
-                (SAMPLE(?directorName) AS ?directorName)
+            PREFIX prop-es: <http://es.dbpedia.org/property/>
+            PREFIX prop-fr: <http://fr.dbpedia.org/property/>
+            PREFIX prop-en: <http://dbpedia.org/property/>
+            
+            SELECT DISTINCT ?film ?title ?releaseDate ?runtime
+                (GROUP_CONCAT(DISTINCT ?directorName; SEPARATOR=", ") AS ?directores)
+                (GROUP_CONCAT(DISTINCT ?actorName; SEPARATOR=", ") AS ?actores)
+                (GROUP_CONCAT(DISTINCT ?generoName; SEPARATOR=", ") AS ?generos)
                 (SAMPLE(?abstract) AS ?abstract)
-                WHERE {{
+            WHERE {{
                 ?film rdf:type dbo:Film .
                 ?film rdfs:label ?title .
-                FILTER(lang(?title) = "{language}")
-            
+                FILTER(lang(?title) = "{language}" || lang(?title) = "en")
+
                 OPTIONAL {{ ?film dbo:releaseDate ?releaseDate }}
                 OPTIONAL {{ ?film dbo:runtime ?runtime }}
+
+                # Directores
                 OPTIONAL {{
-                    ?film dbo:director ?d .
+                    ?film ?pDirector ?d .
+                    FILTER(?pDirector IN (dbo:director, dbp:director, dbo:cinematography, dbp:directedBy))
                     ?d rdfs:label ?directorName .
                     FILTER(lang(?directorName) = "{language}" || lang(?directorName) = "en")
                 }}
+
+                # Actores
                 OPTIONAL {{
-                    ?film dbo:abstract ?abstract .
-                    FILTER(lang(?abstract) = "{language}")
+                    ?film ?pActores ?actores .
+                    FILTER(?pActores IN (dbo:starring, dbo:castMember, dbp:starring, dbo:actor))
+                    ?actores rdfs:label ?actorName .
+                    FILTER(lang(?actorName) = "{language}" || lang(?actorName) = "en")
                 }}
 
+                # Géneros
+                OPTIONAL {{
+                    ?film ?pGenero ?generoURI .
+                    FILTER(?pGenero IN (dbo:genre, dbp:genres, prop-es:géneros))
+                    ?generoURI rdfs:label ?generoName .
+                    FILTER(lang(?generoName) = "{language}" || lang(?generoName) = "en")
+                }}
+                
+                ?film ?pSinopsis ?abstract .
+                    FILTER(?pSinopsis IN (dbo:abstract, dbo:description))
+                    FILTER(lang(?abstract) = "{language}" || lang(?abstract) = "en")
+                
                 {filter_block}
             }}
-            GROUP BY ?film
+            GROUP BY ?film ?title ?releaseDate ?runtime
             LIMIT {limit}
             """
             print ("actor", {actor}, "director", {director}, "genero", {genre}, "año", {year}, "org", {studio})
@@ -347,71 +391,108 @@ class DBpediaService:
             return []
 
     def _run_sparql(self, query, language='es'):
-        """Ejecuta una consulta SPARQL y procesa los resultados"""
+        """Ejecuta la consulta SPARQL con cache y procesa resultados eficientemente"""
         try:
-            endpoint = self.endpoints.get(language, self.endpoints['es'])
+            cache_key = self._generate_cache_key(query)
 
+            # Revisar cache DBpedia
+            if cache_key in self.dbpedia_cache:
+                return self.dbpedia_cache[cache_key]
+
+            endpoint = self.endpoints.get(language, self.endpoints['es'])
             response = requests.get(
                 endpoint,
                 params={"query": query, "format": "json"},
                 timeout=self.timeout
             )
 
-            # --- VALIDAR SI DBPEDIA DEVOLVIÓ JSON ---
             content_type = response.headers.get("Content-Type", "")
             if "application/sparql-results+json" not in content_type:
-                logger.error("DBpedia NO devolvió JSON. Respuesta recibida:")
-                logger.error(response.text[:600])
+                print("DBpedia no devolvió JSON. Respuesta:")
+                print(response.text[:500])
                 return []
 
             data = response.json()
+            results_raw = data.get("results", {}).get("bindings", [])
 
             results = []
 
-            for b in data["results"]["bindings"]:
-                
+            # Preparar títulos para llamadas paralelas a TMDB
+            titles = [b.get("title", {}).get("value") for b in results_raw]
+
+            # Llamadas paralelas a TMDB
+            with ThreadPoolExecutor(max_workers=5) as executor:
+                tmdb_results = list(
+                    executor.map(lambda t: self._fetch_tmdb(t, language), titles)
+                )
+
+            for i, b in enumerate(results_raw):
                 uri = b.get("film", {}).get("value")
-                titulo_dbp = b.get("title", {}).get("value")
-                
-                # Buscar en TMDB usando título DBpedia y filtrando idioma
-                tmdb_data = tmdb_service.search_movie_by_title(titulo_dbp, language)
-                
-                if tmdb_data:
-                    titulo_tmdb = tmdb_data.get("title", titulo_dbp)
-                    poster_url = f"https://image.tmdb.org/t/p/w500{tmdb_data.get("poster_path")}" if tmdb_data.get("poster_path") else None
-                else:
-                    titulo_tmdb = titulo_dbp
-                    poster_url = None
-                # Procesar sinopsi
+                titulo_dbp = b.get("title", {}).get("value", "Título no disponible")
+
+                # Directores
+                directores_str = b.get("directores", {}).get("value", "")
+                directores = (
+                    [d.strip() for d in directores_str.split(",")]
+                    if directores_str else ["Director no disponible"]
+                )
+
+                # Actores
+                actores_str = b.get("actores", {}).get("value", "")
+                actores = (
+                    [a.strip() for a in actores_str.split(",")]
+                    if actores_str else ["Actores no disponibles"]
+                )
+
+                # Géneros
+                generos_str = b.get("generos", {}).get("value", "")
+                generos = (
+                    [g.strip() for g in generos_str.split(",")]
+                    if generos_str else ["Géneros no disponibles"]
+                )
+
+                # Sinopsis
                 abstract = b.get("abstract", {}).get("value", "")
                 if len(abstract) > 300:
                     abstract = abstract[:297] + "..."
 
-                # Procesar año
+                # Año
                 release_date = b.get("releaseDate", {}).get("value", "")
-                if release_date:
-                    year = release_date.split("-")[0]
-                else:
-                    year = "No disponible"
+                year = release_date.split("-")[0] if release_date else "No disponible"
 
-                # Procesar duración
+                # Duración
                 runtime = b.get("runtime", {}).get("value", "")
                 if runtime:
                     try:
                         runtime_minutes = int(float(runtime))
                         if runtime_minutes > 1000:
-                            runtime_minutes = runtime_minutes // 60
+                            runtime_minutes //= 60
                         runtime = f"{runtime_minutes} min"
                     except:
                         runtime = "No disponible"
                 else:
                     runtime = "No disponible"
 
+                # TMDB
+                tmdb_data = tmdb_results[i] if i < len(tmdb_results) else None
+                if tmdb_data:
+                    titulo_tmdb = tmdb_data.get("title", titulo_dbp)
+                    poster_url = (
+                        f"https://image.tmdb.org/t/p/w500{tmdb_data.get('poster_path')}"
+                        if tmdb_data.get("poster_path")
+                        else None
+                    )
+                else:
+                    titulo_tmdb = titulo_dbp
+                    poster_url = None
+
                 results.append({
-                    "uri": b.get("film", {}).get("value"),
+                    "uri": uri,
                     "titulo": titulo_tmdb,
                     "poster": poster_url,
-                    "director": b.get("directorName", {}).get("value", "Director no disponible"),
+                    "directores": directores,
+                    "actores": actores,
+                    "generos": generos,
                     "sinopsis": abstract or "Sinopsis no disponible",
                     "anio": year,
                     "duracion": runtime,
@@ -420,14 +501,12 @@ class DBpediaService:
                     "idioma": language
                 })
 
+            # Guardar en cache DBpedia
+            self.dbpedia_cache[cache_key] = results
             return results
 
-        except requests.exceptions.Timeout:
-            logger.error("Timeout conectando con DBpedia")
-            return []
-
         except Exception as e:
-            logger.error(f"Error en _run_sparql ({language}): {e}", exc_info=True)
+            print(f"Error en _run_sparql ({language}): {e}")
             return []
 
     def search_people_from_movie(self, movie_title, role=None, language="es", limit=50):
@@ -582,3 +661,20 @@ class DBpediaService:
         except Exception as e:
             logger.error(f"DBpedia no está disponible: {e}")
             return False
+
+    def _generate_cache_key(self, query: str):
+        # Hash para usar como key de cache
+        return hashlib.md5(query.encode("utf-8")).hexdigest()
+
+    def _fetch_tmdb(self, title: str, language: str):
+        # Revisar cache primero
+        cache_key = f"{title}:{language}"
+        if cache_key in self.tmdb_cache:
+            return self.tmdb_cache[cache_key]
+
+        # Aquí iría tu lógica real de llamada a TMDB
+        tmdb_data = tmdb_service.search_movie_by_title(title, language)
+
+        # Guardar en cache
+        self.tmdb_cache[cache_key] = tmdb_data
+        return tmdb_data

@@ -188,32 +188,25 @@ def api_connectivity():
             'timestamp': str(datetime.now())
         })
 
-@app.route('/api/search')
-def api_search():
-    """Endpoint API para búsquedas AJAX con comportamiento adaptativo según conectividad"""
-    term = request.args.get('term', '')
-    language = request.args.get('lang', 'es')
-    
-    if not term:
-        return jsonify({'error': 'Término de búsqueda requerido'}), 400
-    
+def api_search(term, language):
+    """Búsqueda clásica interna, reusable desde otro endpoint"""
     try:
-        # Verificar conectividad
+        if not term:
+            return jsonify({'error': 'Término de búsqueda requerido'}), 400
+
         is_online = check_internet_connectivity()
-        
+
         if is_online:
-            # Conectado: solo DBpedia online
-            logger.info("Búsqueda en modo online: usando solo DBpedia")
+            logger.info("Búsqueda clásica en modo online: usando solo DBpedia")
             local_results = []
             external_results = dbpedia_service.search_movies(term, language)
             reduced_results = []
         else:
-            # Sin conexión: solo fuentes offline (local + DBpedia reducida)
-            logger.info("Búsqueda en modo offline: usando ontología local y DBpedia reducida")
+            logger.info("Búsqueda clásica en modo offline: usando ontología local y DBpedia reducida")
             local_results = ontology_service.search_movies(term)
             external_results = []
             reduced_results = dbpedia_reduced_service.search_movies(term)
-        
+
         return jsonify({
             'local': local_results,
             'external': external_results,
@@ -222,22 +215,18 @@ def api_search():
             'online_mode': is_online
         })
     except Exception as e:
-        logger.error(f"Error en búsqueda: {e}")
+        logger.error(f"Error en api_search: {e}", exc_info=True)
         return jsonify({'error': 'Error interno del servidor'}), 500
 
-@app.route('/api/semantic_search')
-def semantic_search():
-    language = request.args.get('lang', 'es')
-
+def semantic_search(query, language):
+    """Búsqueda semántica interna, reusable desde otro endpoint"""
     try:
-        query = request.args.get("q", "").strip()
-
         if not query:
             return jsonify({"error": "Se requiere parámetro ?q"}), 400
 
-    # --- Detectar intenciones y entidades con NER PRO + TMDB
+        # Detectar intenciones y entidades
         intent_data = intent_service.detect_intent(query, language)
-        intents = intent_data["intents"]
+        intents = intent_data.get("intents", {})
 
         persons = intent_data.get("persons", [])
         roles = intent_data.get("roles", {})
@@ -245,14 +234,16 @@ def semantic_search():
         genres = intent_data.get("genres", [])
         studios = intent_data.get("studios", [])
 
-        # Extraer actor/director principales
-        actor = roles["actor"][0] if roles["actor"] else None
-        director = roles["director"][0] if roles["director"] else None
+        actor = roles.get("actor")
+        actor = actor[0] if actor else None
+
+        director = roles.get("director")
+        director = director[0] if director else None
+
         year = years[0] if years else None
         genre = genres[0] if genres else None
         studio = studios[0] if studios else None
 
-        # Si no se detectó ninguna intención
         if not any(intents.values()):
             return jsonify({
                 "error": "No se pudo entender la intención de la consulta",
@@ -266,55 +257,48 @@ def semantic_search():
                 }
             }), 400
 
-
-        # --- 3. Búsqueda semántica combinada con comportamiento adaptativo ---
         is_online = check_internet_connectivity()
-        
+        print (actor, director, year, genre, studio, language)
         if is_online:
-            # Conectado: solo DBpedia online
             logger.info("Búsqueda semántica en modo online: usando solo DBpedia")
             local_results = []
             external_results = dbpedia_service.search_movies_semantic(
-                actor=actor,
-                director=director,
-                year=year,
-                genre=genre,
-                studio=studio,
+                actor=actor, 
+                director=director, 
+                year=year, 
+                genre=genre, 
+                studio=studio, 
                 language=language
             )
             reduced_results = []
         else:
-            # Sin conexión: solo fuentes offline (local + DBpedia reducida)
             logger.info("Búsqueda semántica en modo offline: usando ontología local y DBpedia reducida")
             local_results = ontology_service.search_movies_semantic(
-                actor=actor,
-                director=director,
-                year=year,
-                genre=genre
+                actor=actor, 
+                director=director, 
+                year=year, 
+                genre=genre, 
+                studio=studio, 
+                language=language
             )
             external_results = []
             reduced_results = dbpedia_reduced_service.search_movies_semantic(
-                actor=actor,
-                director=director,
-                year=year,
+                actor=actor, 
+                director=director, 
+                year=year, 
                 genre=genre
             )
 
-        # --- 4. Respuesta ---
         return jsonify({
             "query": query,
-
             "intents_detected": intents,
-
             "actor": actor,
             "director": director,
             "year": year,
             "genre": genre,
-
             "local_count": len(local_results),
             "external_count": len(external_results),
             "reduced_count": len(reduced_results),
-
             "local": local_results,
             "external": external_results,
             "reduced": reduced_results,
@@ -325,6 +309,25 @@ def semantic_search():
     except Exception as e:
         logger.error(f"Error en semantic_search: {e}", exc_info=True)
         return jsonify({"error": str(e)}), 500
+
+@app.route('/api/search_auto')
+def search_auto():
+    term = request.args.get('q', '').strip()
+    language = request.args.get('lang', 'es')
+
+    if not term:
+        return jsonify({'error': 'Se requiere parámetro ?q'}), 400
+
+    # Detectar intención para decidir
+    intent_data = intent_service.detect_intent(term, language)
+    intents = intent_data.get("intents", {})
+
+    if any(intents.values()):
+        # Hay intención, usar búsqueda semántica
+        return semantic_search(term, language)
+    else:
+        # Solo nombre de película, usar búsqueda clásica
+        return api_search(term, language)
 
 @app.route('/api/stats')
 def api_stats():
@@ -448,23 +451,14 @@ def handle_exception(error):
     logger.error(f"Excepción no controlada: {error}", exc_info=True)
     return render_template('errors/500.html'), 500
 
-
-def merge_results(local, external):
-    """
-    Une resultados evitando duplicados por título.
-    """
-    merged = []
-    seen = set()
-
-    for m in local + external:
-        title = m.get("title") or m.get("nombre") or ""
-        key = title.lower().strip()
-
-        if key not in seen:
-            seen.add(key)
-            merged.append(m)
-
-    return merged
+@app.post("/api/ontology/save_movie")
+def save_movie():
+    data = request.json
+    try:
+        uri = ontology_service.save_movie_from_external(data)
+        return {"success": True, "uri": uri}
+    except Exception as e:
+        return {"success": False, "error": str(e)}, 500
 
 
 if __name__ == '__main__':

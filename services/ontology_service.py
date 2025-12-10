@@ -1,4 +1,4 @@
-from rdflib import Graph, Namespace
+from rdflib import Graph, Namespace, RDF, Literal, XSD
 import logging
 import os
 import time
@@ -11,6 +11,7 @@ class OntologyService:
     """Servicio para manejar consultas a la ontología local"""
     
     def __init__(self, ontology_file: str):
+        self.logger = logging.getLogger(__name__)
         self.ontology_file = ontology_file
         self.ontology_path = ontology_file
         self.graph = Graph()
@@ -129,77 +130,138 @@ class OntologyService:
             logger.error(f"Error en búsqueda directa para '{term}': {e}")
             return []
     
-    def search_movies_semantic(self, actor=None, director=None, year=None, genre=None, language="es"):
+    def search_movies_semantic(
+        self,
+        actor=None,
+        director=None,
+        year=None,
+        genre=None,
+        studio=None,
+        language: str = "es",
+        limit: int = 15
+    ):
         try:
             filters = ""
+            if language:
+                filters += f'    ?movie ont:lenguaje ?lang .\n'
+                filters += f'    FILTER ( ?lang="{language}") \n'
 
             if actor:
-                filters += f'    ?movie ont:tieneActor ?actorURI .\n'
-                filters += f'    ?actorURI ont:nombrePersona "{actor}" .\n'
+                filters += f'    ?movie ont:tieneActor ?actor .\n'
+                filters += f'    ?actor ont:nombrePersona ?nombreActor .\n'
+                filters += f'    FILTER ( ?nombreActor="{actor}") \n'
 
             if director:
-                filters += f'    ?movie ont:dirigidaPor ?directorURI .\n'
-                filters += f'    ?directorURI ont:nombrePersona "{director}" .\n'
-
+                filters += f'    ?movie ont:dirigidaPor ?director .\n'
+                filters += f'    ?director ont:nombrePersona ?nombreDirector .\n'
+                filters += f'    FILTER ( ?nombreDirector="{director}") \n'
+                
             if year:
-                filters += f'    ?movie ont:anioEstreno {year} .\n'
+                filters += f'    ?movie ont:fechaEstreno ?anioName .\n'
+                filters += f'    FILTER ( ?anioName="{year}") \n'
 
             if genre:
-                filters += f'    ?movie ont:tieneGenero ?genreURI .\n'
-                filters += f'    ?genreURI ont:nombreGenero "{genre}" .\n'
+                filters += f'    ?movie ont:tieneGenero ?genero .\n'
+                filters += f'    ?genero ont:nombreGenero ?nombreGenero .\n'
+                filters += f'    FILTER ( ?nombreGenero="{genre}") \n'
 
+            if studio:
+                filters += f'    ?movie ont:estaAfiliadoA ?studio .\n'
+                filters += f'    ?studio ont:nombreOrganizacion ?nombreStudio .\n'
+                filters += f'    FILTER ( ?nombreStudio="{studio}") \n'
+                
             query = f"""
             PREFIX ont: <http://www.semanticweb.org/anghely/ontologies/2025/8/OntologiaPeliculas#>
             PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
-            SELECT DISTINCT ?movie ?titulo ?directorName ?anio ?genreName
+            SELECT DISTINCT ?movie ?titulo ?sinopsis ?anio ?duracion
+                (GROUP_CONCAT(DISTINCT ?d2; SEPARATOR=", ") AS ?directores)
+                (GROUP_CONCAT(DISTINCT ?a2; SEPARATOR=", ") AS ?actores)
+                (GROUP_CONCAT(DISTINCT ?g2; SEPARATOR=", ") AS ?generos)
             WHERE {{
                 ?movie ont:nombrePelicula ?titulo .
 
-                OPTIONAL {{ ?movie ont:dirigidaPor ?d2 . ?d2 ont:nombrePersona ?directorName }}
-                OPTIONAL {{ ?movie ont:anioEstreno ?anio }}
-                OPTIONAL {{ ?movie ont:tieneGenero ?g2 . ?g2 ont:nombreGenero ?genreName }}
-
-                {filters}
+                OPTIONAL {{
+                    ?movie ont:dirigidaPor ?dURI . 
+                    ?dURI ont:nombrePersona ?d2 .
+                }}
+                OPTIONAL {{
+                    ?movie ont:fechaEstreno ?anio .
+                }}
+                OPTIONAL {{
+                    ?movie ont:duracionPelicula ?duracion .
+                }}
+                OPTIONAL {{
+                    ?movie ont:sinopsisPelicula ?sinopsis .
+                }}
+                OPTIONAL {{
+                    ?movie ont:tieneGenero ?gURI .
+                    ?gURI ont:nombreGenero ?g2 .
+                }}
+                OPTIONAL {{
+                    ?movie ont:tieneActor ?aURI . 
+                    ?aURI ont:nombrePersona ?a2 .
+                }}
+                    {filters}
             }}
-            LIMIT 50
+            GROUP BY ?movie ?titulo ?sinopsis ?anio ?duracion
+            LIMIT {limit}
             """
 
             print("DEBUG LOCAL: Ejecutando consulta para termino:", "actor : ", actor, "director : ", director, "año: ", year)
 
-            return self.run_sparql(query)
+            return self.run_sparql(query, language)
 
         except Exception as e:
             logger.error(f"Error en search_movies_semantic: {e}", exc_info=True)
             return []
 
-    def run_sparql(self, query: str):
+    def run_sparql(self, query: str, language="es"):
         try:
             results = self.graph.query(query)
             parsed = []
 
             for row in results:
+
                 movie_uri = str(row.get("movie", ""))
                 title = str(row.get("titulo", ""))
-                director = str(row.get("directorName", "")) if row.get("directorName") else None
+                duracion = str(row.get("duracion", ""))
+
+                # --- DIRECTORES ---
+                directores_str = str(row.get("directores", "")) if row.get("directores") else ""
+                directores = [d.strip() for d in directores_str.split(",")] if directores_str else []
+
+                # --- ACTORES ---
+                actores_str = str(row.get("actores", "")) if row.get("actores") else ""
+                actores = [a.strip() for a in actores_str.split(",")] if actores_str else []
+
+                # --- GENEROS ---
+                generos_str = str(row.get("generos", "")) if row.get("generos") else ""
+                generos = [g.strip() for g in generos_str.split(",")] if generos_str else []
+
+                # --- FECHA ---
                 year = str(row.get("anio", "")) if row.get("anio") else None
-                genre = str(row.get("genreName", "")) if row.get("genreName") else None
+
+                # --- SINOPSIS ---
+                sinopsis = str(row.get("sinopsis", "")) if row.get("sinopsis") else None
 
                 parsed.append({
-                    "uri": movie_uri,
                     "titulo": title,
-                    "director": director,
+                    "sinopsis": sinopsis,
+                    "directores": directores,   # <--- ahora ES UNA LISTA
+                    "actores": actores,         # <--- ahora ES UNA LISTA
+                    "generos": generos,         # <--- ahora ES UNA LISTA
                     "anio": year,
-                    "genero": genre,
+                    "duracion": duracion,
+                    "idioma": language,
                     "tipo": "local"
                 })
-            print("DEBUG LOCAL: Películas encontradas:", parsed)
+
             return parsed
 
         except Exception as e:
             self.logger.error(f"Error ejecutando SPARQL: {e}\n{query}")
             return []
-
 
     def get_movie_details(self, movie_uri: str) -> Optional[Dict]:
         """Obtiene detalles completos de una película específica"""
@@ -609,3 +671,68 @@ class OntologyService:
             self.graph.serialize(save_to, format="xml")
 
         return {"inserted": created}
+
+    def save_movie_from_external(self, movie):
+
+        g = self.graph
+        L = self.namespace
+
+        # Crear URI segura
+        movie_id = movie["titulo"].replace(" ", "_").replace(":", "")
+        movie_uri = L[movie_id]
+
+        # --- Crear instancia Pelicula ---
+        g.add((movie_uri, RDF.type, L.Pelicula))
+
+        # --- Guardar propiedades literales básicas ---
+        if "titulo" in movie:
+            g.add((movie_uri, L.nombrePelicula, Literal(movie["titulo"], lang=movie["idioma"])))
+
+        if "duracion" in movie:
+            g.add((movie_uri, L.duracionPelicula, Literal(movie["duracion"])))
+
+        if "sinopsis" in movie:
+            g.add((movie_uri, L.sinopsisPelicula,
+                   Literal(movie["sinopsis"], lang=movie["idioma"])))
+
+        if "anio" in movie:
+            g.add((movie_uri, L.fechaEstreno, Literal(movie["anio"])))
+
+        # --- Idioma de los datos (nuevo) ---
+        if "idioma" in movie:
+            g.add((movie_uri, L.lenguaje,
+                   Literal(movie["idioma"], datatype=XSD.string)))
+
+        # =======================================================
+        #   RELACIONES (directores, actores, géneros)
+        # =======================================================
+
+        # Helper para crear entidades relacionadas
+        def create_related_entities(key, config):
+
+            items = movie.get(key, [])
+            if not items:
+                return
+
+            for value in items:
+
+                entity_id = value.replace(" ", "_")
+                entity_uri = L[entity_id]
+
+                # Tipo en la ontología
+                g.add((entity_uri, RDF.type, L[config["local_class"]]))
+
+                # Propiedad básica (ej: nombrePersona, nombreGenero)
+                g.add((entity_uri, L[config["property_name"]], Literal(value)))
+
+                # Relación película → entidad
+                g.add((movie_uri, L[config["local_property"]], entity_uri))
+
+        # Aplicar mapeo
+        for key, cfg in RELATION_MAPPING.items():
+            create_related_entities(key, cfg)
+
+        # Guardar ontología
+        g.serialize(self.ontology_path)
+
+        return str(movie_uri)

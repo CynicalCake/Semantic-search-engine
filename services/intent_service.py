@@ -107,7 +107,7 @@ class IntentService:
         t = text.lower()
 
         keywords = {
-            "es": ["actor", "actriz", "actores", "reparto", "participaron", "dirigió", "director"],
+            "es": ["actor", "actriz", "actores", "reparto", "participaron", "dirigió", "director", "distribuido por"],
             "en": ["actor", "actress", "cast", "starring", "who acted", "directed"],
             "fr": ["acteur", "actrice", "distribution", "joué", "réalisé"],
             "de": ["schauspieler", "besetzung", "mitgespielt", "regisseur"]

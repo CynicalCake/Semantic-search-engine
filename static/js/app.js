@@ -103,7 +103,7 @@ class CinemaSearch {
         try {
             const lower = term.toLowerCase();
 
-            const url = `/api/semantic_search?q=${encodeURIComponent(term)}&lang=${language}`;
+            const url = `/api/search_auto?q=${encodeURIComponent(term)}&lang=${language}`;
             console.log("➡ Usando búsqueda SEMÁNTICA:", url);
             
             const response = await fetch(url);
@@ -227,49 +227,68 @@ class CinemaSearch {
         const shouldShowMoreButton = movie.uri &&
             (movie.tipo !== 'local' && movie.tipo !== 'reduced');
 
+        const shouldShowLocalSave = 
+            (movie.tipo !== 'local' && movie.tipo !== 'reduced');
+
+        // Función para truncar listas largas
+        const maxItems = 5;
+        const formatList = (list) => {
+            if (!list || !list.length) return 'No disponible';
+            if (list.length <= maxItems) return list.join(", ");
+            return list.slice(0, maxItems).join(", ") + " ...";
+        };
+
         return `
-            <div class="movie-card ${sourceClass}">
-                ${movie.poster ? `<img src="${movie.poster}" class="movie-poster"/>` : ''}
-                <h3 class="movie-title">${this.escapeHtml(movie.titulo)}</h3>
-                <div class="movie-director">
-                    ${this.i18n.t('director')}: ${this.escapeHtml(movie.director)}
+        <div class="movie-card ${sourceClass}">
+
+            ${shouldShowLocalSave ? `
+                <button class="save-local-icon" title="Guardar en local"
+                    data-movie='${JSON.stringify(movie)}'>
+                    💾
+                </button>
+            ` : ''}
+
+            <div class="card-content">
+                <!-- IZQUIERDA: Poster -->
+                <div class="card-left">
+                    ${movie.poster ? `<img src="${movie.poster}" class="movie-poster"/>` : ''}
+                    <span class="source-badge ${sourceClass}">${sourceText}</span>
                 </div>
-                <p class="movie-synopsis">${this.escapeHtml(movie.sinopsis)}</p>
-                
-                <div class="movie-details mb-2">
-                
-                    ${movie.anio ? `
-                        <div class="detail-item">
-                            <small class="text-muted">${this.i18n.t('year')}: ${this.escapeHtml(movie.anio)}</small>
+
+                <!-- DERECHA: Texto -->
+                <div class="card-right">
+                    <div class="movie-details-top">
+                        ${movie.anio ? `<span class="detail-item">${this.i18n.t('year')}: ${this.escapeHtml(movie.anio)}</span>` : ''}
+                        ${movie.duracion ? `<span class="detail-item">${this.i18n.t('duration')}: ${this.escapeHtml(movie.duracion)}</span>` : ''}
+                    </div>
+
+                    <h3 class="movie-title">${this.escapeHtml(movie.titulo)}</h3>
+
+                    ${movie.generos ? `
+                        <div class="detail-item genres">
+                            ${this.escapeHtml(movie.generos.join(" • "))}
                         </div>
                     ` : ''}
-                    
-                    ${movie.duracion ? `
-                        <div class="detail-item">
-                            <small class="text-muted">${this.i18n.t('duration')}: ${this.escapeHtml(movie.duracion)}</small>
-                        </div>
-                    ` : ''}
-                    
-                    ${movie.genero ? `
-                        <div class="detail-item">
-                            <small class="text-muted">${this.i18n.t('genre')}: ${this.escapeHtml(movie.genero)}</small>
-                        </div>
-                    ` : ''}
-                </div>
-                
-                <div class="movie-meta">
-                    <span class="source-badge ${sourceClass}">
-                        ${sourceText}
-                    </span>
-                    ${shouldShowMoreButton ? `
-                        <a href="${movie.uri}" target="_blank" class="btn btn-outline-secondary btn-sm">
-                            ${this.i18n.t('seeMore')}
-                        </a>
-                    ` : ''}
+
+                    ${movie.directores ? `<div class="movie-director">${this.i18n.t('director')}: ${this.escapeHtml(formatList(movie.directores))}</div>` : ''}
+                    ${movie.actores ? `<div class="movie-actors">${this.i18n.t('actors')}: ${this.escapeHtml(formatList(movie.actores))}</div>` : ''}
+
+                    ${movie.sinopsis ? `<p class="movie-synopsis">${this.escapeHtml(movie.sinopsis)}</p>` : ''}
+
+                    <div class="movie-meta">
+                        ${shouldShowMoreButton ? `
+                            <a href="${movie.uri}" target="_blank" class="btn btn-outline-secondary btn-sm">
+                                ${this.i18n.t('seeMore')}
+                            </a>
+                        ` : ''}
+                    </div>
                 </div>
             </div>
+
+        </div>
         `;
-    }
+        }
+
 
     /**
      * Genera HTML para estado vacío
@@ -527,6 +546,28 @@ class CinemaSearch {
         return div.innerHTML;
     }
 }
+    document.addEventListener("click", function (e) {
+        if (e.target.classList.contains("save-local-icon")) {
+            const movie = JSON.parse(e.target.dataset.movie);
+            saveMovieToLocalOntology(movie);
+        }
+    });
+
+    async function saveMovieToLocalOntology(movie) {
+        const response = await fetch("/api/ontology/save_movie", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(movie)
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+            alert("Película guardada en la ontología.");
+        } else {
+            alert("Error: " + data.error);
+        }
+    }
 
 // Inicializar la aplicación cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', () => {
